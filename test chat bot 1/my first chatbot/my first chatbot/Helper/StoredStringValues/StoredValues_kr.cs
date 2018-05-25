@@ -45,14 +45,38 @@ namespace my_first_chatbot.Helper
             _scholarship = "장학금 관련";            //웹 연결
 
             // 직접 입력하기 선택시 메뉴     typeself options
-            _typePlease = $"궁금하신 정보를 직접 입력해 주세요.\n" +
-                                    $"-Example-\n" +
-                                    $"[수강신청방법]\n" +
-                                    $"[이번학기개설전공]\n" +
-                                    $"[나의 학점관리]\n" +
-                                    $"[휴학하는법]\n" +
-                                    $"현재 Depth 2까지만 작동\n" +
-                                    $"추후 Depth 3 까지 구현예정입니다.\n";
+            _typePlease = $"▶ 안녕하세요 AAR 챗봇서비스\n      입니다.\n" +
+                                    $"▶ 문의 내용의 번호를 선택하시\n      거나 질문을 입력해주세요.\n\n" +
+                                    $"▶ 1. 수강신청정보\n" +
+                                    $"▶ 2. 과목관련정보\n" +
+                                    $"▶ 3. 학점관리\n" +
+                                    $"▶ 4. 기타정보\n" +
+                                    $"▶ 5. 도움말\n" +
+                                    $"▶ 6. 버튼메뉴\n" +
+
+                                    $" ※ 명지대학교 홈페이지\n" +
+                                    $" ■ https://www.mju.ac.kr \n" +
+                                    $" ※ Github for AAR\n" +
+                                    $" ■ https://github.com/MJUKJE/chatbot/blob/dev/README.md \n" +
+
+                                    $"▶ 학점 관리항목은\n      학번입력이 필요합니다.\n" +
+                                    $"▶ [처음으로]나 초기메뉴를 입력시\n      처음으로 돌아가실 수 있습니다.\n" +
+                                    $"▶ Go to the [도움말] -> [English]\n      Language conversion is\n      possible :).\n" +
+                                    $"▶ 버튼메뉴는 빠르고 편리합니다.\n" +
+                                    $"▶ 추후 계속 업데이트 예정.\n";
+
+
+            _sorryMessage = $"▶말씀을 이해하지 못했습니다.\n" +
+                                        $"▶문의하신 내용에 대해 다음에는\n" +
+                                        $"▶안내드릴 수 있도록 열심히\n" +
+                                        $"▶학습하겠습니다.\n\n" +
+                                        $"※버튼메뉴를 이용하시면\n" +
+                                        $"※빠르고 편리합니다 :)\n" +
+                                        $"■ 각종 문의 및 상담\n" +
+                                        $"▶ Github페이지\n" +
+                                        $"▶ https://github.com/MJUKJE/chatbot/blob/dev/README.md \n" +
+                                        $"▶ 관리자 Email로 문의\n" +
+                                        $"▶ Email : jasen0324@gmail.com\n";
 
 
             // 도움말 선택시 메뉴       help options
@@ -72,6 +96,16 @@ namespace my_first_chatbot.Helper
             _othersOption = new List<string> { _leaveOrReadmission, _scholarship, _gotostart, _help };
             _helpOptionsList = new List<string> { _introduction, _requestInformationCorrection, _contactMaster, _convertLanguage, _gotostart };
 
+            _courseRegistrationVoca = new List<string> { "수강신청", "수강 신청" };
+            _courseInfoVoca = new List<string> { "과목정보", "과목 정보", "강의정보", "강의 정보", "과목관련", "강의관련" };
+            _creditVoca = new List<string> { "학점", "나의학점", "내학점" };
+            _othersVoca = new List<string> { "기타", "그외" };
+            _helpVoca = new List<string> { "도움", "help", "사용법", "쓰는법" };
+            _gotoStartVoca = new List<string> { "처음으로", "초기", "처음", "시작" };
+            _languageVoca = new List<string> { "한국어", "영어", "English", "Korean", "english", "korean" };
+
+            _listVoca = new List<List<string>> { _courseRegistrationVoca, _courseInfoVoca, _creditVoca, _othersVoca, _helpVoca, _gotoStartVoca, _languageVoca };
+
             //모든 정보를 언어에 따라 다르게 주기 위해서
             //for diffrent reply from language select
 
@@ -85,12 +119,12 @@ namespace my_first_chatbot.Helper
                             $"변경된 학번 : ";
             _getStudentNumFail = $"잘못된 형식입니다.\n" +
                                     $"학번을 다시 입력해 주세요.(e.g. '60131937')";
-            _welcomeMessage = $"안녕하세요 명지대학교 AAR3입니다.\n" +
-                                $"궁금하신 정보를 선택해 주세요.\n" +
-                            $"직접 입력하기를 선택하시면 텍스트 입력이 가능합니다.\n" +
-                            $"학점 관리항목은 학번입력이 필요합니다.\n" +
-                            $"Go to the [도움말] -> [English]\n" +
-                            $"Language conversion is possible :).\n";
+            _welcomeMessage = $"▶안녕하세요 명지대학교 AAR3입니다.\n" +
+                                $"▶궁금하신 정보를 선택해 주세요.\n" +
+                            $"▶직접 입력하기를 선택하시면 텍스트 입력이 가능합니다.\n" +
+                            $"▶학점 관리항목은 학번입력이 필요합니다.\n" +
+                            $"※Go to the [도움말] -> [English]\n" +
+                            $"※Language conversion is possible :).\n";
             _invalidSelectionMessage = "잘못된 옵션을 선택하셨어요ㅠㅠ 다시해주세요.";
             _goToButton = "정보로 이동";
 
@@ -187,7 +221,22 @@ namespace my_first_chatbot.Helper
             _reply_ContactMaster = $"관리자와 상담을 요청하실 수 있습니다.\n" +
                                      $"추후 추가예정 입니다.\n";
 
-        }
+
+
+
+
+
+
+            //=======================================================================================================================================
+
+
+
+
+
+
+
 
     }
+
+}
 }

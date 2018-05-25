@@ -46,13 +46,21 @@ namespace my_first_chatbot.Helper
             _scholarship = "Scholarship";            //웹 연결
 
             // 직접 입력하기 선택시 메뉴     typeself options
-            _typePlease = $"Please enter your information yourself\n" +
-                                    $"- Example-\n" +
-                                    $"[Course Registration]\n" +
-                                    $"[Course Information]\n" +
-                                    $"[Credits]\n" +
-                                    $"[Others]\n" +
-                                    $"We are going to implement Depth 3 later.\n";
+            _typePlease = $"▶ Hello AAR chat service. \n" +
+                                    $"▶ Select the number of the inquiry or" +
+                                    $"   Please enter your question \n \n" +
+                                    $"▶ 1. Course Registration Information \n" +
+                                    $"▶ 2. Subject related information \n" +
+                                    $"▶ 3. Credit management \n" +
+                                    $"▶ 4. Other information \n" +
+                                    $"▶ 5. Help \n" +
+                                    $"▶ 6. Button Menu \n" +
+
+                                    $"▶ Credits must be entered in the course number. \n" +
+                                    $"▶ Go to the [Help] -> [English] \n" +
+                                    $"Language conversion is possible:). \n" +
+                                    $"▶ Current Depth 2 only \n" +
+                                    $"▶ We plan to implement Depth 3 later. \n";
 
             // 도움말 선택시 메뉴       help options
             _introduction = "AAR Guidance";
@@ -72,6 +80,16 @@ namespace my_first_chatbot.Helper
             _helpOptionsList = new List<string> { _introduction, _requestInformationCorrection, _contactMaster, _convertLanguage, _gotostart };
 
 
+            _courseRegistrationVoca = new List<string> { "수강신청", "수강 신청" };
+            _courseInfoVoca = new List<string> { "과목정보", "과목 정보", "강의정보", "강의 정보", "과목관련", "강의관련" };
+            _creditVoca = new List<string> { "학점", "나의학점", "내학점" };
+            _othersVoca = new List<string> { "기타", "그외" };
+            _helpVoca = new List<string> { "도움", "help", "사용법", "쓰는법" };
+            _gotoStartVoca = new List<string> { "처음으로", "초기", "처음", "시작" };
+            _languageVoca = new List<string> { "한국어", "영어", "English", "Korean", "english", "korean" };
+
+            _listVoca = new List<List<string>> { _courseRegistrationVoca, _courseInfoVoca, _creditVoca, _othersVoca, _helpVoca, _gotoStartVoca, _languageVoca };
+
             //모든 정보를 언어에 따라 다르게 주기 위해서
             //for diffrent reply from language select
 
@@ -88,6 +106,21 @@ namespace my_first_chatbot.Helper
                                 $"You can enter text if you choose to type it yourself.\n" +
                             $"Credits management entry requires student number\n" +
                             $"메뉴에서 [Help] -> [한국어]를 선택하시면 언어변환이 가능합니다 :).\n";
+
+
+            _sorryMessage = $"▶말씀을 이해하지 못했습니다.\n" +
+                                        $"▶문의하신 내용에 대해 다음에는\n" +
+                                        $"▶안내드릴 수 있도록 열심히\n" +
+                                        $"▶학습하겠습니다.\n\n" +
+                                        $"※버튼메뉴를 이용하시면\n" +
+                                        $"※빠르고 편리합니다 :)\n" +
+                                        $"■ 각종 문의 및 상담\n" +
+                                        $"▶ Github페이지\n" +
+                                        $"▶ https://github.com/MJUKJE/chatbot/blob/dev/README.md \n" +
+                                        $"▶ 관리자 Email로 문의\n" +
+                                        $"▶ Email : jasen0324@gmail.com\n";
+
+
             _invalidSelectionMessage = "You have chosen the wrong option.";
             _goToButton = "Goto Info";
 
@@ -181,7 +214,30 @@ namespace my_first_chatbot.Helper
 
             _reply_ContactMaster = $"You can ask for a consultation with the administrator.\n" +
                                      $"We plan to add it later.\n";
-        }
+
+
+
+
+
+            //=======================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
+
+
+    }
+
 }

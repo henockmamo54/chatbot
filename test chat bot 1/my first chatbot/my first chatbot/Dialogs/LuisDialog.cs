@@ -57,7 +57,23 @@ namespace my_first_chatbot.Dialogs
         [LuisIntent("Credits")]
         public async Task CreditsIntent(IDialogContext context, LuisResult result)
         {
-            await aboutCredits.CreditsOptionSelected(context);
+            if(result.Query == "1") await aboutCourseRegistration.CourseRegistraionOptionSelected(context);
+            else if (result.Query == "2") await aboutCourseInfo.CourseInfoOptionSelected(context);
+            else if (result.Query == "3") await aboutCredits.CreditsOptionSelected(context);
+            else if (result.Query == "4") await aboutOthers.OtherOptionSelected(context);
+            else if (result.Query == "5") await aboutHelp.HelpOptionSelected(context);
+            else if (result.Query == "6")
+            {
+                PromptDialog.Choice<string>(
+                    context,
+                    RootDialog.HandleWelcomeOptionSelected,
+                    RootDialog._storedvalues._welcomeOptionsList,
+                    RootDialog._storedvalues._welcomeMessage,                          //선택시 출력되는 메시지 정의
+                    RootDialog._storedvalues._invalidSelectionMessage + "[ERROR] : showWelcomeOptions",    //오류시 표시될 메시지 정의
+                    1,
+                    PromptStyle.Auto);
+            }
+            else await aboutCredits.CreditsOptionSelected(context);
         }
 
 
