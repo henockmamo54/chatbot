@@ -22,7 +22,6 @@ namespace my_first_chatbot.MessageReply
                 RootDialog._storedvalues._invalidSelectionMessage + "[ERROR] : CourseRegistraionOptionSelected",          //Ooops, what you wrote is not a valid option, please try again
                 1,
                 PromptStyle.Auto);
-
         }
 
         public static async Task HandleCourseRegistrationOptionSelection(IDialogContext context, IAwaitable<string> result)

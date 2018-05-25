@@ -44,23 +44,27 @@ namespace my_first_chatbot.Dialogs
 
         public static async Task ShowWelcomeOptions(IDialogContext context)
         {
-            var message = context.MakeMessage();
-            message.Text =
-                $"{_storedvalues._welcomeMessage}\n" +
-                $"{_storedvalues._printLine}" +
-                $"{_storedvalues._courseRegistration}\n" +
-                $"{_storedvalues._courseInformation}\n" +
-                $"{_storedvalues._credits}\n" +
-                $"{_storedvalues._others}\n" +
-                $"{_storedvalues._help}\n" +
-                $"{_storedvalues._printLine}";
-            await context.PostAsync(message);
+            var activity = context.MakeMessage();
+            activity.Text = _storedvalues._typePlease;
 
-            context.Call(new LuisDialog(), LuisDialogResumeAfter);
+            activity.Attachments.Add(new HeroCard
+            {
+                Title = "",
+                Subtitle = "",          //Location of information in MJU homepage
+                Text = "",
+                Images = new List<CardImage> { new CardImage("http://dynamicscrmcoe.com/wp-content/uploads/2016/08/chatbot-icon.png") },
+                Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
+                                                "관련 페이지로 이동",
+                                                value: "https://github.com/MJUKJE/chatbot/blob/dev/README.md") }
+            }.ToAttachment());
+
+            await context.PostAsync(activity);
+
+            context.Call(new FakeLuisDialog(), FakeLuisDialogResumeAfter);
 
             //PromptDialog.Choice<string>(
             //    context,
-            //    HandelWelcomeOptionSelected,
+            //    HandleWelcomeOptionSelected,
             //    _storedvalues._welcomeOptionsList,
             //    _storedvalues._welcomeMessage,                          //선택시 출력되는 메시지 정의
             //    _storedvalues._invalidSelectionMessage + "[ERROR] : showWelcomeOptions",    //오류시 표시될 메시지 정의
@@ -68,9 +72,22 @@ namespace my_first_chatbot.Dialogs
             //    PromptStyle.Auto);
         }
 
+        public static async Task ShowWelcomeButtonOptions(IDialogContext context)
+        {
+            
+            PromptDialog.Choice<string>(
+                context,
+                HandleWelcomeOptionSelected,
+                _storedvalues._welcomeOptionsList,
+                _storedvalues._welcomeMessage,                          //선택시 출력되는 메시지 정의
+                _storedvalues._invalidSelectionMessage + "[ERROR] : showWelcomeOptions",    //오류시 표시될 메시지 정의
+                1,
+                PromptStyle.Auto);
+        }
 
 
-        public static async Task HandelWelcomeOptionSelected(IDialogContext context, IAwaitable<string> result)
+
+        public static async Task HandleWelcomeOptionSelected(IDialogContext context, IAwaitable<string> result)
         {
             var value = await result;
 
@@ -79,6 +96,7 @@ namespace my_first_chatbot.Dialogs
             else if (value.ToString() == _storedvalues._credits) await aboutCredits.CreditsOptionSelected(context);
             else if (value.ToString() == _storedvalues._others) await aboutOthers.OtherOptionSelected(context);
             else if (value.ToString() == _storedvalues._help) await aboutHelp.HelpOptionSelected(context);
+            else if (value.ToString() == _storedvalues._typeself) await ShowWelcomeOptions(context);
             else await ForUnimplementedOptions(context, value);
         }
 
@@ -130,11 +148,21 @@ namespace my_first_chatbot.Dialogs
             await context.PostAsync(activity);
         }
 
-        public static async Task LuisDialogResumeAfter(IDialogContext context, IAwaitable<Activity> result)
+        
+        public static async Task FakeLuisDialogResumeAfter(IDialogContext context, IAwaitable<IMessageActivity> result)
         {
             var message = await result;
-            await context.PostAsync(message.Text);
+            await context.PostAsync(message);
             await ShowWelcomeOptions(context);
+            //context.Call()
+        }
+
+        public static async Task LuisDialogResumeAfter(IDialogContext context, IAwaitable<IMessageActivity> result)
+        {
+            var message = await result;
+            await context.PostAsync(message);
+            await ShowWelcomeOptions(context);
+            //context.Call()
         }
     }
 }
