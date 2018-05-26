@@ -23,15 +23,27 @@ namespace my_first_chatbot.MessageReply
                 RootDialog._storedvalues._invalidSelectionMessage + "[ERROR] : CourseRegistraionOptionSelected",          //Ooops, what you wrote is not a valid option, please try again
                 1,
                 PromptStyle.Auto);
-                */
-            PromptDialog.Text(context, HandleCourseRegistrationOptionSelection, "써보슈");
+            */
+            PromptDialog.Text(context, HandleCourseRegistrationOptionSelection, RootDialog._storedvalues._typePleaseCourseRegistration);
+        }
+
+        public static async Task CourseRegistraionButtonOptionSelected(IDialogContext context)
+        {
+            PromptDialog.Choice<string>(
+                context,
+                HandleCourseRegistrationOptionSelection,
+                RootDialog._storedvalues._courseRegistrationOptions,
+                RootDialog._storedvalues._courseRegistrationSelected,                                                                                        //Course Registration
+                RootDialog._storedvalues._invalidSelectionMessage + "[ERROR] : CourseRegistraionOptionSelected",          //Ooops, what you wrote is not a valid option, please try again
+                1,
+                PromptStyle.Auto);
         }
 
         public static async Task HandleCourseRegistrationOptionSelection(IDialogContext context, IAwaitable<string> result)
         {
             bool noOption = true;
-
-            var message = result.ToString();
+            var message = await result;
+            
 
             switch (message)
             {
@@ -41,6 +53,7 @@ namespace my_first_chatbot.MessageReply
                 case "4": await Reply_terms(context); noOption = false; break;
                 case "5": await RootDialog.ShowWelcomeOptions(context); noOption = false; break;
                 case "6": await aboutHelp.HelpOptionSelected(context); noOption = false; break;
+                case "직접 입력하기": await RootDialog.ShowWelcomeOptions(context); noOption = false; break;
             }
 
             foreach (List<string> lst in RootDialog._storedvalues._courseRegistrationVocaList)
@@ -70,13 +83,14 @@ namespace my_first_chatbot.MessageReply
                                 else if (lst == RootDialog._storedvalues._courseRegistrationVocaList[1]) await Reply_schedule(context);
                                 else if (lst == RootDialog._storedvalues._courseRegistrationVocaList[2]) await Reply_regulation(context);
                                 else if (lst == RootDialog._storedvalues._courseRegistrationVocaList[3]) await Reply_terms(context);
-
-                                //await RootDialog.ShowWelcomeOptions(context);
+                                else if (lst == RootDialog._storedvalues._welcomeOptionVocaList[6]) await RootDialog.ShowWelcomeButtonOptions(context);
                             }
                         }
                     }
                 }
             }
+
+            message = "";
 
             if (noOption == true)
             {
@@ -92,7 +106,7 @@ namespace my_first_chatbot.MessageReply
 
 
 
-
+            
 
             /*
             var value = await result;
@@ -123,7 +137,7 @@ namespace my_first_chatbot.MessageReply
         {
             var activity = context.MakeMessage();
             activity.Text = RootDialog._storedvalues._reply_HowToDoIt;
-
+            activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseRegistrationOptions);
             activity.Attachments.Add(new HeroCard
             {
                 Title = "수강신청 방법",
@@ -142,7 +156,7 @@ namespace my_first_chatbot.MessageReply
         {
             var activity = context.MakeMessage();
             activity.Text = RootDialog._storedvalues._reply_Schedule;
-
+            activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseRegistrationOptions);
             activity.Attachments.Add(new HeroCard
             {
                 Title = "수강신청 일정",
@@ -161,7 +175,7 @@ namespace my_first_chatbot.MessageReply
         {
             var activity = context.MakeMessage();
             activity.Text = RootDialog._storedvalues._reply_Regulation;
-
+            activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseRegistrationOptions);
             activity.Attachments.Add(new HeroCard
             {
                 Title = "명지대학교 학칙",
@@ -180,7 +194,7 @@ namespace my_first_chatbot.MessageReply
         {
             var activity = context.MakeMessage();
             activity.Text = RootDialog._storedvalues._reply_Terms;
-
+            activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseRegistrationOptions);
             activity.Attachments.Add(new HeroCard
             {
                 Title = "수강신청관련 용어정리",

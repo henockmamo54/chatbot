@@ -45,7 +45,7 @@ namespace my_first_chatbot.Helper
             _scholarship = "장학금 관련";            //웹 연결
 
             // 직접 입력하기 선택시 메뉴     typeself options
-            _typePlease = $"▶ 안녕하세요 AAR 챗봇서비스\n      입니다.\n" +
+            _typePleaseWelcome = $"▶ 안녕하세요 AAR 챗봇서비스\n      입니다.\n" +
                                     $"▶ 문의 내용의 번호를 선택하시\n      거나 질문을 입력해주세요.\n\n" +
                                     $"▶ 1. 수강신청정보\n" +
                                     $"▶ 2. 과목관련정보\n" +
@@ -64,6 +64,37 @@ namespace my_first_chatbot.Helper
                                     $"▶ Go to the [도움말] -> [English]\n      Language conversion is\n      possible :).\n" +
                                     $"▶ 버튼메뉴는 빠르고 편리합니다.\n" +
                                     $"▶ 추후 계속 업데이트 예정.\n";
+
+
+            _typePleaseCourseRegistration = $"▶ 수강신청 메뉴 입니다.\n" +
+                                    $"▶ 문의 내용의 번호를 선택하시\n      거나 질문을 입력해주세요.\n\n" +
+                                    $"▶ 1. 수강신청 방법\n" +
+                                    $"▶ 2. 수강신청 일정\n" +
+                                    $"▶ 3. 수강신청 규정\n" +
+                                    $"▶ 4. 수강신청 용어\n" +
+                                    $"▶ 5. 처음으로\n" +
+                                    $"▶ 6. 도움말\n\n" +
+
+                                    $"▶ Go to the [도움말] -> [English]\n      Language conversion is\n      possible :).\n" +
+                                    $"▶ 버튼메뉴는 빠르고 편리합니다.\n" +
+                                    $"▶ 추후 계속 업데이트 예정.\n";
+
+
+            _typePleaseCourseInfo = $"▶ 강의정보 메뉴 입니다.\n" +
+                                    $"▶ 문의 내용의 번호를 선택하시\n      거나 질문을 입력해주세요.\n\n" +
+                                    $"▶ 1. 이번학기 전공개설과목\n" +
+                                    $"▶ 2. 이번학기 교양개설과목\n" +
+                                    $"▶ 3. 강의계획서\n" +
+                                    $"▶ 4. 강사 정보\n" +
+                                    $"▶ 5. 필수과목 정보\n" +
+                                    $"▶ 6. 선수과목 정보\n" +
+                                    $"▶ 7. 처음으로\n" +
+                                    $"▶ 8. 도움말\n\n" +
+
+                                    $"▶ Go to the [도움말] -> [English]\n      Language conversion is\n      possible :).\n" +
+                                    $"▶ 버튼메뉴는 빠르고 편리합니다.\n" +
+                                    $"▶ 추후 계속 업데이트 예정.\n";
+
 
 
             _sorryMessage = $"▶말씀을 이해하지 못했습니다.\n" +
@@ -103,11 +134,12 @@ namespace my_first_chatbot.Helper
 
             //welcome option
             _courseRegistrationVoca = new List<string> { "수강신청", "수강 신청" };
-            _courseInfoVoca = new List<string> { "과목정보", "과목 정보", "강의정보", "강의 정보", "과목관련", "강의관련" };
+            _courseInfoVoca = new List<string> { "과목정보", "과목 정보", "강의정보", "강의 정보", "과목관련", "강의관련", "전공과목", "교양과목", "전공개설", "교양개설", "강의계획서", "강사 정보", "교수 정보", "필수과목", "선수과목", "개설전공", "개설교양" };
             _creditVoca = new List<string> { "학점", "나의학점", "내학점" };
             _othersVoca = new List<string> { "기타", "그외" };
             _helpVoca = new List<string> { "도움", "help", "사용법", "쓰는법" };
             _gotoStartVoca = new List<string> { "처음으로", "초기", "처음", "시작" };
+            _gotoButtonVoca = new List<string> { "버튼", "Button", "button", "기본메뉴" };
             _languageVoca = new List<string> { "한국어", "영어", "English", "Korean", "english", "korean" };
 
 
@@ -118,11 +150,20 @@ namespace my_first_chatbot.Helper
             _termsVoca = new List<string> { "용어", "단어" };
 
 
+            //CourseInfo
+            _openedMajorCoursesVoca = new List<string> { "전공" };
+            _openedLiberalArtsVoca = new List<string> { "교양" };
+            _syllabusVoca = new List<string> { "계획서" };
+            _lecturerInfoVoca = new List<string> { "교수", "강사" };
+            _mandatorySubjectVoca = new List<string> { "필수" };
+            _prerequisiteVoca = new List<string> { "선수" };
+
+
 
             //list of list
-            _welcomeOptionVocaList = new List<List<string>> { _courseRegistrationVoca, _courseInfoVoca, _creditVoca, _othersVoca, _helpVoca, _gotoStartVoca, _languageVoca };
+            _welcomeOptionVocaList = new List<List<string>> { _courseRegistrationVoca, _courseInfoVoca, _creditVoca, _othersVoca, _helpVoca, _gotoStartVoca, _gotoButtonVoca, _languageVoca };
             _courseRegistrationVocaList = new List<List<string>> { _howToDoItVoca, _scheduleVoca, _regulationVoca, _termsVoca, _helpVoca, _gotoStartVoca, _languageVoca };
-
+            _courseInfoVocaList = new List<List<string>> { _openedMajorCoursesVoca, _openedLiberalArtsVoca, _syllabusVoca, _lecturerInfoVoca, _mandatorySubjectVoca, _prerequisiteVoca, _helpVoca, _gotoStartVoca, _languageVoca };
 
 
 
