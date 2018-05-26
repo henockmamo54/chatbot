@@ -96,6 +96,12 @@ namespace my_first_chatbot.Helper
             _othersOption = new List<string> { _leaveOrReadmission, _scholarship, _gotostart, _help };
             _helpOptionsList = new List<string> { _introduction, _requestInformationCorrection, _contactMaster, _convertLanguage, _gotostart };
 
+
+            //================================================================================================================================
+            //For Fake LUIS
+
+
+            //welcome option
             _courseRegistrationVoca = new List<string> { "수강신청", "수강 신청" };
             _courseInfoVoca = new List<string> { "과목정보", "과목 정보", "강의정보", "강의 정보", "과목관련", "강의관련" };
             _creditVoca = new List<string> { "학점", "나의학점", "내학점" };
@@ -104,7 +110,26 @@ namespace my_first_chatbot.Helper
             _gotoStartVoca = new List<string> { "처음으로", "초기", "처음", "시작" };
             _languageVoca = new List<string> { "한국어", "영어", "English", "Korean", "english", "korean" };
 
-            _listVoca = new List<List<string>> { _courseRegistrationVoca, _courseInfoVoca, _creditVoca, _othersVoca, _helpVoca, _gotoStartVoca, _languageVoca };
+
+            //CourseRegistration
+            _howToDoItVoca = new List<string> { "방법", "하는법", "하는 법" };
+            _scheduleVoca = new List<string> { "일정", "기간", "날짜", "일자" };
+            _regulationVoca = new List<string> { "규정", "규칙", "규율" };
+            _termsVoca = new List<string> { "용어", "단어" };
+
+
+
+            //list of list
+            _welcomeOptionVocaList = new List<List<string>> { _courseRegistrationVoca, _courseInfoVoca, _creditVoca, _othersVoca, _helpVoca, _gotoStartVoca, _languageVoca };
+            _courseRegistrationVocaList = new List<List<string>> { _howToDoItVoca, _scheduleVoca, _regulationVoca, _termsVoca, _helpVoca, _gotoStartVoca, _languageVoca };
+
+
+
+
+            //================================================================================================================================
+
+
+
 
             //모든 정보를 언어에 따라 다르게 주기 위해서
             //for diffrent reply from language select

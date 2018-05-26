@@ -72,7 +72,7 @@ namespace my_first_chatbot.Helper.StoredStringValues
                                         $"▶학습하겠습니다.\n\n" +
                                         $"※버튼메뉴를 이용하시면\n" +
                                         $"※빠르고 편리합니다 :)\n" +
-                                        $"■ 각종 문의 및 상담\n"+
+                                        $"■ 각종 문의 및 상담\n" +
                                         $"▶ Github페이지\n" +
                                         $"▶ https://github.com/MJUKJE/chatbot/blob/dev/README.md \n" +
                                         $"▶ 관리자 Email로 문의\n" +
@@ -90,6 +90,11 @@ namespace my_first_chatbot.Helper.StoredStringValues
         public string _help = "도움말";
 
 
+
+        //================================================================================================================================
+        //For Fake LUIS
+
+        //WelcomeOption
         public List<string> _courseRegistrationVoca = new List<string>();
         public List<string> _courseInfoVoca = new List<string>();
         public List<string> _creditVoca = new List<string>();
@@ -97,10 +102,25 @@ namespace my_first_chatbot.Helper.StoredStringValues
         public List<string> _helpVoca = new List<string>();
         public List<string> _gotoStartVoca = new List<string>();
         public List<string> _languageVoca = new List<string>();
-        
-        public List<List<string>> _listVoca = new List<List<string>>();
 
-        public StoredStringValuesMaster()
+
+        //CourseRegistration
+        public List<string> _howToDoItVoca = new List<string>();
+        public List<string> _scheduleVoca = new List<string>();
+        public List<string> _regulationVoca = new List<string>();
+        public List<string> _termsVoca = new List<string>();
+
+
+
+
+        //list of list
+        public List<List<string>> _welcomeOptionVocaList = new List<List<string>>();
+        public List<List<string>> _courseRegistrationVocaList = new List<List<string>>();
+
+    //================================================================================================================================
+
+
+    public StoredStringValuesMaster()
         {
             _welcomeOptionsList = new List<string> { _courseRegistration, _courseInformation, _credits, _others, _typeself, _help };
             _courseRegistrationOptions = new List<string> { _howToDoIt, _schedule, _regulation, _terms, _gotostart, _help };
@@ -110,6 +130,12 @@ namespace my_first_chatbot.Helper.StoredStringValues
             _helpOptionsList = new List<string> { _introduction, _requestInformationCorrection, _contactMaster, _convertLanguage, _gotostart };
 
 
+
+            //================================================================================================================================
+            //For Fake LUIS
+
+
+            //WelcomeOption
             _courseRegistrationVoca = new List<string> { "수강신청", "수강 신청" };
             _courseInfoVoca = new List<string> { "과목정보", "과목 정보", "강의정보", "강의 정보", "과목관련", "강의관련" };
             _creditVoca = new List<string> { "학점", "나의학점", "내학점" };
@@ -118,7 +144,20 @@ namespace my_first_chatbot.Helper.StoredStringValues
             _gotoStartVoca = new List<string> { "처음으로", "초기", "처음", "시작" };
             _languageVoca = new List<string> { "한국어", "영어", "English", "Korean", "english", "korean" };
 
-            _listVoca = new List<List<string>> { _courseRegistrationVoca, _courseInfoVoca, _creditVoca , _othersVoca , _helpVoca , _gotoStartVoca, _languageVoca };
+
+            //CourseRegistration
+            _howToDoItVoca = new List<string> { "방법", "하는법", "하는 법"};
+            _scheduleVoca = new List<string> { "일정", "기간", "날짜", "일자" };
+            _regulationVoca = new List<string> { "규정", "규칙", "규율" };
+            _termsVoca = new List<string> { "용어", "단어" };
+
+
+            //list of list
+            _welcomeOptionVocaList = new List<List<string>> { _courseRegistrationVoca, _courseInfoVoca, _creditVoca, _othersVoca, _helpVoca, _gotoStartVoca, _languageVoca };
+            _courseRegistrationVocaList = new List<List<string>> { _howToDoItVoca, _scheduleVoca, _regulationVoca, _termsVoca, _helpVoca, _gotoStartVoca, _languageVoca };
+
+            //================================================================================================================================
+
         }
 
         //모든 정보를 언어에 따라 다르게 주기 위해서
@@ -253,7 +292,7 @@ namespace my_first_chatbot.Helper.StoredStringValues
 
 
 
-        
+
 
 
 

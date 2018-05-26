@@ -14,6 +14,7 @@ namespace my_first_chatbot.MessageReply
     {
         public static async Task CourseRegistraionOptionSelected(IDialogContext context)
         {
+            /*
             PromptDialog.Choice<string>(
                 context,
                 HandleCourseRegistrationOptionSelection,
@@ -22,10 +23,78 @@ namespace my_first_chatbot.MessageReply
                 RootDialog._storedvalues._invalidSelectionMessage + "[ERROR] : CourseRegistraionOptionSelected",          //Ooops, what you wrote is not a valid option, please try again
                 1,
                 PromptStyle.Auto);
+                */
+            PromptDialog.Text(context, HandleCourseRegistrationOptionSelection, "써보슈");
         }
 
         public static async Task HandleCourseRegistrationOptionSelection(IDialogContext context, IAwaitable<string> result)
         {
+            bool noOption = true;
+
+            var message = result.ToString();
+
+            switch (message)
+            {
+                case "1": await Reply_howToDoIt(context); noOption = false; break;
+                case "2": await Reply_schedule(context); noOption = false; break;
+                case "3": await Reply_regulation(context); noOption = false; break;
+                case "4": await Reply_terms(context); noOption = false; break;
+                case "5": await RootDialog.ShowWelcomeOptions(context); noOption = false; break;
+                case "6": await aboutHelp.HelpOptionSelected(context); noOption = false; break;
+            }
+
+            foreach (List<string> lst in RootDialog._storedvalues._courseRegistrationVocaList)
+            {
+                if (noOption == true)
+                {
+                    foreach (string str in lst)
+                    {
+                        if (message.Contains(str))
+                        {
+                            noOption = false;
+
+                            if (lst == RootDialog._storedvalues._courseRegistrationVocaList[4]) await aboutHelp.HelpOptionSelected(context);
+
+                            else if (lst == RootDialog._storedvalues._courseRegistrationVocaList[5]) await RootDialog.ShowWelcomeOptions(context);
+
+                            else if (lst == RootDialog._storedvalues._courseRegistrationVocaList[6])
+                            {
+                                if (message == "한국어" || message == "Korean" || message == "korean") RootDialog._storedvalues = new StoredValues_kr();
+                                else if(message == "영어" || message == "English" || message == "english") RootDialog._storedvalues = new StoredValues_en();
+                                await RootDialog.ShowWelcomeOptions(context);
+                            }
+                            //처음으로 돌아가야 하는 아이들
+                            else
+                            {
+                                if (lst == RootDialog._storedvalues._courseRegistrationVocaList[0]) await Reply_howToDoIt(context);
+                                else if (lst == RootDialog._storedvalues._courseRegistrationVocaList[1]) await Reply_schedule(context);
+                                else if (lst == RootDialog._storedvalues._courseRegistrationVocaList[2]) await Reply_regulation(context);
+                                else if (lst == RootDialog._storedvalues._courseRegistrationVocaList[3]) await Reply_terms(context);
+
+                                //await RootDialog.ShowWelcomeOptions(context);
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (noOption == true)
+            {
+                PromptDialog.Choice<string>(
+                context,
+                RootDialog.HandleWelcomeOptionSelected,
+                RootDialog._storedvalues._welcomeOptionsList,
+                RootDialog._storedvalues._sorryMessage,                                                                                 //Course Registration
+                RootDialog._storedvalues._invalidSelectionMessage,          //Ooops, what you wrote is not a valid option, please try again
+                1,
+                PromptStyle.Auto);
+            }
+
+
+
+
+
+            /*
             var value = await result;
 
             if (value.ToString() == RootDialog._storedvalues._gotostart) await RootDialog.ShowWelcomeOptions(context);
@@ -43,6 +112,7 @@ namespace my_first_chatbot.MessageReply
                 //await RootDialog.ShowWelcomeOptions(context);                  //Return To Start
                 await aboutCourseRegistration.CourseRegistraionOptionSelected(context);
             }
+            */
         }
 
 

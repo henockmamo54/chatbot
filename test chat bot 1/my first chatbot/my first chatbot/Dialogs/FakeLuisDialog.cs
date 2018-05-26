@@ -42,7 +42,7 @@ namespace my_first_chatbot.Dialogs
                 case "6": await RootDialog.ShowWelcomeButtonOptions(context); noOption = false; break;
             }
 
-            foreach (List<string> lst in RootDialog._storedvalues._listVoca)
+            foreach (List<string> lst in RootDialog._storedvalues._welcomeOptionVocaList)
             {
                 if(noOption == true)
                 {
@@ -51,16 +51,16 @@ namespace my_first_chatbot.Dialogs
                         if (mystr.Contains(str))
                         {
                             noOption = false;
-                            if (lst == RootDialog._storedvalues._listVoca[0]) await aboutCourseRegistration.CourseRegistraionOptionSelected(context);
-                            else if (lst == RootDialog._storedvalues._listVoca[1]) await aboutCourseInfo.CourseInfoOptionSelected(context);
-                            else if (lst == RootDialog._storedvalues._listVoca[2]) await aboutCredits.CreditsOptionSelected(context);
-                            else if (lst == RootDialog._storedvalues._listVoca[3]) await aboutOthers.OtherOptionSelected(context);
-                            else if (lst == RootDialog._storedvalues._listVoca[4]) await aboutHelp.HelpOptionSelected(context);
-                            else if (lst == RootDialog._storedvalues._listVoca[5]) await RootDialog.ShowWelcomeButtonOptions(context);
-                            else if (lst == RootDialog._storedvalues._listVoca[6])
+                            if (lst == RootDialog._storedvalues._welcomeOptionVocaList[0]) await aboutCourseRegistration.CourseRegistraionOptionSelected(context);
+                            else if (lst == RootDialog._storedvalues._welcomeOptionVocaList[1]) await aboutCourseInfo.CourseInfoOptionSelected(context);
+                            else if (lst == RootDialog._storedvalues._welcomeOptionVocaList[2]) await aboutCredits.CreditsOptionSelected(context);
+                            else if (lst == RootDialog._storedvalues._welcomeOptionVocaList[3]) await aboutOthers.OtherOptionSelected(context);
+                            else if (lst == RootDialog._storedvalues._welcomeOptionVocaList[4]) await aboutHelp.HelpOptionSelected(context);
+                            else if (lst == RootDialog._storedvalues._welcomeOptionVocaList[5]) await RootDialog.ShowWelcomeButtonOptions(context);
+                            else if (lst == RootDialog._storedvalues._welcomeOptionVocaList[6])
                             {
                                 if(mystr == "한국어" || mystr == "Korean" || mystr == "korean") RootDialog._storedvalues = new StoredValues_kr();    
-                                else RootDialog._storedvalues = new StoredValues_en();
+                                else if (mystr == "영어" || mystr == "English" || mystr == "english") RootDialog._storedvalues = new StoredValues_en();
                                 await RootDialog.ShowWelcomeOptions(context);
                             }
                         }
