@@ -88,7 +88,7 @@ namespace my_first_chatbot.Helper
             _gotoStartVoca = new List<string> { "처음으로", "초기", "처음", "시작" };
             _languageVoca = new List<string> { "한국어", "영어", "English", "Korean", "english", "korean" };
 
-            _listVoca = new List<List<string>> { _courseRegistrationVoca, _courseInfoVoca, _creditVoca, _othersVoca, _helpVoca, _gotoStartVoca, _languageVoca };
+            _welcomeOptionVocaList = new List<List<string>> { _courseRegistrationVoca, _courseInfoVoca, _creditVoca, _othersVoca, _helpVoca, _gotoStartVoca, _languageVoca };
 
             //모든 정보를 언어에 따라 다르게 주기 위해서
             //for diffrent reply from language select
