@@ -46,7 +46,7 @@ namespace my_first_chatbot.Helper
             _scholarship = "Scholarship";            //웹 연결
 
             // 직접 입력하기 선택시 메뉴     typeself options
-            _typePlease = $"▶ Hello AAR chat service. \n" +
+            _typePleaseWelcome = $"▶ Hello AAR chat service. \n" +
                                     $"▶ Select the number of the inquiry or" +
                                     $"   Please enter your question \n \n" +
                                     $"▶ 1. Course Registration Information \n" +

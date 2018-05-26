@@ -16,7 +16,7 @@ namespace my_first_chatbot.MessageReply
         public static async Task TypeSelfOptionSelected(IDialogContext context)
         {
 
-            await context.PostAsync(RootDialog._storedvalues._typePlease);
+            await context.PostAsync(RootDialog._storedvalues._typePleaseWelcome);
             context.Call<Activity>(new LuisDialog(), RootDialog.LuisDialogResumeAfter);                //get student number
             
         }

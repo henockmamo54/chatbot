@@ -45,7 +45,7 @@ namespace my_first_chatbot.Dialogs
         public static async Task ShowWelcomeOptions(IDialogContext context)
         {
             var activity = context.MakeMessage();
-            activity.Text = _storedvalues._typePlease;
+            activity.Text = _storedvalues._typePleaseWelcome;
 
             activity.Attachments.Add(new HeroCard
             {
@@ -151,10 +151,9 @@ namespace my_first_chatbot.Dialogs
         
         public static async Task FakeLuisDialogResumeAfter(IDialogContext context, IAwaitable<IMessageActivity> result)
         {
-            var message = await result;
-            await context.PostAsync(message);
+            //var message = await result;
+            //await context.PostAsync(message);
             await ShowWelcomeOptions(context);
-            //context.Call()
         }
 
         public static async Task LuisDialogResumeAfter(IDialogContext context, IAwaitable<IMessageActivity> result)
