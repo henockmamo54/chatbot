@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "my first chatbot", "my firs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AAR-Bot", "AAR-Bot\AAR-Bot.csproj", "{EF0D5B75-9D09-40BC-90A5-F13593B9FF9F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webscraping", "webscraping\webscraping\webscraping.csproj", "{F9CDE9E1-D251-4166-B41F-9BDCBD43CE18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EF0D5B75-9D09-40BC-90A5-F13593B9FF9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF0D5B75-9D09-40BC-90A5-F13593B9FF9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF0D5B75-9D09-40BC-90A5-F13593B9FF9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9CDE9E1-D251-4166-B41F-9BDCBD43CE18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9CDE9E1-D251-4166-B41F-9BDCBD43CE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9CDE9E1-D251-4166-B41F-9BDCBD43CE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9CDE9E1-D251-4166-B41F-9BDCBD43CE18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
