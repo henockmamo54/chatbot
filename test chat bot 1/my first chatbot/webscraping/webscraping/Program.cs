@@ -19,35 +19,7 @@ namespace webscraping
             getLibraryInfo();
             Console.ReadLine();
         }
-
-        public static async void getHtmlAsync() {
-            var url = "https://www.ebay.com/sch/i.html?_nkw=x+box+one&_in_kw=1&_ex_kw=&_sacat=0&_udlo=&_udhi=&_ftrt=901&_ftrv=1&_sabdlo=&_sabdhi=&_samilow=&_samihi=&_sadis=15&_stpos=&_sargn=-1%26saslc%3D1&_salic=1&_sop=12&_dmd=1&_ipg=50&_fosrp=1";
-
-            var httpclient = new HttpClient();
-            var html = await httpclient.GetStringAsync(url);
-            
-
-            var htmlDoc = new HtmlDocument();
-            htmlDoc.LoadHtml(html);
-
-            var productsHtml = htmlDoc.DocumentNode.Descendants("ul")
-                .Where(node => node.GetAttributeValue("id", "")
-                .Equals("ListViewInner")).ToList();
-
-            var productlist = productsHtml[0].Descendants("li")
-                .Where(node => node.GetAttributeValue("id", "")
-                .Contains("item")).ToList();
-
-            foreach (var productlistitem in productlist) {
-                Console.WriteLine(productlistitem.GetAttributeValue("listingid", ""));
-                Console.WriteLine(productlistitem.Descendants("h3")
-                    .Where(node => node.GetAttributeValue("class", "")
-                    .Equals("lvtitle")).FirstOrDefault().InnerText.Trim('\r','\n','\t'));
-                Console.WriteLine();
-            }
-
-            Console.WriteLine();
-        }
+        
 
         public static async void getRestaurantMenu()
         {
@@ -69,8 +41,10 @@ namespace webscraping
                 Where(node => node.GetAttributeValue("summary", "")
                 .Contains("식단내용")).ToList();
 
-            foreach (var menu in menu_table) {
-
+            weeklyFoodMenu = new List<FoodMenu>();
+            //foreach (var menu in menu_table) {
+            for(int i = 0; i < menu_table.Count; i++) {
+                var menu = menu_table[i];
                 FoodMenu todaysMenu = new FoodMenu();
 
                 var date = menu.Descendants("th").FirstOrDefault().InnerText;
@@ -93,60 +67,12 @@ namespace webscraping
                 }
 
                 weeklyFoodMenu.Add(todaysMenu);
-
-
+                
             }
-
-            //var productlist = productsHtml[0].Descendants("li")
-            //    .Where(node => node.GetAttributeValue("id", "")
-            //    .Contains("item")).ToList();
-
-            //foreach (var productlistitem in productlist)
-            //{
-            //    Console.WriteLine(productlistitem.GetAttributeValue("listingid", ""));
-            //    Console.WriteLine(productlistitem.Descendants("h3")
-            //        .Where(node => node.GetAttributeValue("class", "")
-            //        .Equals("lvtitle")).FirstOrDefault().InnerText.Trim('\r', '\n', '\t'));
-            //    Console.WriteLine();
-            //}
 
             Console.WriteLine();
         }
-
-
-        //public static async void getHtmlAsync3()
-        //{
-        //    var url = "http://lib.mju.ac.kr/service/Smuf.ax?br=02&userId=60131937#";
-
-        //    var httpclient = new HttpClient();
-        //    var html = await httpclient.GetStringAsync(url);
-
-
-        //    var htmlDoc = new HtmlDocument();
-        //    htmlDoc.LoadHtml(html);
-
-        //    var productsHtml = htmlDoc.DocumentNode.Descendants("table")
-        //        .Where(node => node.GetAttributeValue("class", "")
-        //        .Equals("ikc-tablelist ikc-seat-status")).ToList();
-
-        //    //var productlist = productsHtml[0].Descendants("li")
-        //    //    .Where(node => node.GetAttributeValue("id", "")
-        //    //    .Contains("item")).ToList();
-
-        //    //foreach (var productlistitem in productlist)
-        //    //{
-        //    //    Console.WriteLine(productlistitem.GetAttributeValue("listingid", ""));
-        //    //    Console.WriteLine(productlistitem.Descendants("h3")
-        //    //        .Where(node => node.GetAttributeValue("class", "")
-        //    //        .Equals("lvtitle")).FirstOrDefault().InnerText.Trim('\r', '\n', '\t'));
-        //    //    Console.WriteLine();
-        //    //}
-
-        //    Console.WriteLine();
-        //}
-
         
-
         public static async Task<Rootobject> getLibraryInfo()
         {
             Rootobject Data = new Rootobject();
