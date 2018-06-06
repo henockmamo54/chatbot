@@ -158,6 +158,7 @@
     </Content>
     <Content Include="data\studentinfo_active.csv" />
     <Content Include="data\studentinfo_inactive.csv" />
+    <None Include="Properties\PublishProfiles\mjukjechatbot - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
