@@ -49,7 +49,6 @@ namespace AAR_Bot.Helper.StoredStringValues
                                     $"▶ 3. 학점관리\n" +
                                     $"▶ 4. 기타정보\n" +
                                     $"▶ 5. 도움말\n" +
-                                    $"▶ 6. 버튼메뉴\n" +
 
                                     $" ※ 명지대학교 홈페이지\n" +
                                     $" ■ https://www.mju.ac.kr \n" +

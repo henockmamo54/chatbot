@@ -51,7 +51,6 @@ namespace AAR_Bot.Helper.StoredStringValues
                                     $"▶ 3. Credit management \n" +
                                     $"▶ 4. Other information \n" +
                                     $"▶ 5. Help \n" +
-                                    $"▶ 6. Button Menu \n" +
 
                                     $"▶ Credits must be entered in the course number. \n" +
                                     $"▶ Go to the [Help] -> [English] \n" +

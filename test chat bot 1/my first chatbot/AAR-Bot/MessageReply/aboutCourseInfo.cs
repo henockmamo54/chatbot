@@ -53,7 +53,7 @@ namespace AAR_Bot.MessageReply
         {
             var activity = context.MakeMessage();
             activity.Text = RootDialog._storedvalues._reply_openedLiberalArts;
-            activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);
+            //activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);
             activity.Attachments.Add(new HeroCard
             {
                 Title = "이번학기 전공개설강의",
@@ -72,7 +72,7 @@ namespace AAR_Bot.MessageReply
         {
             var activity = context.MakeMessage();
             activity.Text = RootDialog._storedvalues._reply_openedLiberalArts;
-            activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);
+            //activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);
             activity.Attachments.Add(new HeroCard
             {
                 Title = "이번학기 교양개설강의",
@@ -91,7 +91,7 @@ namespace AAR_Bot.MessageReply
         {
             var activity = context.MakeMessage();
             activity.Text = RootDialog._storedvalues._reply_Syllabus;
-            activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);
+            //activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);
             activity.Attachments.Add(new HeroCard
             {
                 Title = "강의계획서",
@@ -110,7 +110,7 @@ namespace AAR_Bot.MessageReply
         {
             var activity = context.MakeMessage();
             activity.Text = RootDialog._storedvalues._reply_LecturerInfo;
-            activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);
+            //activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);
             activity.Attachments.Add(new HeroCard
             {
                 Title = "교수 정보",
@@ -129,7 +129,7 @@ namespace AAR_Bot.MessageReply
         {
             var activity = context.MakeMessage();
             activity.Text = RootDialog._storedvalues._reply_MandatorySubject;
-            activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);
+            //activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);
             activity.Attachments.Add(new HeroCard
             {
                 Title = "정보통신공학과 선후수 과목정보",
@@ -148,7 +148,7 @@ namespace AAR_Bot.MessageReply
         {
             var activity = context.MakeMessage();
             activity.Text = RootDialog._storedvalues._reply_Prerequisite;
-            activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);
+            //activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);
             activity.Attachments.Add(new HeroCard
             {
                 Title = "정보통신공학과 선후수 과목정보",
