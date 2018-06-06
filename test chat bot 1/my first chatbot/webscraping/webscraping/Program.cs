@@ -6,22 +6,28 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using webscraping.Helper;
 using webscraping.Models;
 
 namespace webscraping
 {
     class Program
     {
+        public static CosmosDBService myDbService = new CosmosDBService();
+
         public static List<FoodMenu> weeklyFoodMenu = new List<FoodMenu>();
         static void Main(string[] args)
         {
-            getRestaurantMenu();
-            getLibraryInfo();
-            Console.ReadLine();
-        }
-        
+            var x= getRestaurantMenu();
+            x.Wait();
 
-        public static async void getRestaurantMenu()
+            var y=getLibraryInfo();
+            y.Wait();
+            
+        }
+
+
+        public static async Task getRestaurantMenu()
         {
             var url = "http://www.mju.ac.kr/mbs/mjukr/jsp/restaurant/restaurant.jsp?configIdx=36337&id=mjukr_051002050000";
 
@@ -43,7 +49,8 @@ namespace webscraping
 
             weeklyFoodMenu = new List<FoodMenu>();
             //foreach (var menu in menu_table) {
-            for(int i = 0; i < menu_table.Count; i++) {
+            for (int i = 0; i < menu_table.Count; i++)
+            {
                 var menu = menu_table[i];
                 FoodMenu todaysMenu = new FoodMenu();
 
@@ -51,7 +58,8 @@ namespace webscraping
                 todaysMenu.Date = date.Trim();
 
                 var menudetails = menu.Descendants("tr").ToList();
-                foreach (var menudetail in menudetails) {
+                foreach (var menudetail in menudetails)
+                {
                     try
                     {
                         var menudetail_subOption = menudetail.Descendants("td").ToList()[0].InnerText;
@@ -67,12 +75,24 @@ namespace webscraping
                 }
 
                 weeklyFoodMenu.Add(todaysMenu);
-                
+
             }
+
+            FoodMenuListModel foodmenuforjsonobj = new FoodMenuListModel();
+            foodmenuforjsonobj.foodMenus = weeklyFoodMenu;
+            ConversationInfo conversationinfo = new ConversationInfo
+            {
+                myList = JsonConvert.SerializeObject(foodmenuforjsonobj),
+                id = "FoodMenu",
+                timestamp = DateTimeOffset.Now,
+                watermark = ""
+            };
+
+            await myDbService.SetInfoAsync(conversationinfo, "FoodMenu");
 
             Console.WriteLine();
         }
-        
+
         public static async Task<Rootobject> getLibraryInfo()
         {
             Rootobject Data = new Rootobject();
@@ -84,9 +104,21 @@ namespace webscraping
                 if (msg.IsSuccessStatusCode)
                 {
                     var JsonDataResponse = await msg.Content.ReadAsStringAsync();
+                    ConversationInfo conversationinfo = new ConversationInfo
+                    {
+                        myList = JsonDataResponse,
+                        id = "Library",
+                        timestamp = DateTimeOffset.Now,
+                        watermark = ""
+                    };
+
+                    await myDbService.SetInfoAsync(conversationinfo, "Library");
+
                     Data = JsonConvert.DeserializeObject<Rootobject>(JsonDataResponse);
                 }
             }
+
+
             return Data;
         }
 
