@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
-using my_first_chatbot.Dialogs;
 
 namespace AAR_Bot.Dialogs
 {

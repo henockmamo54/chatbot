@@ -1,15 +1,8 @@
-﻿using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Connector;
-using my_first_chatbot.Helper;
-using my_first_chatbot.Dialogs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using AAR_Bot.Dialogs;
+using Microsoft.Bot.Builder.Dialogs;
 using System.Threading.Tasks;
-using System.Web;
-using AAR_Bot.Dialogs;
 
-namespace my_first_chatbot.MessageReply
+namespace AAR_Bot.MessageReply
 {
     public static class aboutCredits
     {
