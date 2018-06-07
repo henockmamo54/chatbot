@@ -3,6 +3,10 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System;
+using AAR_Bot.Helper.webscraping;
+using System.Linq;
+using Newtonsoft.Json;
 
 namespace AAR_Bot.MessageReply
 {
@@ -32,10 +36,52 @@ namespace AAR_Bot.MessageReply
             {
                 if (value.ToString() == RootDialog._storedvalues._leaveOrReadmission) await Reply_leaveOrReadmission(context);
                 else if (value.ToString() == RootDialog._storedvalues._scholarship) await Reply_scholarship(context);
+                else if (value.ToString() == RootDialog._storedvalues._restaurantMenu) await Reply_restaurantMenu(context);
+                else if (value.ToString() == RootDialog._storedvalues._libraryInfo) await Reply_libraryInfo(context);
 
 
                 //await RootDialog.ShowWelcomeOptions(context);           //Return To Start
-                await aboutOthers.OtherOptionSelected(context);
+                await OtherOptionSelected(context);
+            }
+        }
+
+        private static async Task Reply_libraryInfo(IDialogContext context)
+        {
+            try
+            {
+                CosmosDBService cd = new CosmosDBService();
+                ConversationInfo convinfo = new ConversationInfo();
+                convinfo.id = "Library"; //FoodMenu
+
+                var libinfo = await cd.readDataFromDocument(convinfo);
+                var jsondata= JsonConvert.DeserializeObject<Rootobject>(libinfo.FirstOrDefault().myList.ToString());
+                var activity = context.MakeMessage();
+                activity.Text = libinfo.FirstOrDefault().myList.ToString();
+                await context.PostAsync(activity);
+            }
+            catch (Exception ee) {
+                await context.PostAsync("Error reading cosmos db");
+            }
+
+        }
+
+        private static async Task Reply_restaurantMenu(IDialogContext context)
+        {
+            try
+            {
+                CosmosDBService cd = new CosmosDBService();
+                ConversationInfo convinfo = new ConversationInfo();
+                convinfo.id = "FoodMenu"; //FoodMenu
+
+                var foodmenuinfo = await cd.readDataFromDocument(convinfo);
+                var jsondata = JsonConvert.DeserializeObject<Rootobject>(foodmenuinfo.FirstOrDefault().myList.ToString());
+                var activity = context.MakeMessage();
+                activity.Text = foodmenuinfo.FirstOrDefault().myList.ToString();
+                await context.PostAsync(activity);
+            }
+            catch (Exception ee)
+            {
+                await context.PostAsync("Error reading cosmos db");
             }
         }
 

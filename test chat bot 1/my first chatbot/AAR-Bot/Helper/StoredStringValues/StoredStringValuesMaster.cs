@@ -43,6 +43,8 @@ namespace AAR_Bot.Helper.StoredStringValues
         // 기타 정보 선택시 메뉴     others options
         public string _leaveOrReadmission = "휴학 및 복학";         //웹 연결
         public string _scholarship = "장학금 관련";            //웹 연결
+        public string _restaurantMenu = "Restaurant Menu";
+        public string _libraryInfo = "Library Info";
         public List<string> _othersOption = new List<string>();
 
         // 직접 입력 메뉴     typeself options
@@ -96,7 +98,7 @@ namespace AAR_Bot.Helper.StoredStringValues
                                     $"▶ 버튼메뉴는 빠르고 편리합니다.\n" +
                                     $"▶ 추후 계속 업데이트 예정.\n";
 
-       
+
 
         public string _sorryMessage = $"▶말씀을 이해하지 못했습니다.\n" +
                                         $"▶문의하신 내용에 대해 다음에는\n" +
@@ -166,7 +168,7 @@ namespace AAR_Bot.Helper.StoredStringValues
             _courseRegistrationOptions = new List<string> { _howToDoIt, _schedule, _regulation, _terms, _gotostart, _help };
             _courseInfoOptions = new List<string> { _openedMajorCourses, _openedLiberalArts, _syllabus, _lecturerInfo, _mandatorySubject, _prerequisite, _gotostart, _help };
             _creditsOptions = new List<string> { _currentCredits, _majorCredits, _liberalArtsCredits, _changeStuNum, _gotostart, _help };
-            _othersOption = new List<string> { _leaveOrReadmission, _scholarship, _gotostart, _help };
+            _othersOption = new List<string> { _leaveOrReadmission, _scholarship, _restaurantMenu, _libraryInfo, _gotostart, _help };
             _helpOptionsList = new List<string> { _introduction, _requestInformationCorrection, _contactMaster, _convertLanguage, _gotostart };
 
 
@@ -212,7 +214,7 @@ namespace AAR_Bot.Helper.StoredStringValues
             //list of list
             _welcomeOptionVocaList = new List<List<string>> { _courseRegistrationVoca, _courseInfoVoca, _creditVoca, _othersVoca, _helpVoca, _gotoStartVoca, _gotoButtonVoca, _languageVoca };
             _courseRegistrationVocaList = new List<List<string>> { _howToDoItVoca, _scheduleVoca, _regulationVoca, _termsVoca, _helpVoca, _gotoStartVoca, _languageVoca };
-            _courseInfoVocaList = new List<List<string>> { _openedMajorCoursesVoca , _openedLiberalArtsVoca, _syllabusVoca, _lecturerInfoVoca, _mandatorySubjectVoca, _prerequisiteVoca, _helpVoca, _gotoStartVoca, _languageVoca };
+            _courseInfoVocaList = new List<List<string>> { _openedMajorCoursesVoca, _openedLiberalArtsVoca, _syllabusVoca, _lecturerInfoVoca, _mandatorySubjectVoca, _prerequisiteVoca, _helpVoca, _gotoStartVoca, _languageVoca };
             //================================================================================================================================
 
         }

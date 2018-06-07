@@ -40,6 +40,8 @@ namespace AAR_Bot.Helper.StoredStringValues
             // 기타 정보 선택시 메뉴     others options
             _leaveOrReadmission = "휴학 및 복학";         //웹 연결
             _scholarship = "장학금 관련";            //웹 연결
+            _restaurantMenu = "Restaurant Menu";
+            _libraryInfo = "Library Info";
 
             // 직접 입력하기 선택시 메뉴     typeself options
             _typePleaseWelcome = $"▶ 안녕하세요 AAR 챗봇서비스\n      입니다.\n" +
@@ -116,17 +118,17 @@ namespace AAR_Bot.Helper.StoredStringValues
             _courseRegistrationOptions = new List<string> { _howToDoIt, _schedule, _regulation, _terms, _gotostart, _help };
             _courseInfoOptions = new List<string> { _openedMajorCourses, _openedLiberalArts, _syllabus, _lecturerInfo, _mandatorySubject, _prerequisite, _gotostart, _help };
             _creditsOptions = new List<string> { _currentCredits, _majorCredits, _liberalArtsCredits, _changeStuNum, _gotostart, _help };
-            _othersOption = new List<string> { _leaveOrReadmission, _scholarship, _gotostart, _help };
+            _othersOption = new List<string> { _leaveOrReadmission, _scholarship, _restaurantMenu, _libraryInfo, _gotostart, _help };
             _helpOptionsList = new List<string> { _introduction, _requestInformationCorrection, _contactMaster, _convertLanguage, _gotostart };
 
             _goodByeMessage = "Thank you for Using AAR Service.\n The chat bot is Under development. \nPlease let us know your feedback.";
 
-        //================================================================================================================================
-        //For Fake LUIS
+            //================================================================================================================================
+            //For Fake LUIS
 
 
-        //welcome option
-        _courseRegistrationVoca = new List<string> { "수강신청", "수강 신청" };
+            //welcome option
+            _courseRegistrationVoca = new List<string> { "수강신청", "수강 신청" };
             _courseInfoVoca = new List<string> { "과목정보", "과목 정보", "강의정보", "강의 정보", "과목관련", "강의관련", "전공과목", "교양과목", "전공개설", "교양개설", "강의계획서", "강사 정보", "교수 정보", "필수과목", "선수과목", "개설전공", "개설교양" };
             _creditVoca = new List<string> { "학점", "나의학점", "내학점" };
             _othersVoca = new List<string> { "기타", "그외" };
@@ -295,7 +297,7 @@ namespace AAR_Bot.Helper.StoredStringValues
 
 
 
-    }
+        }
 
-}
+    }
 }

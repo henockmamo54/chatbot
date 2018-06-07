@@ -41,22 +41,24 @@ namespace AAR_Bot.Helper.StoredStringValues
             // 기타 정보 선택시 메뉴     others options
             _leaveOrReadmission = "Leave Or Readmission";         //웹 연결
             _scholarship = "Scholarship";            //웹 연결
+            _restaurantMenu = "Restaurant Menu";
+            _libraryInfo = "Library Info";
 
             // 직접 입력하기 선택시 메뉴     typeself options
             _typePleaseWelcome = $"▶ Hello AAR chat service. \n" +
-                                    $"▶ Select the number of the inquiry or" +
-                                    $"   Please enter your question \n \n" +
-                                    $"▶ 1. Course Registration Information \n" +
-                                    $"▶ 2. Subject related information \n" +
-                                    $"▶ 3. Credit management \n" +
-                                    $"▶ 4. Other information \n" +
-                                    $"▶ 5. Help \n" +
+                                        $"▶ Select the number of the inquiry or" +
+                                        $"   Please enter your question \n \n" +
+                                        $"▶ 1. Course Registration Information \n" +
+                                        $"▶ 2. Subject related information \n" +
+                                        $"▶ 3. Credit management \n" +
+                                        $"▶ 4. Other information \n" +
+                                        $"▶ 5. Help \n" +
 
-                                    $"▶ Credits must be entered in the course number. \n" +
-                                    $"▶ Go to the [Help] -> [English] \n" +
-                                    $"Language conversion is possible:). \n" +
-                                    $"▶ Current Depth 2 only \n" +
-                                    $"▶ We plan to implement Depth 3 later. \n";
+                                        $"▶ Credits must be entered in the course number. \n" +
+                                        $"▶ Go to the [Help] -> [English] \n" +
+                                        $"Language conversion is possible:). \n" +
+                                        $"▶ Current Depth 2 only \n" +
+                                        $"▶ We plan to implement Depth 3 later. \n";
 
             // 도움말 선택시 메뉴       help options
             _introduction = "AAR Guidance";
@@ -72,7 +74,7 @@ namespace AAR_Bot.Helper.StoredStringValues
             _courseRegistrationOptions = new List<string> { _howToDoIt, _schedule, _regulation, _terms, _gotostart, _help };
             _courseInfoOptions = new List<string> { _openedMajorCourses, _openedLiberalArts, _syllabus, _lecturerInfo, _mandatorySubject, _prerequisite, _gotostart, _help };
             _creditsOptions = new List<string> { _currentCredits, _majorCredits, _liberalArtsCredits, _changeStuNum, _gotostart, _help };
-            _othersOption = new List<string> { _leaveOrReadmission, _scholarship, _gotostart, _help };
+            _othersOption = new List<string> { _leaveOrReadmission, _scholarship, _restaurantMenu, _libraryInfo, _gotostart, _help };
             _helpOptionsList = new List<string> { _introduction, _requestInformationCorrection, _contactMaster, _convertLanguage, _gotostart };
 
 
