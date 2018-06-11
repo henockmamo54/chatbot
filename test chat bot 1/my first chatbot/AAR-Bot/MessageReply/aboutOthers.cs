@@ -45,7 +45,7 @@ namespace AAR_Bot.MessageReply
             }
         }
 
-        private static async Task Reply_libraryInfo(IDialogContext context)
+        public static async Task Reply_libraryInfo(IDialogContext context)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace AAR_Bot.MessageReply
 
         }
 
-        private static async Task Reply_restaurantMenu(IDialogContext context)
+        public static async Task Reply_restaurantMenu(IDialogContext context)
         {
             try
             {

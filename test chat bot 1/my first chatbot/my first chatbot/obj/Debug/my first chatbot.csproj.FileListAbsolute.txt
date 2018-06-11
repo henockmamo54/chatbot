@@ -42,3 +42,61 @@ E:\workspace\C#\chat bot\test chat bot 1\my first chatbot\my first chatbot\bin\z
 E:\workspace\C#\chat bot\test chat bot 1\my first chatbot\my first chatbot\obj\Debug\my first chatbot.csprojResolveAssemblyReference.cache
 E:\workspace\C#\chat bot\test chat bot 1\my first chatbot\my first chatbot\obj\Debug\Bot Application.dll
 E:\workspace\C#\chat bot\test chat bot 1\my first chatbot\my first chatbot\obj\Debug\Bot Application.pdb
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Bot Application.dll.config
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Bot Application.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Bot Application.pdb
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Autofac.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Chronic.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.Bot.Builder.Autofac.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.Bot.Builder.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.Bot.Connector.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.IdentityModel.Logging.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.IdentityModel.Protocols.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.IdentityModel.Tokens.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.Rest.ClientRuntime.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.Web.Infrastructure.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.WindowsAzure.Configuration.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Newtonsoft.Json.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Swashbuckle.Core.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\System.IdentityModel.Tokens.Jwt.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\System.Net.Http.Formatting.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\System.Web.Http.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\System.Web.Http.WebHost.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\WebActivatorEx.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Autofac.xml
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.Bot.Builder.pdb
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.Bot.Builder.xml
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.Bot.Builder.Autofac.pdb
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.Bot.Builder.Autofac.xml
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.Bot.Connector.xml
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.IdentityModel.Logging.xml
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.IdentityModel.Protocols.xml
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.IdentityModel.Tokens.xml
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.Rest.ClientRuntime.xml
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Microsoft.WindowsAzure.Configuration.xml
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\Newtonsoft.Json.xml
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\System.IdentityModel.Tokens.Jwt.xml
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\System.Net.Http.Formatting.xml
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\System.Web.Http.xml
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\System.Web.Http.WebHost.xml
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\ar\Microsoft.Bot.Builder.resources.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\cs\Microsoft.Bot.Builder.resources.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\de-dE\Microsoft.Bot.Builder.resources.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\en\Microsoft.Bot.Builder.resources.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\es\Microsoft.Bot.Builder.resources.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\fa\Microsoft.Bot.Builder.resources.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\fr\Microsoft.Bot.Builder.resources.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\it\Microsoft.Bot.Builder.resources.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\ja\Microsoft.Bot.Builder.resources.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\nl\Microsoft.Bot.Builder.resources.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\pt-BR\Microsoft.Bot.Builder.resources.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\ru\Microsoft.Bot.Builder.resources.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\obj\Debug\my first chatbot.csprojResolveAssemblyReference.cache
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\obj\Debug\Bot Application.dll
+E:\workspace\C#\chatbot_git\test chat bot 1\my first chatbot\my first chatbot\obj\Debug\Bot Application.pdb

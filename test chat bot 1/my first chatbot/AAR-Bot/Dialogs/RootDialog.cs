@@ -66,7 +66,7 @@ namespace AAR_Bot.Dialogs
         private async static Task LuisDialogResumeAfter(IDialogContext context, IAwaitable<object> result)
         {
             await context.PostAsync(_storedvalues._goodByeMessage);
-            //await ShowWelcomeOptions(context);
+            await ShowWelcomeOptions(context);
         }
 
 
