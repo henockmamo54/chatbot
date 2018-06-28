@@ -21,7 +21,15 @@ namespace AAR_Bot.Dialogs
         private async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> result)
         {
             var value = await result;
-            Rootobject obj = await LUISService.GetEntityFromLUIS(value.Text);
+            // first work check local data for the common words 
+            FrequentlyUsedLuisSteatment fuls = new FrequentlyUsedLuisSteatment();
+            Rootobject obj =fuls.getIntentOfString(value.Text);
+
+            if (obj.topScoringIntent == null)
+            {
+                // second check  luis if the statement is not on the local files
+                obj = await LUISService.GetEntityFromLUIS(value.Text);
+            }
 
             //switch (value.Text.ToString())
             //{
