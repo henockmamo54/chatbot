@@ -30,6 +30,7 @@ namespace AAR_Bot.Dialogs
             {
                 var value = await result;
                 if (value.Text.ToString() == "English") _storedvalues = new StoredValues_en();      //if user inputs english as text input or keyboard input language should change to english and the same holds for korean too
+                if (value.Text.ToString() == "한국어") _storedvalues = new StoredValues_kr();      //if user inputs 한국어 as text input or keyboard input language should change to 한국어
                 //*********here we have to add help,restart, reset and other options or have to be handled by Luis
 
                 await ShowWelcomeOptions(context);
@@ -51,7 +52,7 @@ namespace AAR_Bot.Dialogs
                 Title = "",
                 Subtitle = "",          //Location of information in MJU homepage
                 Text = "",
-                Images = new List<CardImage> { new CardImage("http://dynamicscrmcoe.com/wp-content/uploads/2016/08/chatbot-icon.png") },
+                Images = new List<CardImage> { new CardImage("https://www.businessnewsdaily.com/images/i/000/014/696/original/shutterstock_Pranch_Chatbot.jpg?1512095748") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
                                                 "관련 페이지로 이동",
                                                 value: "https://github.com/MJUKJE/chatbot/blob/dev/README.md") }
