@@ -45,8 +45,8 @@ namespace AAR_Bot.Helper.StoredStringValues
             _libraryInfo = "Library Info";
 
             // 직접 입력하기 선택시 메뉴     typeself options
-            _typePleaseWelcome = $"▶ Hello AAR chat service. \n" +
-                                        $"▶ Select the number of the inquiry or" +
+            _typePleaseWelcome = $"Welcome to AAR chat service. \n" +
+                                        //$"▶ Select the number of the inquiry or" +
                                         $"   Please enter your question \n \n" +
                                         $"▶ 1. Course Registration Information \n" +
                                         $"▶ 2. Subject related information \n" +
@@ -54,11 +54,11 @@ namespace AAR_Bot.Helper.StoredStringValues
                                         $"▶ 4. Other information \n" +
                                         $"▶ 5. Help \n" +
 
-                                        $"▶ Credits must be entered in the course number. \n" +
-                                        $"▶ Go to the [Help] -> [English] \n" +
-                                        $"Language conversion is possible:). \n" +
-                                        $"▶ Current Depth 2 only \n" +
-                                        $"▶ We plan to implement Depth 3 later. \n";
+                                        //$"▶ Credits must be entered in the course number. \n" +
+                                        $"▶ To change the language,Go to the [Help] -> [한국어] \n";
+                                        //$"Language conversion is possible:). \n" +
+                                        //$"▶ Current Depth 2 only \n" +
+                                        //$"▶ We plan to implement Depth 3 later. \n";
 
             // 도움말 선택시 메뉴       help options
             _introduction = "AAR Guidance";

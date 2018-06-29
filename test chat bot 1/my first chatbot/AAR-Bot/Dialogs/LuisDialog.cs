@@ -25,7 +25,7 @@ namespace AAR_Bot.Dialogs
             FrequentlyUsedLuisSteatment fuls = new FrequentlyUsedLuisSteatment();
             Rootobject obj =fuls.getIntentOfString(value.Text);
 
-            if (obj.topScoringIntent == null)
+            if (obj == null)
             {
                 // second check  luis if the statement is not on the local files
                 obj = await LUISService.GetEntityFromLUIS(value.Text);
@@ -75,6 +75,7 @@ namespace AAR_Bot.Dialogs
                                 case "howtoregister": await aboutCourseRegistration.Reply_howToDoIt(context); await RootDialog.ShowWelcomeOptions(context); break;
                                 case "schedule": await aboutCourseRegistration.Reply_schedule(context); await RootDialog.ShowWelcomeOptions(context); break;
                                 case "terms": await aboutCourseRegistration.Reply_terms(context); await RootDialog.ShowWelcomeOptions(context); break;
+                                default: { await aboutCourseRegistration.CourseRegistraionOptionSelected(context); break; }
                             }
 
                         }
@@ -94,6 +95,7 @@ namespace AAR_Bot.Dialogs
                                 case "lectureinfo": await aboutCourseInfo.Reply_lecturerInfo(context); await RootDialog.ShowWelcomeOptions(context); break;
                                 case "mandatorysubject": await aboutCourseInfo.Reply_mandatorySubject(context); await RootDialog.ShowWelcomeOptions(context); break;
                                 case "prerequisite": await aboutCourseInfo.Reply_prerequisite(context); await RootDialog.ShowWelcomeOptions(context); break;
+                                default: { await aboutCourseInfo.CourseInfoOptionSelected(context); break; }
                             }
                         }
                         else await aboutCourseInfo.CourseInfoOptionSelected(context);
@@ -112,6 +114,7 @@ namespace AAR_Bot.Dialogs
                             {
                                 case "foodmenu": await aboutOthers.Reply_restaurantMenu(context); await RootDialog.ShowWelcomeOptions(context); break;
                                 case "libinfo": await aboutOthers.Reply_libraryInfo(context); await RootDialog.ShowWelcomeOptions(context); break;
+                                default: { await aboutOthers.OtherOptionSelected(context); break; }
                             }
                         }
                         else await aboutOthers.OtherOptionSelected(context);
