@@ -47,7 +47,7 @@ namespace AAR_Bot.Helper.StoredStringValues
             // 직접 입력하기 선택시 메뉴     typeself options
             _typePleaseWelcome = $"Welcome to AAR chat service. \n" +
                                         //$"▶ Select the number of the inquiry or" +
-                                        $"   Please enter your question \n \n" +
+                                        $"Please enter your question \n \n" +
                                         $"▶ 1. Course Registration Information \n" +
                                         $"▶ 2. Subject related information \n" +
                                         $"▶ 3. Credit management \n" +
