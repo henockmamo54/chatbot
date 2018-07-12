@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Bot.Connector;
 using AAR_Bot.Helper;
 using AAR_Bot.MessageReply;
+using AAR_Bot.Helper.StoredStringValues;
 
 namespace AAR_Bot.Dialogs
 {
@@ -23,7 +24,7 @@ namespace AAR_Bot.Dialogs
             var value = await result;
             // first work check local data for the common words 
             FrequentlyUsedLuisSteatment fuls = new FrequentlyUsedLuisSteatment();
-            Rootobject obj =fuls.getIntentOfString(value.Text);
+            Rootobject obj = fuls.getIntentOfString(value.Text);
 
             if (obj == null)
             {
@@ -44,6 +45,25 @@ namespace AAR_Bot.Dialogs
 
             switch (obj.topScoringIntent.intent)
             {
+                case "Language":
+                    {
+                        switch (obj.entities[0].type)
+                        {
+                            case "english":
+                                {
+                                    RootDialog._storedvalues = new StoredValues_en();
+                                    await RootDialog.ShowWelcomeOptions(context);
+                                    break;
+                                }
+                            case "korean":
+                                {
+                                    RootDialog._storedvalues = new StoredValues_kr();
+                                    await RootDialog.ShowWelcomeOptions(context);
+                                    break;
+                                }
+                        }
+                        break;
+                    }
                 case "Number":
                     {
                         switch (obj.entities[0].entity)

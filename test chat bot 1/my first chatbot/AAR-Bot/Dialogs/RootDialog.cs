@@ -30,7 +30,7 @@ namespace AAR_Bot.Dialogs
             {
                 var value = await result;
                 if (value.Text.ToString() == "English") _storedvalues = new StoredValues_en();      //if user inputs english as text input or keyboard input language should change to english and the same holds for korean too
-                if (value.Text.ToString() == "한국어") _storedvalues = new StoredValues_kr();      //if user inputs 한국어 as text input or keyboard input language should change to 한국어
+                if (value.Text.ToString() == "한국어" || value.Text.ToString() == "korean") _storedvalues = new StoredValues_kr();      //if user inputs 한국어 as text input or keyboard input language should change to 한국어
                 //*********here we have to add help,restart, reset and other options or have to be handled by Luis
 
                 await ShowWelcomeOptions(context);
