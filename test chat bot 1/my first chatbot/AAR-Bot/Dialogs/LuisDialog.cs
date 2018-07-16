@@ -14,8 +14,16 @@ namespace AAR_Bot.Dialogs
     [Serializable]
     public class LuisDialog : IDialog<object>
     {
+        static StoredStringValuesMaster _storedvalues;
         public async Task StartAsync(IDialogContext context)
         {
+
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            var langtype = new StoredStringValuesMaster();
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+            //context.PrivateConversationData.TryGetValue<StoredStringValuesMaster>("_storedvalues", out _storedvalues);
+
             context.Wait(MessageReceivedAsync);
         }
 
@@ -51,13 +59,15 @@ namespace AAR_Bot.Dialogs
                         {
                             case "english":
                                 {
-                                    RootDialog._storedvalues = new StoredValues_en();
+                                    _storedvalues = new StoredValues_en();
+                                    context.PrivateConversationData.SetValue("_storedvalues", "StoredValues_en");
                                     await RootDialog.ShowWelcomeOptions(context);
                                     break;
                                 }
                             case "korean":
                                 {
-                                    RootDialog._storedvalues = new StoredValues_kr();
+                                    _storedvalues = new StoredValues_kr();
+                                    context.PrivateConversationData.SetValue("_storedvalues", "StoredValues_kr");
                                     await RootDialog.ShowWelcomeOptions(context);
                                     break;
                                 }

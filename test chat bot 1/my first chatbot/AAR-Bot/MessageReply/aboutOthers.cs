@@ -7,19 +7,26 @@ using System;
 using AAR_Bot.Helper.webscraping;
 using System.Linq;
 using Newtonsoft.Json;
+using AAR_Bot.Helper.StoredStringValues;
 
 namespace AAR_Bot.MessageReply
 {
     public static class aboutOthers
     {
+        static StoredStringValuesMaster _storedvalues;
         public static async Task OtherOptionSelected(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            var langtype = new StoredStringValuesMaster();
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             PromptDialog.Choice<string>(
                 context,
                 HandleOtherOptionSelection,
-                RootDialog._storedvalues._othersOption,
-                RootDialog._storedvalues._otherOptionSelected,                                                                                 //Course Registration
-                RootDialog._storedvalues._invalidSelectionMessage + "[ERROR] : OtherOptionSelected",          //Ooops, what you wrote is not a valid option, please try again
+                _storedvalues._othersOption,
+                _storedvalues._otherOptionSelected,                                                                                 //Course Registration
+                _storedvalues._invalidSelectionMessage + "[ERROR] : OtherOptionSelected",          //Ooops, what you wrote is not a valid option, please try again
                 1,
                 PromptStyle.Auto);
 
@@ -28,16 +35,16 @@ namespace AAR_Bot.MessageReply
         {
             var value = await result;
 
-            if (value.ToString() == RootDialog._storedvalues._gotostart) await RootDialog.ShowWelcomeOptions(context);
+            if (value.ToString() == _storedvalues._gotostart) await RootDialog.ShowWelcomeOptions(context);
 
-            else if (value.ToString() == RootDialog._storedvalues._help) await aboutHelp.HelpOptionSelected(context);
+            else if (value.ToString() == _storedvalues._help) await aboutHelp.HelpOptionSelected(context);
 
             else
             {
-                if (value.ToString() == RootDialog._storedvalues._leaveOrReadmission) await Reply_leaveOrReadmission(context);
-                else if (value.ToString() == RootDialog._storedvalues._scholarship) await Reply_scholarship(context);
-                else if (value.ToString() == RootDialog._storedvalues._restaurantMenu) await Reply_restaurantMenu(context);
-                else if (value.ToString() == RootDialog._storedvalues._libraryInfo) await Reply_libraryInfo(context);
+                if (value.ToString() == _storedvalues._leaveOrReadmission) await Reply_leaveOrReadmission(context);
+                else if (value.ToString() == _storedvalues._scholarship) await Reply_scholarship(context);
+                else if (value.ToString() == _storedvalues._restaurantMenu) await Reply_restaurantMenu(context);
+                else if (value.ToString() == _storedvalues._libraryInfo) await Reply_libraryInfo(context);
 
 
                 //await RootDialog.ShowWelcomeOptions(context);           //Return To Start
@@ -98,7 +105,7 @@ namespace AAR_Bot.MessageReply
             */
 
             var activity = context.MakeMessage();
-            activity.Text = RootDialog._storedvalues._reply_leaveOrReadmission;
+            activity.Text = _storedvalues._reply_leaveOrReadmission;
 
             activity.Attachments.Add(new HeroCard
             {
@@ -107,7 +114,7 @@ namespace AAR_Bot.MessageReply
                 Text = "휴학 및 복학관련 정보입니다.",
                 Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") }, 
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
-                                                RootDialog._storedvalues._goToButton,
+                                                _storedvalues._goToButton,
                                                 value: "https://drive.google.com/open?id=1YXE91epV_0_l8_lsgkXn1f9rYeF4_DfG") }
             }.ToAttachment());
 
@@ -117,7 +124,7 @@ namespace AAR_Bot.MessageReply
         public static async Task Reply_scholarship(IDialogContext context)
         {
             var activity = context.MakeMessage();
-            activity.Text = RootDialog._storedvalues._reply_Scholarship;
+            activity.Text = _storedvalues._reply_Scholarship;
 
             activity.Attachments.Add(new HeroCard
             {
@@ -126,7 +133,7 @@ namespace AAR_Bot.MessageReply
                 Text = "장학금관련 정보입니다.",
                 Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
-                                                RootDialog._storedvalues._goToButton,
+                                                _storedvalues._goToButton,
                                                 value: "https://drive.google.com/open?id=112Fs5ZE3ek3AzQBiCrKLXLuLxkWCPvo_") }
             }.ToAttachment());
 

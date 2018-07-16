@@ -114,6 +114,13 @@ namespace AAR_Bot.Helper.StoredStringValues
             _gotostart = "처음으로";
             _help = "도움말";
 
+            _welcomeOptionsList.Clear();
+            _courseRegistrationOptions.Clear();
+            _courseInfoOptions.Clear();
+            _creditsOptions.Clear();
+            _othersOption.Clear();
+            _helpOptionsList.Clear();
+
             _welcomeOptionsList = new List<string> { _courseRegistration, _courseInformation, _credits, _others, _typeself, _help };
             _courseRegistrationOptions = new List<string> { _howToDoIt, _schedule, _regulation, _terms, _gotostart, _help };
             _courseInfoOptions = new List<string> { _openedMajorCourses, _openedLiberalArts, _syllabus, _lecturerInfo, _mandatorySubject, _prerequisite, _gotostart, _help };
