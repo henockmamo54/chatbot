@@ -54,12 +54,18 @@ namespace AAR_Bot.MessageReply
                 convinfo.id = "Library"; //FoodMenu
 
                 var libinfo = await cd.readDataFromDocument(convinfo);
-                var jsondata= JsonConvert.DeserializeObject<Rootobject>(libinfo.FirstOrDefault().myList.ToString());
+                var jsondata = JsonConvert.DeserializeObject<Rootobject>(libinfo.FirstOrDefault().myList.ToString());
                 var activity = context.MakeMessage();
-                activity.Text = libinfo.FirstOrDefault().myList.ToString();
+
+                foreach (var a in jsondata.data.list)
+                {
+                    activity.Text += a.name + " : " + a.available + " / " + a.total + "\n";
+                }
+
                 await context.PostAsync(activity);
             }
-            catch (Exception ee) {
+            catch (Exception ee)
+            {
                 await context.PostAsync("Error reading cosmos db");
             }
 
@@ -74,9 +80,27 @@ namespace AAR_Bot.MessageReply
                 convinfo.id = "FoodMenu"; //FoodMenu
 
                 var foodmenuinfo = await cd.readDataFromDocument(convinfo);
-                var jsondata = JsonConvert.DeserializeObject<Rootobject>(foodmenuinfo.FirstOrDefault().myList.ToString());
+
+                var jsondata = JsonConvert.DeserializeObject<FoodMenuListModel>(foodmenuinfo.FirstOrDefault().myList.ToString());
                 var activity = context.MakeMessage();
-                activity.Text = foodmenuinfo.FirstOrDefault().myList.ToString();
+
+                foreach (var day in jsondata.foodMenus)
+                {
+                    activity.Text += day.Date + "\n";
+                    foreach (var restaurant in day.Details)
+                    {
+                        activity.Text += "\n" + restaurant[0] + "\n";
+                        for (int i = 1; i < restaurant.Length; i++)
+                        {
+                            var food = restaurant[i];
+                            activity.Text += "\n" + food;
+                        }
+                        activity.Text += "\n";
+                    }
+                    activity.Text += "\n";
+                }
+
+
                 await context.PostAsync(activity);
             }
             catch (Exception ee)
