@@ -47,22 +47,16 @@ namespace AAR_Bot.Dialogs
 
                 if (value.Text.ToString().Equals("English", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    var lang = "";
-                    if (!context.PrivateConversationData.TryGetValue("_storedvalues", out lang))
-                    {
+                   
                         //context.PrivateConversationData.SetValue("_storedvalues", new StoredValues_en());
                         context.PrivateConversationData.SetValue("_storedvalues", "StoredValues_en");
                         _storedvalues = new StoredValues_en();
-                    }
                 } // _storedvalues = new StoredValues_en();      //if user inputs english as text input or keyboard input language should change to english and the same holds for korean too
-                if (value.Text.ToString().Equals("한국어", StringComparison.InvariantCultureIgnoreCase) || value.Text.ToString().Equals("korean", StringComparison.InvariantCultureIgnoreCase)) ;
+                else if (value.Text.ToString().Equals("한국어", StringComparison.InvariantCultureIgnoreCase) || value.Text.ToString().Equals("korean", StringComparison.InvariantCultureIgnoreCase)) 
                 { //_storedvalues = new StoredValues_kr();      //if user inputs 한국어 as text input or keyboard input language should change to 한국어
-                    var lang = "";
-                    if (!context.PrivateConversationData.TryGetValue("_storedvalues", out lang))
-                    {
-                        context.PrivateConversationData.SetValue("_storedvalues", "StoredValues_kr");
+
+                    context.PrivateConversationData.SetValue("_storedvalues", "StoredValues_kr");
                         _storedvalues = new StoredValues_kr();
-                    }
                 }
 
                 await ShowWelcomeOptions(context);

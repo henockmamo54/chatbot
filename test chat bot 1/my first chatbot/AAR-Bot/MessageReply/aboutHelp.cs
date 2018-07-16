@@ -8,9 +8,10 @@ namespace AAR_Bot.MessageReply
     public static class aboutHelp
     {
         static StoredStringValuesMaster _storedvalues;
+        static string lang = "";
         public static async Task HelpOptionSelected(IDialogContext context)
         {
-            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
             var langtype = new StoredStringValuesMaster();
             if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
             else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
@@ -39,8 +40,12 @@ namespace AAR_Bot.MessageReply
                 else if (value.ToString() == _storedvalues._contactMaster) await Reply_contactMaster(context);
                 else if (value.ToString() == _storedvalues._convertLanguage)
                 {
-                    if (_storedvalues._convertLanguage == "한국어") _storedvalues = new StoredValues_kr();   //for convert en to kr
-                    else _storedvalues = new StoredValues_en();                                  //for convert kr to en
+                    if (lang.Equals("StoredValues_en")) context.PrivateConversationData.SetValue("_storedvalues", "StoredValues_kr"); 
+                    else if (lang.Equals("StoredValues_kr")) context.PrivateConversationData.SetValue("_storedvalues", "StoredValues_en"); ;
+
+                    //else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+                    //if (_storedvalues._convertLanguage == "한국어") _storedvalues = new StoredValues_kr();   //for convert en to kr
+                    //else _storedvalues = new StoredValues_en();                                  //for convert kr to en
                 }
 
                 await RootDialog.ShowWelcomeOptions(context);                  //Return To Start
