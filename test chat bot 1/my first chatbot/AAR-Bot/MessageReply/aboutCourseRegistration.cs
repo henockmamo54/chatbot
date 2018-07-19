@@ -40,6 +40,7 @@ namespace AAR_Bot.MessageReply
         {
             var value = await result;
 
+
             if (value.ToString() == _storedvalues._gotostart) await RootDialog.ShowWelcomeOptions(context);
 
             else if (value.ToString() == _storedvalues._help) await aboutHelp.HelpOptionSelected(context);
@@ -63,6 +64,10 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_howToDoIt(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_HowToDoIt;
 
@@ -82,6 +87,10 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_schedule(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_Schedule;
 
@@ -101,6 +110,10 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_regulation(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_Regulation;
 
@@ -120,6 +133,10 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_terms(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_Terms;
 

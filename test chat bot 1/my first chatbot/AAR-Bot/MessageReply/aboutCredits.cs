@@ -73,6 +73,10 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_currentCredits(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_CurrentCredits + RootDialog.studentinfo.totalCredits(stuNum);
             await context.PostAsync(activity);
@@ -80,15 +84,21 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_majorCredits(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             var activity = context.MakeMessage();
-
             activity.Text = _storedvalues._reply_MajorCredits + RootDialog.studentinfo.totalMajorCredits(stuNum);
-
             await context.PostAsync(activity);
         }
 
         public static async Task Reply_liberalArtsCredits(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_LiberalArtsCredits + RootDialog.studentinfo.totalElectiveCredits(stuNum);
 
@@ -97,6 +107,10 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_changeStuNum(IDialogContext context)         //학번 재설정
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             await context.PostAsync(_storedvalues._reply_ChangeStuNum + stuNum);            //메시지를 보낸다.
             context.Call(new GetInfoDialog(), RootDialog.GetInfoDialogAfterResettingStudentNumber);     //바로 학번입력으로 간다.
         }

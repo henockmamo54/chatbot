@@ -59,6 +59,10 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_introduction(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_Introduction;
             await context.PostAsync(activity);
@@ -66,6 +70,10 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_requestInformationCorrection(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_RequestInformationCorrection;
 
@@ -74,6 +82,10 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_contactMaster(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_ContactMaster;
 

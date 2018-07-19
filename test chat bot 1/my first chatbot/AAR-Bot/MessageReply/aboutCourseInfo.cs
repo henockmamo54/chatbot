@@ -58,6 +58,10 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_openedMajorCourses(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_openedLiberalArts;
             //activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);
@@ -77,6 +81,10 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_openedLiberalArts(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_openedLiberalArts;
             //activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);
@@ -96,6 +104,10 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_syllabus(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_Syllabus;
             //activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);
@@ -115,6 +127,10 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_lecturerInfo(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_LecturerInfo;
             //activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);
@@ -134,6 +150,11 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_mandatorySubject(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            var langtype = new StoredStringValuesMaster();
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_MandatorySubject;
             //activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);
@@ -153,6 +174,11 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_prerequisite(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            var langtype = new StoredStringValuesMaster();
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_Prerequisite;
             //activity.AddKeyboardCard<string>("", RootDialog._storedvalues._courseInfoOptions);

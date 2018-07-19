@@ -46,19 +46,30 @@ namespace AAR_Bot.Helper.StoredStringValues
 
             // 직접 입력하기 선택시 메뉴     typeself options
             _typePleaseWelcome = $"Welcome to AAR chat service. \n" +
-                                        //$"▶ Select the number of the inquiry or" +
-                                        $"Please enter your question \n \n" +
+                                        $"Please enter your inquiry  \n" +
+                                        $"(you can input numbers for main menus)  \n\n" +
                                         $"▶ 1. Course Registration Information \n" +
                                         $"▶ 2. Subject related information \n" +
                                         $"▶ 3. Credit management \n" +
                                         $"▶ 4. Other information \n" +
                                         $"▶ 5. Help \n" +
-
-                                        //$"▶ Credits must be entered in the course number. \n" +
+                                        
                                         $"▶ To change the language,Go to the [Help] -> [한국어] \n";
-                                        //$"Language conversion is possible:). \n" +
-                                        //$"▶ Current Depth 2 only \n" +
-                                        //$"▶ We plan to implement Depth 3 later. \n";
+                                        
+            //_typePleaseWelcome = $"Welcome to AAR chat service. \n" +
+            //                            //$"▶ Select the number of the inquiry or" +
+            //                            $"Please enter your question \n \n" +
+            //                            $"▶ 1. Course Registration Information \n" +
+            //                            $"▶ 2. Subject related information \n" +
+            //                            $"▶ 3. Credit management \n" +
+            //                            $"▶ 4. Other information \n" +
+            //                            $"▶ 5. Help \n" +
+
+            //                            //$"▶ Credits must be entered in the course number. \n" +
+            //                            $"▶ To change the language,Go to the [Help] -> [한국어] \n";
+            //                            //$"Language conversion is possible:). \n" +
+            //                            //$"▶ Current Depth 2 only \n" +
+            //                            //$"▶ We plan to implement Depth 3 later. \n";
 
             // 도움말 선택시 메뉴       help options
             _introduction = "AAR Guidance";

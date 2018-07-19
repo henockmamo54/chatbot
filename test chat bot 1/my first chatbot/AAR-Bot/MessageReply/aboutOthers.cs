@@ -98,6 +98,10 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_leaveOrReadmission(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             /*
             var activity = context.MakeMessage();
             activity.Text = RootDialog._storedvalues._reply_leaveOrReadmission;
@@ -123,6 +127,10 @@ namespace AAR_Bot.MessageReply
 
         public static async Task Reply_scholarship(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_Scholarship;
 

@@ -80,16 +80,16 @@ namespace AAR_Bot.Dialogs
 
             activity.Text = langtype._typePleaseWelcome;
 
-            activity.Attachments.Add(new HeroCard
-            {
-                Title = "",
-                Subtitle = "",          //Location of information in MJU homepage
-                Text = "",
-                //Images = new List<CardImage> { new CardImage("http://dynamicscrmcoe.com/wp-content/uploads/2016/08/chatbot-icon.png") },
-                Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
-                                                "관련 페이지로 이동",
-                                                value: "https://github.com/MJUKJE/chatbot/blob/dev/README.md") }
-            }.ToAttachment());
+            //activity.Attachments.Add(new HeroCard
+            //{
+            //    Title = "",
+            //    Subtitle = "",          //Location of information in MJU homepage
+            //    Text = "",
+            //    //Images = new List<CardImage> { new CardImage("http://dynamicscrmcoe.com/wp-content/uploads/2016/08/chatbot-icon.png") },
+            //    Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
+            //                                    "관련 페이지로 이동",
+            //                                    value: "https://github.com/MJUKJE/chatbot/blob/dev/README.md") }
+            //}.ToAttachment());
 
             await context.PostAsync(activity);
 
@@ -99,8 +99,14 @@ namespace AAR_Bot.Dialogs
 
         private async static Task LuisDialogResumeAfter(IDialogContext context, IAwaitable<object> result)
         {
+
+            StoredStringValuesMaster _storedvalues = new StoredStringValuesMaster();
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             //await context.PostAsync(_storedvalues._goodByeMessage);
-            await context.PostAsync(context.PrivateConversationData.GetValue<StoredStringValuesMaster>("_storedvalues")._goodByeMessage);
+            await context.PostAsync(_storedvalues._goodByeMessage);
 
             await ShowWelcomeOptions(context);
         }
@@ -133,8 +139,13 @@ namespace AAR_Bot.Dialogs
                 var stuNum = await result;
                 context.PrivateConversationData.SetValue("stuNum", stuNum);
 
+                StoredStringValuesMaster _storedvalues= new StoredStringValuesMaster();
+                string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+                if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+                else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
                 //await context.PostAsync(_storedvalues._getStudentNumUpdateMessage + stuNum);
-                await context.PostAsync(context.PrivateConversationData.GetValue<StoredStringValuesMaster>("_storedvalues")._getStudentNumUpdateMessage + stuNum);
+                await context.PostAsync(_storedvalues._getStudentNumUpdateMessage + stuNum);
                 await aboutCredits.CreditsOptionSelected(context);
             }
             catch (TooManyAttemptsException)

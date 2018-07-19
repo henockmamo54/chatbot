@@ -66,7 +66,7 @@ namespace AAR_Bot
                         {
                             Trace.TraceError(ex.Message);
                         }
-                        await Task.Delay(TimeSpan.FromMinutes(30), _getTokenAsyncCancellation.Token).ConfigureAwait(false);
+                        await Task.Delay(TimeSpan.FromMinutes(1), _getTokenAsyncCancellation.Token).ConfigureAwait(false);
                     }
                 }).ConfigureAwait(false);
             }

@@ -101,10 +101,10 @@ namespace AAR_Bot.Dialogs
                         {
                             switch (obj.entities[0].type)
                             {
-                                case "regulation": await aboutCourseRegistration.Reply_regulation(context); await RootDialog.ShowWelcomeOptions(context); break;
-                                case "howtoregister": await aboutCourseRegistration.Reply_howToDoIt(context); await RootDialog.ShowWelcomeOptions(context); break;
-                                case "schedule": await aboutCourseRegistration.Reply_schedule(context); await RootDialog.ShowWelcomeOptions(context); break;
-                                case "terms": await aboutCourseRegistration.Reply_terms(context); await RootDialog.ShowWelcomeOptions(context); break;
+                                case "regulation": await aboutCourseRegistration.Reply_regulation(context); await aboutCourseRegistration.CourseRegistraionOptionSelected(context); break;
+                                case "howtoregister": await aboutCourseRegistration.Reply_howToDoIt(context); await aboutCourseRegistration.CourseRegistraionOptionSelected(context); break;
+                                case "schedule": await aboutCourseRegistration.Reply_schedule(context); await aboutCourseRegistration.CourseRegistraionOptionSelected(context); break;
+                                case "terms": await aboutCourseRegistration.Reply_terms(context); await aboutCourseRegistration.CourseRegistraionOptionSelected(context); break;
                                 default: { await aboutCourseRegistration.CourseRegistraionOptionSelected(context); break; }
                             }
 
@@ -119,12 +119,12 @@ namespace AAR_Bot.Dialogs
                         {
                             switch (obj.entities[0].type)
                             {
-                                case "openedmajor": await aboutCourseInfo.Reply_openedMajorCourses(context); await RootDialog.ShowWelcomeOptions(context); break;
-                                case "openedliberalarts": await aboutCourseInfo.Reply_openedLiberalArts(context); await RootDialog.ShowWelcomeOptions(context); break;
-                                case "syllabus": await aboutCourseInfo.Reply_syllabus(context); await RootDialog.ShowWelcomeOptions(context); break;
-                                case "lectureinfo": await aboutCourseInfo.Reply_lecturerInfo(context); await RootDialog.ShowWelcomeOptions(context); break;
-                                case "mandatorysubject": await aboutCourseInfo.Reply_mandatorySubject(context); await RootDialog.ShowWelcomeOptions(context); break;
-                                case "prerequisite": await aboutCourseInfo.Reply_prerequisite(context); await RootDialog.ShowWelcomeOptions(context); break;
+                                case "openedmajor": await aboutCourseInfo.Reply_openedMajorCourses(context); await aboutCourseInfo.CourseInfoOptionSelected(context); break;
+                                case "openedliberalarts": await aboutCourseInfo.Reply_openedLiberalArts(context); await aboutCourseInfo.CourseInfoOptionSelected(context); break;
+                                case "syllabus": await aboutCourseInfo.Reply_syllabus(context); await aboutCourseInfo.CourseInfoOptionSelected(context); break;
+                                case "lectureinfo": await aboutCourseInfo.Reply_lecturerInfo(context); await aboutCourseInfo.CourseInfoOptionSelected(context); break;
+                                case "mandatorysubject": await aboutCourseInfo.Reply_mandatorySubject(context); await aboutCourseInfo.CourseInfoOptionSelected(context); break;
+                                case "prerequisite": await aboutCourseInfo.Reply_prerequisite(context); await aboutCourseInfo.CourseInfoOptionSelected(context); break;
                                 default: { await aboutCourseInfo.CourseInfoOptionSelected(context); break; }
                             }
                         }
