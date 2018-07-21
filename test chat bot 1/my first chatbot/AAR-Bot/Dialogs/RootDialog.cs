@@ -45,23 +45,27 @@ namespace AAR_Bot.Dialogs
         public static async Task ShowWelcomeOptions(IDialogContext context)
         {
             var activity = context.MakeMessage();
-            activity.Text = _storedvalues._typePleaseWelcome;
 
-            activity.Attachments.Add(new HeroCard
+            if (activity.ChannelId == "facebook")
             {
-                Title = "",
-                Subtitle = "",          //Location of information in MJU homepage
-                Text = "",
-                //Images = new List<CardImage> { new CardImage("http://dynamicscrmcoe.com/wp-content/uploads/2016/08/chatbot-icon.png") },
-                Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
-                                                "관련 페이지로 이동",
-                                                value: "https://github.com/MJUKJE/chatbot/blob/dev/README.md") }
-            }.ToAttachment());
-
+                activity.Text = _storedvalues._typePleaseWelcome.Replace("\n", "\n\n");
+                activity.SuggestedActions = new SuggestedActions()
+                {
+                    Actions = new List<CardAction>()
+                    {
+                        new CardAction(){ Title = "Registration info.", Type=ActionTypes.ImBack, Value="Course Registration" },
+                        new CardAction(){ Title = "Course related info", Type=ActionTypes.ImBack, Value="Subject related information" },
+                        new CardAction(){ Title = "Credit management", Type=ActionTypes.ImBack, Value="credit" },
+                        new CardAction(){ Title = "Help", Type=ActionTypes.ImBack, Value="Help" }
+                    }
+                };
+            }
+            else activity.Text = _storedvalues._typePleaseWelcome;
+                        
             await context.PostAsync(activity);
 
             context.Call(new LuisDialog(), LuisDialogResumeAfter);
-            
+
         }
 
         private async static Task LuisDialogResumeAfter(IDialogContext context, IAwaitable<object> result)
