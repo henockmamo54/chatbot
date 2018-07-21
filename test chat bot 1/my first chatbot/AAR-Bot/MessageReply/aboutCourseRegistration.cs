@@ -12,20 +12,65 @@ namespace AAR_Bot.MessageReply
 
         public static async Task CourseRegistraionOptionSelected(IDialogContext context)
         {
-            PromptDialog.Choice<string>(
-                context,
-                HandleCourseRegistrationOptionSelection,
-                RootDialog._storedvalues._courseRegistrationOptions,
-                RootDialog._storedvalues._courseRegistrationSelected,                                                                                        //Course Registration
-                RootDialog._storedvalues._invalidSelectionMessage + "[ERROR] : CourseRegistraionOptionSelected",          //Ooops, what you wrote is not a valid option, please try again
-                2,
-                PromptStyle.Auto);
+            if (context.Activity.ChannelId == "facebook")
+            {
+                var activity = context.MakeMessage();
+                activity.Text = RootDialog._storedvalues._courseRegistrationSelected.Replace("\n", "\n\n ");
+                activity.SuggestedActions = new SuggestedActions()
+                {
+                    Actions = new List<CardAction>()
+                    {
+                        new CardAction(){ Title = RootDialog._storedvalues._howToDoIt, Type=ActionTypes.ImBack, Value="How to register" },
+                        new CardAction(){ Title = RootDialog._storedvalues._schedule, Type=ActionTypes.ImBack, Value="Schedule" },
+                        new CardAction(){ Title = RootDialog._storedvalues._regulation, Type=ActionTypes.ImBack, Value="Regulation" },
+                        new CardAction(){ Title = RootDialog._storedvalues._terms, Type=ActionTypes.ImBack, Value="Terms" },
+                        new CardAction(){ Title = RootDialog._storedvalues._gotostart, Type=ActionTypes.ImBack, Value="Go To Start" },
+                        new CardAction(){ Title = "Help", Type=ActionTypes.ImBack, Value="Help" }
+                    }
+                };
 
+                await context.PostAsync(activity);
+                context.Wait(HandleCourseRegistrationOptionSelection);
+            }
+            else
+            {
+                PromptDialog.Choice<string>(
+                    context,
+                    HandleCourseRegistrationOptionSelection,
+                    RootDialog._storedvalues._courseRegistrationOptions,
+                    RootDialog._storedvalues._courseRegistrationSelected,                                                                                        //Course Registration
+                    RootDialog._storedvalues._invalidSelectionMessage + "[ERROR] : CourseRegistraionOptionSelected",          //Ooops, what you wrote is not a valid option, please try again
+                    2,
+                    PromptStyle.Auto);
+            }
         }
 
         public static async Task HandleCourseRegistrationOptionSelection(IDialogContext context, IAwaitable<string> result)
         {
             var value = await result;
+
+            if (value.ToString() == RootDialog._storedvalues._gotostart) await RootDialog.ShowWelcomeOptions(context);
+
+            else if (value.ToString() == RootDialog._storedvalues._help) await aboutHelp.HelpOptionSelected(context);
+
+            else
+            {
+                if (value.ToString() == RootDialog._storedvalues._howToDoIt) await Reply_howToDoIt(context);      //각각의 메서드에 연결
+                else if (value.ToString() == RootDialog._storedvalues._schedule) await Reply_schedule(context);     //각각의 Dialog로 연결하는 것 보다 편한듯
+                else if (value.ToString() == RootDialog._storedvalues._regulation) await Reply_regulation(context);
+                else if (value.ToString() == RootDialog._storedvalues._terms) await Reply_terms(context);
+
+
+                //await RootDialog.ShowWelcomeOptions(context);                  //Return To Start
+                await aboutCourseRegistration.CourseRegistraionOptionSelected(context);
+            }
+        }
+
+        // for facebook
+        public static async Task HandleCourseRegistrationOptionSelection(IDialogContext context, IAwaitable<IMessageActivity> result)
+        {
+            var myresult = await result;
+            string value = myresult.Text;
 
             if (value.ToString() == RootDialog._storedvalues._gotostart) await RootDialog.ShowWelcomeOptions(context);
 

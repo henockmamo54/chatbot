@@ -56,7 +56,9 @@ namespace AAR_Bot.Dialogs
                         new CardAction(){ Title = "Registration info.", Type=ActionTypes.ImBack, Value="Course Registration" },
                         new CardAction(){ Title = "Course related info", Type=ActionTypes.ImBack, Value="Subject related information" },
                         new CardAction(){ Title = "Credit management", Type=ActionTypes.ImBack, Value="credit" },
-                        new CardAction(){ Title = "Help", Type=ActionTypes.ImBack, Value="Help" }
+                        new CardAction(){ Title = "Help", Type=ActionTypes.ImBack, Value="Help" },
+                        new CardAction(){ Title = "English", Type=ActionTypes.ImBack, Value="Help" },
+                        new CardAction(){ Title = "Korean", Type=ActionTypes.ImBack, Value="Help" }
                     }
                 };
             }
