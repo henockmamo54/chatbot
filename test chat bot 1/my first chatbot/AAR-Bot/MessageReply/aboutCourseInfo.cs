@@ -10,19 +10,70 @@ namespace AAR_Bot.MessageReply
     {
         public static async Task CourseInfoOptionSelected(IDialogContext context)
         {
-            PromptDialog.Choice<string>(
-                context,
-                HandleCourseInfoOptionSelection,
-                RootDialog._storedvalues._courseInfoOptions,
-                RootDialog._storedvalues._courseInfoSelected,                                                                                 //Course Registration
-                RootDialog._storedvalues._invalidSelectionMessage + "[ERROR] : CourseInfoOptionSelected",          //Ooops, what you wrote is not a valid option, please try again
-                1,
-                PromptStyle.Auto);
+            if (context.Activity.ChannelId == "emulator")
+            {
+                var activity = context.MakeMessage();
+                activity.Text = RootDialog._storedvalues._courseInfoSelected.Replace("\n", "\n\n ");
+                activity.SuggestedActions = new SuggestedActions()
+                {
+                    Actions = new List<CardAction>()
+                    {
+                        new CardAction(){ Title = RootDialog._storedvalues._openedMajorCourses, Type=ActionTypes.ImBack, Value="Opened LiberalArts" },
+                        new CardAction(){ Title = RootDialog._storedvalues._openedLiberalArts, Type=ActionTypes.ImBack, Value="Opened Major" },
+                        new CardAction(){ Title = RootDialog._storedvalues._syllabus, Type=ActionTypes.ImBack, Value="Syllabus" },
+                        new CardAction(){ Title = RootDialog._storedvalues._lecturerInfo, Type=ActionTypes.ImBack, Value="Lecture Info" },
+                        new CardAction(){ Title = RootDialog._storedvalues._mandatorySubject, Type=ActionTypes.ImBack, Value="Mandatory Subject" },
+                        new CardAction(){ Title = RootDialog._storedvalues._prerequisite, Type=ActionTypes.ImBack, Value="Prerequisite" },
+                        new CardAction(){ Title = RootDialog._storedvalues._gotostart, Type=ActionTypes.ImBack, Value="Go To Start" },
+                        new CardAction(){ Title = "Help", Type=ActionTypes.ImBack, Value="Help" }
+                    }
+                };
+
+                await context.PostAsync(activity);
+                context.Wait(HandleCourseInfoOptionSelection);
+            }
+            else
+            {
+                PromptDialog.Choice<string>(
+                    context,
+                    HandleCourseInfoOptionSelection,
+                    RootDialog._storedvalues._courseInfoOptions,
+                    RootDialog._storedvalues._courseInfoSelected,                                                                                 //Course Registration
+                    RootDialog._storedvalues._invalidSelectionMessage + "[ERROR] : CourseInfoOptionSelected",          //Ooops, what you wrote is not a valid option, please try again
+                    1,
+                    PromptStyle.Auto);
+            }
 
         }
         public static async Task HandleCourseInfoOptionSelection(IDialogContext context, IAwaitable<string> result)
         {
             var value = await result;
+
+            if (value.ToString() == RootDialog._storedvalues._gotostart) await RootDialog.ShowWelcomeOptions(context);
+
+            else if (value.ToString() == RootDialog._storedvalues._help) await aboutHelp.HelpOptionSelected(context);
+
+            else
+            {
+                if (value.ToString() == RootDialog._storedvalues._openedMajorCourses) await Reply_openedMajorCourses(context);
+                else if (value.ToString() == RootDialog._storedvalues._openedLiberalArts) await Reply_openedLiberalArts(context);
+                else if (value.ToString() == RootDialog._storedvalues._syllabus) await Reply_syllabus(context);
+                else if (value.ToString() == RootDialog._storedvalues._lecturerInfo) await Reply_lecturerInfo(context);
+                else if (value.ToString() == RootDialog._storedvalues._mandatorySubject) await Reply_mandatorySubject(context);
+                else if (value.ToString() == RootDialog._storedvalues._prerequisite) await Reply_prerequisite(context);
+                else if (value.ToString() == RootDialog._storedvalues._help) await RootDialog.ShowWelcomeOptions(context);
+                else if (value.ToString() == RootDialog._storedvalues._gotostart) await RootDialog.ShowWelcomeOptions(context);
+
+                //await RootDialog.ShowWelcomeOptions(context);           //Return To Start
+                await CourseInfoOptionSelected(context);
+            }
+        }
+
+        // for facebook
+        public static async Task HandleCourseInfoOptionSelection(IDialogContext context, IAwaitable<IMessageActivity> result)
+        {
+            var myresult = await result;
+            string value = myresult.Text;
 
             if (value.ToString() == RootDialog._storedvalues._gotostart) await RootDialog.ShowWelcomeOptions(context);
 
