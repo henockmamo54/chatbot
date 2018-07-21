@@ -59,7 +59,7 @@ namespace AAR_Bot.MessageReply
                 Title = "이번학기 전공개설강의",
                 Subtitle = "이번학기 전공개설강의",          //Location of information in MJU homepage
                 Text = "이번학기 전공개설강의정보",
-                Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
+                //Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
                                                 RootDialog._storedvalues._goToButton,
                                                 value: "https://drive.google.com/open?id=1iVNvUHc2-Qs_AXWGgnXpsPx3mp0BWCK7") }
@@ -78,7 +78,7 @@ namespace AAR_Bot.MessageReply
                 Title = "이번학기 교양개설강의",
                 Subtitle = "이번학기 교양개설강의",          //Location of information in MJU homepage
                 Text = "이번학기 교양개설강의정보",
-                Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
+                //Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
                                                 RootDialog._storedvalues._goToButton,
                                                 value: "https://drive.google.com/open?id=1Q7Ej1JB2OHcBP-TjXEdZYWz8H7ncUtpd") }
@@ -97,7 +97,7 @@ namespace AAR_Bot.MessageReply
                 Title = "강의계획서",
                 Subtitle = "강의별 강의계획서",
                 Text = "강의계획서 열람 정보입니다.",
-                Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
+                //Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
                                                 RootDialog._storedvalues._goToButton,
                                                 value: "https://drive.google.com/open?id=1Yn5FBeBVedQdodPsnM3I_1kWcKyL2abM") }
@@ -116,7 +116,7 @@ namespace AAR_Bot.MessageReply
                 Title = "교수 정보",
                 Subtitle = "교수 홈페이지 검색",
                 Text = "교수 정보",
-                Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
+                //Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
                                                 RootDialog._storedvalues._goToButton,
                                                 value: "http://home.mju.ac.kr/mainIndex/searchHomepage.action") }
@@ -135,7 +135,7 @@ namespace AAR_Bot.MessageReply
                 Title = "정보통신공학과 선후수 과목정보",
                 Subtitle = "정보통신공학과 선후수 과목정보",
                 Text = "정보통신공학과 선후수 과목정보",
-                Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
+                //Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
                                                 RootDialog._storedvalues._goToButton,
                                                 value: "https://drive.google.com/open?id=1Fy7bAxihUXqlNLLToimYcKSiTHg_XdGe") }
@@ -154,7 +154,7 @@ namespace AAR_Bot.MessageReply
                 Title = "정보통신공학과 선후수 과목정보",
                 Subtitle = "정보통신공학과 선후수 과목정보",
                 Text = "정보통신공학과 선후수 과목정보",
-                Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
+                //Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
                                                 RootDialog._storedvalues._goToButton,
                                                 value: "http://www.mju.ac.kr/mbs/mjukr/images/editor/1406095802964_img_2017.jpg") }

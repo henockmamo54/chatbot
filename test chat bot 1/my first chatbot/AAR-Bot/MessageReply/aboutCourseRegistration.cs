@@ -58,7 +58,7 @@ namespace AAR_Bot.MessageReply
                 Title = "수강신청 방법",
                 Subtitle = "온라인서비스-학사운영-수강신청",          //Location of information in MJU homepage
                 Text = "수강신청 방법",
-                Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
+                //Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
                                                 RootDialog._storedvalues._goToButton,
                                                 value: "https://drive.google.com/open?id=1G4Vnh3vDnpZ5AXgwgSQy88k7wEgPermE") }
@@ -77,7 +77,7 @@ namespace AAR_Bot.MessageReply
                 Title = "수강신청 일정",
                 Subtitle = "온라인서비스-공지사항-일반공지",
                 Text = "수강신청 일정",
-                Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
+                //Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
                                                 RootDialog._storedvalues._goToButton,
                                                 value: "https://drive.google.com/open?id=1hkUuDnWVq4LgS5odnhda4CeZSkhdiET2") }
@@ -96,7 +96,7 @@ namespace AAR_Bot.MessageReply
                 Title = "명지대학교 학칙",
                 Subtitle = "2018.05.01 개정",
                 Text = "명지대학교 학칙 [ 2018.05.01 ]",
-                Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
+                //Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
                                                 RootDialog._storedvalues._goToButton,
                                                 value: "http://law.mju.ac.kr/lmxsrv/law/lawviewer.srv?lawseq=69&hseq=1571&refid=undefined") }
@@ -115,7 +115,7 @@ namespace AAR_Bot.MessageReply
                 Title = "수강신청관련 용어정리",
                 Subtitle = "수강신청관련 용어정리",
                 Text = "수강신청관련 용어정리",
-                Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
+                //Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
                                                 RootDialog._storedvalues._goToButton,
                                                 value: "https://drive.google.com/open?id=13K60TUyp8Cim21w5jFmPZ-CWR5Ub-0iHDLtl8wbN0D0") }

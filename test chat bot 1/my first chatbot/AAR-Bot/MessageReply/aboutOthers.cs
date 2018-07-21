@@ -129,7 +129,7 @@ namespace AAR_Bot.MessageReply
                 Title = "휴학 및 복학관련 정보입니다.",
                 Subtitle = "휴학 및 복학관련 정보입니다.",          //Location of information in MJU homepage
                 Text = "휴학 및 복학관련 정보입니다.",
-                Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") }, 
+                //Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") }, 
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
                                                 RootDialog._storedvalues._goToButton,
                                                 value: "https://drive.google.com/open?id=1YXE91epV_0_l8_lsgkXn1f9rYeF4_DfG") }
@@ -148,7 +148,7 @@ namespace AAR_Bot.MessageReply
                 Title = "장학금관련 정보입니다.",
                 Subtitle = "장학금관련 정보입니다.",          //Location of information in MJU homepage
                 Text = "장학금관련 정보입니다.",
-                Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
+                //Images = new List<CardImage> { new CardImage("http://www.kimaworld.net/data/file/char/3076632059_6ySVa5o9_EBAA85ECA7801.jpg") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl,
                                                 RootDialog._storedvalues._goToButton,
                                                 value: "https://drive.google.com/open?id=112Fs5ZE3ek3AzQBiCrKLXLuLxkWCPvo_") }
