@@ -21,29 +21,16 @@ namespace AAR_Bot.MessageReply
                 if (context.Activity.ChannelId == "facebook")
                 {
                     var reply = context.MakeMessage();
-                    reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                    reply.Attachments.Add(GetReceiptCard());
+                    reply.Text = RootDialog._storedvalues._reply_CurrentCredits.Replace("Guide to my graduation.", "").Trim() + " = " + RootDialog.studentinfo.totalCredits(RootDialog.stuNum).ToString() +
+                "\n\n" + RootDialog._storedvalues._reply_MajorCredits.Replace("Guide to major credit.", "").Trim() + " = " + RootDialog.studentinfo.totalMajorCredits(RootDialog.stuNum).ToString() +
+                "\n\n" + RootDialog._storedvalues._reply_LiberalArtsCredits.Replace("Guide to major credit.", "").Trim() + " = " + RootDialog.studentinfo.totalElectiveCredits(RootDialog.stuNum).ToString();
+
+                    //reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+                    //reply.Attachments.Add(GetReceiptCard());
                     await context.PostAsync(reply);
 
+                    await showbuttonOptions(context);
 
-                    var activity = context.MakeMessage();
-                    activity.Text = RootDialog._storedvalues._courseInfoSelected.Replace("\n", "\n\n ");
-                    activity.SuggestedActions = new SuggestedActions()
-                    {
-                        Actions = new List<CardAction>()
-                    {
-                        new CardAction(){ Title = RootDialog._storedvalues._currentCredits, Type=ActionTypes.ImBack, Value= RootDialog._storedvalues._currentCredits },
-                        new CardAction(){ Title = RootDialog._storedvalues._majorCredits, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._majorCredits },
-                        new CardAction(){ Title = RootDialog._storedvalues._liberalArtsCredits, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._liberalArtsCredits },
-                        new CardAction(){ Title = RootDialog._storedvalues._changeStuNum, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._changeStuNum},
-                       
-                        new CardAction(){ Title = RootDialog._storedvalues._gotostart, Type=ActionTypes.ImBack, Value="Go To Start" },
-                        new CardAction(){ Title = "Help", Type=ActionTypes.ImBack, Value="Help" }
-                    }
-                    };
-
-                    await context.PostAsync(activity);
-                    context.Wait(HandleCreditsOptionSelection);
                 }
                 else
                 {
@@ -61,25 +48,42 @@ namespace AAR_Bot.MessageReply
 
         }
 
+        public static async Task showbuttonOptions(IDialogContext context)
+        {
+            var activity = context.MakeMessage();
+            activity.Text = RootDialog._storedvalues._courseInfoSelected.Replace("\n", "\n\n ");
+            activity.SuggestedActions = new SuggestedActions()
+            {
+                Actions = new List<CardAction>()
+                    {
+                        new CardAction(){ Title = RootDialog._storedvalues._currentCredits, Type=ActionTypes.ImBack, Value= RootDialog._storedvalues._currentCredits },
+                        new CardAction(){ Title = RootDialog._storedvalues._majorCredits, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._majorCredits },
+                        new CardAction(){ Title = RootDialog._storedvalues._liberalArtsCredits, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._liberalArtsCredits },
+                        new CardAction(){ Title = RootDialog._storedvalues._changeStuNum, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._changeStuNum},
+
+                        new CardAction(){ Title = RootDialog._storedvalues._gotostart, Type=ActionTypes.ImBack, Value="Go To Start" },
+                        new CardAction(){ Title = "Help", Type=ActionTypes.ImBack, Value="Help" }
+                    }
+            };
+
+            await context.PostAsync(activity);
+            context.Wait(HandleCreditsOptionSelection);
+        }
 
         public static Attachment GetReceiptCard()
         {
-            var receiptCard = new ReceiptCard
+
+            var heroCard = new HeroCard
             {
-                //Title = "John Doe",
-                //Facts = new List<Fact> { new Fact("Order Number", "1234"), new Fact("Payment Method", "VISA 5555-****") },
-                Items = new List<ReceiptItem>
-                {
-                    new ReceiptItem(RootDialog._storedvalues._reply_CurrentCredits.Replace("Guide to my graduation.","").Trim(), price: RootDialog.studentinfo.totalCredits(RootDialog.stuNum).ToString()),
-                    new ReceiptItem(RootDialog._storedvalues._reply_MajorCredits.Replace("Guide to major credit.","").Trim(), price: RootDialog.studentinfo.totalMajorCredits(RootDialog.stuNum).ToString()),
-                    new ReceiptItem(RootDialog._storedvalues._reply_LiberalArtsCredits.Replace("Guidance on Liberal Arts credits.".Trim(),""), price: RootDialog.studentinfo.totalElectiveCredits(RootDialog.stuNum).ToString()),
-                    //new ReceiptItem("App Service", price: "$ 45.00", quantity: "720", image: new CardImage(url: "https://github.com/amido/azure-vector-icons/raw/master/renders/cloud-service.png")),
-                },
-                //Tax = "$ 7.50",
-                //Total = "$ 90.95",
+                Title = "Credit hour information",
+                Text = RootDialog._storedvalues._reply_CurrentCredits.Replace("Guide to my graduation.", "").Trim() + " = " + RootDialog.studentinfo.totalCredits(RootDialog.stuNum).ToString() +
+                "\n\n" + RootDialog._storedvalues._reply_MajorCredits.Replace("Guide to major credit.", "").Trim() + " = " + RootDialog.studentinfo.totalMajorCredits(RootDialog.stuNum).ToString() +
+                "\n\n" + RootDialog._storedvalues._reply_LiberalArtsCredits.Replace("Guide to major credit.", "").Trim() + " = " + RootDialog.studentinfo.totalElectiveCredits(RootDialog.stuNum).ToString()
+
             };
 
-            return receiptCard.ToAttachment();
+            return heroCard.ToAttachment();
+
         }
 
         public static async Task HandleCreditsOptionSelection(IDialogContext context, IAwaitable<string> result)
