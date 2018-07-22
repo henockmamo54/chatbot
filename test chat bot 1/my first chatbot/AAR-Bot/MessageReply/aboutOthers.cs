@@ -12,9 +12,33 @@ namespace AAR_Bot.MessageReply
 {
     public static class aboutOthers
     {
+
         public static async Task OtherOptionSelected(IDialogContext context)
         {
-            PromptDialog.Choice<string>(
+            if (context.Activity.ChannelId == "facebook")
+            {
+                var activity = context.MakeMessage();
+                activity.Text = RootDialog._storedvalues._otherOptionSelected.Replace("\n", "\n\n ");
+                activity.SuggestedActions = new SuggestedActions()
+                {
+                    Actions = new List<CardAction>()
+                    {
+                        new CardAction(){ Title = RootDialog._storedvalues._leaveOrReadmission, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._leaveOrReadmission },
+                        new CardAction(){ Title = RootDialog._storedvalues._scholarship, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._scholarship },
+                        new CardAction(){ Title = RootDialog._storedvalues._restaurantMenu, Type=ActionTypes.ImBack, Value= RootDialog._storedvalues._restaurantMenu},
+                        new CardAction(){ Title = RootDialog._storedvalues._libraryInfo, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._libraryInfo },
+                        new CardAction(){ Title = RootDialog._storedvalues._gotostart, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._gotostart },
+                        new CardAction(){ Title = RootDialog._storedvalues._help, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._help }
+                    }
+                };
+
+                await context.PostAsync(activity);
+                context.Wait(HandleOtherOptionSelection);
+            }
+            else
+            {
+
+                PromptDialog.Choice<string>(
                 context,
                 HandleOtherOptionSelection,
                 RootDialog._storedvalues._othersOption,
@@ -23,10 +47,35 @@ namespace AAR_Bot.MessageReply
                 1,
                 PromptStyle.Auto);
 
+            }
+
         }
         public static async Task HandleOtherOptionSelection(IDialogContext context, IAwaitable<string> result)
         {
             var value = await result;
+
+            if (value.ToString() == RootDialog._storedvalues._gotostart) await RootDialog.ShowWelcomeOptions(context);
+
+            else if (value.ToString() == RootDialog._storedvalues._help) await aboutHelp.HelpOptionSelected(context);
+
+            else
+            {
+                if (value.ToString() == RootDialog._storedvalues._leaveOrReadmission) await Reply_leaveOrReadmission(context);
+                else if (value.ToString() == RootDialog._storedvalues._scholarship) await Reply_scholarship(context);
+                else if (value.ToString() == RootDialog._storedvalues._restaurantMenu) await Reply_restaurantMenu(context);
+                else if (value.ToString() == RootDialog._storedvalues._libraryInfo) await Reply_libraryInfo(context);
+
+
+                //await RootDialog.ShowWelcomeOptions(context);           //Return To Start
+                await OtherOptionSelected(context);
+            }
+        }
+
+        //for facebook
+        public static async Task HandleOtherOptionSelection(IDialogContext context, IAwaitable<IMessageActivity> result)
+        {
+            var myresult = await result;
+            string value = myresult.Text;
 
             if (value.ToString() == RootDialog._storedvalues._gotostart) await RootDialog.ShowWelcomeOptions(context);
 

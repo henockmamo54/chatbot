@@ -20,12 +20,12 @@ namespace AAR_Bot.MessageReply
                 {
                     Actions = new List<CardAction>()
                     {
-                        new CardAction(){ Title = RootDialog._storedvalues._howToDoIt, Type=ActionTypes.ImBack, Value="How to register" },
-                        new CardAction(){ Title = RootDialog._storedvalues._schedule, Type=ActionTypes.ImBack, Value="Schedule" },
-                        new CardAction(){ Title = RootDialog._storedvalues._regulation, Type=ActionTypes.ImBack, Value="Regulation" },
-                        new CardAction(){ Title = RootDialog._storedvalues._terms, Type=ActionTypes.ImBack, Value="Terms" },
-                        new CardAction(){ Title = RootDialog._storedvalues._gotostart, Type=ActionTypes.ImBack, Value="Go To Start" },
-                        new CardAction(){ Title = "Help", Type=ActionTypes.ImBack, Value="Help" }
+                        new CardAction(){ Title = RootDialog._storedvalues._howToDoIt, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._howToDoIt },
+                        new CardAction(){ Title = RootDialog._storedvalues._schedule, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._schedule },
+                        new CardAction(){ Title = RootDialog._storedvalues._regulation, Type=ActionTypes.ImBack, Value= RootDialog._storedvalues._regulation },
+                        new CardAction(){ Title = RootDialog._storedvalues._terms, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._terms },
+                        new CardAction(){ Title = RootDialog._storedvalues._gotostart, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._gotostart },
+                        new CardAction(){ Title = RootDialog._storedvalues._help, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._help }
                     }
                 };
 

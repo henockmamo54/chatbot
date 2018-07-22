@@ -53,12 +53,13 @@ namespace AAR_Bot.Dialogs
                 {
                     Actions = new List<CardAction>()
                     {
-                        new CardAction(){ Title = "Registration info.", Type=ActionTypes.ImBack, Value="Course Registration" },
-                        new CardAction(){ Title = "Course related info", Type=ActionTypes.ImBack, Value="Subject related information" },
-                        new CardAction(){ Title = "Credit management", Type=ActionTypes.ImBack, Value="credit" },
-                        new CardAction(){ Title = "Help", Type=ActionTypes.ImBack, Value="Help" },
-                        new CardAction(){ Title = "English", Type=ActionTypes.ImBack, Value="Help" },
-                        new CardAction(){ Title = "Korean", Type=ActionTypes.ImBack, Value="Help" }
+                        new CardAction(){ Title = _storedvalues._courseRegistration, Type=ActionTypes.ImBack, Value=_storedvalues._courseRegistration },
+                        new CardAction(){ Title = _storedvalues._courseInformation, Type=ActionTypes.ImBack, Value=_storedvalues._courseInformation },
+                        new CardAction(){ Title = _storedvalues._credits, Type=ActionTypes.ImBack, Value=_storedvalues._credits },
+                        new CardAction(){ Title = _storedvalues._others, Type=ActionTypes.ImBack, Value= _storedvalues._others },
+                        new CardAction(){ Title = RootDialog._storedvalues._help, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._help },
+                        new CardAction(){ Title = "English", Type=ActionTypes.ImBack, Value="English" },
+                        new CardAction(){ Title = "한국어", Type=ActionTypes.ImBack, Value="한국어" }
                     }
                 };
             }
