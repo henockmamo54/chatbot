@@ -119,7 +119,8 @@ namespace AAR_Bot.Helper.StoredStringValues
             _goToButton = "Goto Info";
 
             //aboutCourseInfo
-            _courseInfoSelected = "You have selected lecture information.\nPlease select details.";
+            //_courseInfoSelected = "You have selected lecture information.\nPlease select details.";
+            _courseInfoSelected = "What do you most want to know about?";
 
             _reply_openedLiberalArts = $"This is a guide for this semester opened LiberalArts.\n";
 
@@ -143,7 +144,8 @@ namespace AAR_Bot.Helper.StoredStringValues
 
 
             //aboutCourseRegistration
-            _courseRegistrationSelected = "You have selected to enroll.\nPlease select the details.";
+            //_courseRegistrationSelected = "You have selected to enroll.\nPlease select the details.";
+            _courseRegistrationSelected = "What do you most want to know about?";
 
 
             _reply_HowToDoIt = $"Instructions on how to enroll\n" +
@@ -163,7 +165,8 @@ namespace AAR_Bot.Helper.StoredStringValues
 
 
             //aboutCredits
-            _creditsOptionSelected = "You have selected credit management.\nPlease select the details.";
+            //_creditsOptionSelected = "You have selected credit management.\nPlease select the details.";
+            _creditsOptionSelected = "What do you most want to know about?";
 
 
             _reply_CurrentCredits = $"Guide to my graduation.\n" +
@@ -183,20 +186,19 @@ namespace AAR_Bot.Helper.StoredStringValues
 
 
             //aboutOthers
-            _otherOptionSelected = "You have selected other information.\nPlease select the details.";
+            //_otherOptionSelected = "You have selected other information.\nPlease select the details.";
+            _otherOptionSelected = "What do you most want to know about?";
 
 
             _reply_leaveOrReadmission = $"This is information about the leave and returning information. \n";
-
-
             _reply_Scholarship = $"Information on scholarship information. \n";
 
 
             //aboutHelp
-            _helpOptionSelected = "AAR3 help, what can I do for you?";
+            _helpOptionSelected = "AAR help, what can I do for you?";
 
 
-            _reply_Introduction = $"A guide to AAR3\n" +
+            _reply_Introduction = $"A guide to AAR\n" +
                                 $"AAR3 can help you to apply for water and manage your credit.\n" +
                                 $"Select the data in the archive.\n" +
                                 $"The selection has now returned to the beginning.\n" +
