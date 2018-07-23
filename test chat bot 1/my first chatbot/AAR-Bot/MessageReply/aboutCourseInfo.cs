@@ -92,18 +92,15 @@ namespace AAR_Bot.MessageReply
 
             else
             {
-                if (value.ToString() == RootDialog._storedvalues._openedMajorCourses) await Reply_openedMajorCourses(context);
-                else if (value.ToString() == RootDialog._storedvalues._openedLiberalArts) await Reply_openedLiberalArts(context);
-                else if (value.ToString() == RootDialog._storedvalues._syllabus) await Reply_syllabus(context);
-                else if (value.ToString() == RootDialog._storedvalues._lecturerInfo) await Reply_lecturerInfo(context);
-                else if (value.ToString() == RootDialog._storedvalues._mandatorySubject) await Reply_mandatorySubject(context);
-                else if (value.ToString() == RootDialog._storedvalues._prerequisite) await Reply_prerequisite(context);
-                else if (value.ToString() == RootDialog._storedvalues._help) await RootDialog.ShowWelcomeOptions(context);
-                else if (value.ToString() == RootDialog._storedvalues._gotostart) await RootDialog.ShowWelcomeOptions(context);
-
-                //await RootDialog.ShowWelcomeOptions(context);           //Return To Start
-                //await CourseInfoOptionSelected(context);
-                await showOptions(context);
+                if (value.ToString() == RootDialog._storedvalues._openedMajorCourses) { await Reply_openedMajorCourses(context); await CourseInfoOptionSelected(context); }
+                else if (value.ToString() == RootDialog._storedvalues._openedLiberalArts) { await Reply_openedLiberalArts(context); await CourseInfoOptionSelected(context); }
+                else if (value.ToString() == RootDialog._storedvalues._syllabus) { await Reply_syllabus(context); await CourseInfoOptionSelected(context); }
+                else if (value.ToString() == RootDialog._storedvalues._lecturerInfo) { await Reply_lecturerInfo(context); await CourseInfoOptionSelected(context); }
+                else if (value.ToString() == RootDialog._storedvalues._mandatorySubject) { await Reply_mandatorySubject(context); await CourseInfoOptionSelected(context); }
+                else if (value.ToString() == RootDialog._storedvalues._prerequisite) { await Reply_prerequisite(context); await CourseInfoOptionSelected(context); }
+                else if (value.ToString() == RootDialog._storedvalues._help) { await RootDialog.ShowWelcomeOptions(context); await CourseInfoOptionSelected(context); }
+                else if (value.ToString() == RootDialog._storedvalues._gotostart) { await RootDialog.ShowWelcomeOptions(context); await CourseInfoOptionSelected(context); }
+                else await LuisDialog.MessageReceivedAsync(context, result);
             }
         }
 

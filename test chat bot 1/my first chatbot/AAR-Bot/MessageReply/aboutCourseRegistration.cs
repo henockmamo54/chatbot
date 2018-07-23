@@ -33,7 +33,7 @@ namespace AAR_Bot.MessageReply
                 context.Wait(HandleCourseRegistrationOptionSelection);
             }
             else
-            {
+            {// for other channels
                 PromptDialog.Choice<string>(
                     context,
                     HandleCourseRegistrationOptionSelection,
@@ -73,21 +73,18 @@ namespace AAR_Bot.MessageReply
             string value = myresult.Text;
 
             if (value.ToString() == RootDialog._storedvalues._gotostart) await RootDialog.ShowWelcomeOptions(context);
-
             else if (value.ToString() == RootDialog._storedvalues._help) await aboutHelp.HelpOptionSelected(context);
-
             else
             {
-                if (value.ToString() == RootDialog._storedvalues._howToDoIt) await Reply_howToDoIt(context);      //각각의 메서드에 연결
-                else if (value.ToString() == RootDialog._storedvalues._schedule) await Reply_schedule(context);     //각각의 Dialog로 연결하는 것 보다 편한듯
-                else if (value.ToString() == RootDialog._storedvalues._regulation) await Reply_regulation(context);
-                else if (value.ToString() == RootDialog._storedvalues._terms) await Reply_terms(context);
-
-
-                //await RootDialog.ShowWelcomeOptions(context);                  //Return To Start
-                await aboutCourseRegistration.CourseRegistraionOptionSelected(context);
+                if (value.ToString() == RootDialog._storedvalues._howToDoIt) { await Reply_howToDoIt(context); await aboutCourseRegistration.CourseRegistraionOptionSelected(context); }     //각각의 메서드에 연결
+                else if (value.ToString() == RootDialog._storedvalues._schedule) { await Reply_schedule(context); await aboutCourseRegistration.CourseRegistraionOptionSelected(context); }    //각각의 Dialog로 연결하는 것 보다 편한듯
+                else if (value.ToString() == RootDialog._storedvalues._regulation) { await Reply_regulation(context); await aboutCourseRegistration.CourseRegistraionOptionSelected(context); }
+                else if (value.ToString() == RootDialog._storedvalues._terms) { await Reply_terms(context); await aboutCourseRegistration.CourseRegistraionOptionSelected(context); }
+                //else context.Call(new LuisDialog(), LuisDialogResumeAfter);
+                else await LuisDialog.MessageReceivedAsync(context, result);
             }
         }
+        
 
 
         //================================================================================================================================================

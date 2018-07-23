@@ -83,14 +83,11 @@ namespace AAR_Bot.MessageReply
 
             else
             {
-                if (value.ToString() == RootDialog._storedvalues._leaveOrReadmission) await Reply_leaveOrReadmission(context);
-                else if (value.ToString() == RootDialog._storedvalues._scholarship) await Reply_scholarship(context);
-                else if (value.ToString() == RootDialog._storedvalues._restaurantMenu) await Reply_restaurantMenu(context);
-                else if (value.ToString() == RootDialog._storedvalues._libraryInfo) await Reply_libraryInfo(context);
-
-
-                //await RootDialog.ShowWelcomeOptions(context);           //Return To Start
-                await OtherOptionSelected(context);
+                if (value.ToString() == RootDialog._storedvalues._leaveOrReadmission) { await Reply_leaveOrReadmission(context); await OtherOptionSelected(context); }
+                else if (value.ToString() == RootDialog._storedvalues._scholarship) { await Reply_scholarship(context);await OtherOptionSelected(context); }
+                else if (value.ToString() == RootDialog._storedvalues._restaurantMenu) { await Reply_restaurantMenu(context); await OtherOptionSelected(context); }
+                else if (value.ToString() == RootDialog._storedvalues._libraryInfo) { await Reply_libraryInfo(context); await OtherOptionSelected(context); }
+                else await LuisDialog.MessageReceivedAsync(context, result);
             }
         }
 

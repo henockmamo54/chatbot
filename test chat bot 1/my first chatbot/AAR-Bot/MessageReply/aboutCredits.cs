@@ -70,22 +70,6 @@ namespace AAR_Bot.MessageReply
             context.Wait(HandleCreditsOptionSelection);
         }
 
-        public static Attachment GetReceiptCard()
-        {
-
-            var heroCard = new HeroCard
-            {
-                Title = "Credit hour information",
-                Text = RootDialog._storedvalues._reply_CurrentCredits.Replace("Guide to my graduation.", "").Trim() + " = " + RootDialog.studentinfo.totalCredits(RootDialog.stuNum).ToString() +
-                "\n\n" + RootDialog._storedvalues._reply_MajorCredits.Replace("Guide to major credit.", "").Trim() + " = " + RootDialog.studentinfo.totalMajorCredits(RootDialog.stuNum).ToString() +
-                "\n\n" + RootDialog._storedvalues._reply_LiberalArtsCredits.Replace("Guide to major credit.", "").Trim() + " = " + RootDialog.studentinfo.totalElectiveCredits(RootDialog.stuNum).ToString()
-
-            };
-
-            return heroCard.ToAttachment();
-
-        }
-
         public static async Task HandleCreditsOptionSelection(IDialogContext context, IAwaitable<string> result)
         {
             var value = await result;
@@ -131,13 +115,10 @@ namespace AAR_Bot.MessageReply
                 }
                 else
                 {
-                    if (value.ToString() == RootDialog._storedvalues._currentCredits) await Reply_currentCredits(context);
-                    else if (value.ToString() == RootDialog._storedvalues._majorCredits) await Reply_majorCredits(context);
-                    else if (value.ToString() == RootDialog._storedvalues._liberalArtsCredits) await Reply_liberalArtsCredits(context);
-
-
-                    //await RootDialog.ShowWelcomeOptions(context);           //Return To Start
-                    aboutCredits.CreditsOptionSelected(context);
+                    if (value.ToString() == RootDialog._storedvalues._currentCredits) { await Reply_currentCredits(context); await CreditsOptionSelected(context); }
+                    else if (value.ToString() == RootDialog._storedvalues._majorCredits) { await Reply_majorCredits(context); await CreditsOptionSelected(context); }
+                    else if (value.ToString() == RootDialog._storedvalues._liberalArtsCredits) { await Reply_liberalArtsCredits(context); await CreditsOptionSelected(context); }
+                    else await LuisDialog.MessageReceivedAsync(context, result);
                 }
             }
         }

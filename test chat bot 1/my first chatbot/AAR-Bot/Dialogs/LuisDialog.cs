@@ -19,7 +19,7 @@ namespace AAR_Bot.Dialogs
             context.Wait(MessageReceivedAsync);
         }
 
-        private async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> result)
+        public static async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> result)
         {
             var value = await result;
             // first work check local data for the common words 
