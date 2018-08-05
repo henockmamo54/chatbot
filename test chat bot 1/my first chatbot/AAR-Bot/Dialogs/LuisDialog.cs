@@ -64,6 +64,11 @@ namespace AAR_Bot.Dialogs
                         }
                         break;
                     }
+                case "Greetings":
+                    {
+                        await RootDialog.ShowWelcomeOptions(context);
+                        break;
+                    }
                 case "Number":
                     {
                         switch (obj.entities[0].entity)
