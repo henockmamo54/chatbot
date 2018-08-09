@@ -53,9 +53,17 @@ namespace AAR_Bot.Helper.StoredStringValues
                                         $"▶ 3. Credit management \n" +
                                         $"▶ 4. Other information \n" +
                                         $"▶ 5. Help \n" +
-                                        
+
                                         $"▶ To change the language,Go to the [Help] -> [한국어] \n";
-                                        
+
+            _typePleaseWelcome2 =       $"(you can type or input the numbers for the menus)  \n\n" +
+                                        $"▶ 1. Course Registration Information \n" +
+                                        $"▶ 2. Subject related information \n" +
+                                        $"▶ 3. Credit management \n" +
+                                        $"▶ 4. Other information \n" +
+                                        $"▶ 5. Help \n" +
+                                        $"▶ To change the language,Go to the [Help] -> [한국어] \n";
+
             //_typePleaseWelcome = $"Welcome to AAR chat service. \n" +
             //                            //$"▶ Select the number of the inquiry or" +
             //                            $"Please enter your question \n \n" +

@@ -95,7 +95,42 @@ namespace AAR_Bot.Dialogs
                     }
                 };
             }
-            else activity.Text = _storedvalues._typePleaseWelcome;      
+            else activity.Text = _storedvalues._typePleaseWelcome;
+
+            await context.PostAsync(activity);
+
+            context.Call(new LuisDialog(), LuisDialogResumeAfter);
+
+        }
+
+        public static async Task ShowWelcomeOptions(IDialogContext context,string message)
+        {
+            var activity = context.MakeMessage();
+
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            StoredStringValuesMaster _storedvalues = new StoredStringValuesMaster();
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
+
+            if (activity.ChannelId == "facebook")
+            {
+                activity.Text = message;
+                activity.SuggestedActions = new SuggestedActions()
+                {
+                    Actions = new List<CardAction>()
+                    {
+                        new CardAction(){ Title = _storedvalues._courseRegistration, Type=ActionTypes.ImBack, Value=_storedvalues._courseRegistration },
+                        new CardAction(){ Title = _storedvalues._courseInformation, Type=ActionTypes.ImBack, Value=_storedvalues._courseInformation },
+                        new CardAction(){ Title = _storedvalues._credits, Type=ActionTypes.ImBack, Value=_storedvalues._credits },
+                        new CardAction(){ Title = _storedvalues._others, Type=ActionTypes.ImBack, Value= _storedvalues._others },
+                        new CardAction(){ Title = _storedvalues._help, Type=ActionTypes.ImBack, Value=_storedvalues._help },
+                        new CardAction(){ Title = "English", Type=ActionTypes.ImBack, Value="English" },
+                        new CardAction(){ Title = "한국어", Type=ActionTypes.ImBack, Value="한국어" }
+                    }
+                };
+            }
+            else activity.Text = message + _storedvalues._typePleaseWelcome2;
 
             await context.PostAsync(activity);
 

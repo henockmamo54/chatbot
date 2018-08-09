@@ -15,7 +15,7 @@ namespace AAR_Bot.Dialogs
     public class LuisDialog : IDialog<object>
     {
         static StoredStringValuesMaster _storedvalues;
-        string lang ="";
+        string lang = "";
         public async Task StartAsync(IDialogContext context)
         {
             if (context.PrivateConversationData.TryGetValue<string>("_storedvalues", out lang))
@@ -27,7 +27,7 @@ namespace AAR_Bot.Dialogs
             {
                 _storedvalues = new StoredValues_en();          //Default language is korean
                 context.PrivateConversationData.SetValue("_storedvalues", "StoredValues_en");
-            }            
+            }
 
             context.Wait(MessageReceivedAsync);
         }
@@ -45,16 +45,6 @@ namespace AAR_Bot.Dialogs
                 obj = await LUISService.GetEntityFromLUIS(value.Text);
             }
 
-            //switch (value.Text.ToString())
-            //{
-            //    case "1": await aboutCourseRegistration.CourseRegistraionOptionSelected(context); break;
-            //    case "2": await aboutCourseInfo.CourseInfoOptionSelected(context); break;
-            //    case "3": await aboutCredits.CreditsOptionSelected(context); break;
-            //    case "4": await aboutOthers.OtherOptionSelected(context); break;
-            //    case "5": await aboutHelp.HelpOptionSelected(context); break;
-            //    default: { await context.PostAsync("For now the chat bot works only for number inputs. \nWe are working on LUIS Integration. Thank you for your understanding.");
-            //            context.Done(obj.topScoringIntent.ToString()); break; }
-            //}
 
             switch (obj.topScoringIntent.intent)
             {
@@ -81,28 +71,20 @@ namespace AAR_Bot.Dialogs
                     }
                 case "Greetings":
                     {
-                        var reply = context.MakeMessage();
-                        reply.Text = "Hi there, i am an acadamic advisor bot. what can i help you?";
-                        await context.PostAsync(reply);
-                        await RootDialog.ShowWelcomeOptions(context);
+                        var mymsg = "Hi there, i am an acadamic advisor bot. what can i help you? ";
+                        await RootDialog.ShowWelcomeOptions(context, mymsg);
                         break;
                     }
                 case "State":
                     {
-                        var reply = context.MakeMessage();
-                        reply.Text = "I am fine. what can i help you?";
-                        await context.PostAsync(reply);
-
-                        await RootDialog.ShowWelcomeOptions(context);
+                        var mymsg = "I am fine. what can i help you? ";
+                        await RootDialog.ShowWelcomeOptions(context, mymsg);
                         break;
                     }
                 case "Identity":
                     {
-                        var reply = context.MakeMessage();
-                        reply.Text = "I am an acadamic advisor bot. what can i help you?";
-                        await context.PostAsync(reply);
-
-                        await RootDialog.ShowWelcomeOptions(context);
+                        var mymsg = "I am an acadamic advisor bot. what can i help you? ";
+                        await RootDialog.ShowWelcomeOptions(context, mymsg);
                         break;
                     }
                 case "Number":
@@ -150,9 +132,9 @@ namespace AAR_Bot.Dialogs
                         {
                             switch (obj.entities[0].type)
                             {
-                                case "openedmajor": await aboutCourseInfo.Reply_openedMajorCourses(context); await aboutCourseInfo.CourseInfoOptionSelected(context,false); break;
-                                case "openedliberalarts": await aboutCourseInfo.Reply_openedLiberalArts(context); await aboutCourseInfo.CourseInfoOptionSelected(context,false); break;
-                                case "syllabus": await aboutCourseInfo.Reply_syllabus(context); await aboutCourseInfo.CourseInfoOptionSelected(context,false); break;
+                                case "openedmajor": await aboutCourseInfo.Reply_openedMajorCourses(context); await aboutCourseInfo.CourseInfoOptionSelected(context, false); break;
+                                case "openedliberalarts": await aboutCourseInfo.Reply_openedLiberalArts(context); await aboutCourseInfo.CourseInfoOptionSelected(context, false); break;
+                                case "syllabus": await aboutCourseInfo.Reply_syllabus(context); await aboutCourseInfo.CourseInfoOptionSelected(context, false); break;
                                 case "lectureinfo": await aboutCourseInfo.Reply_lecturerInfo(context); await aboutCourseInfo.CourseInfoOptionSelected(context, false); break;
                                 case "mandatorysubject": await aboutCourseInfo.Reply_mandatorySubject(context); await aboutCourseInfo.CourseInfoOptionSelected(context, false); break;
                                 case "prerequisite": await aboutCourseInfo.Reply_prerequisite(context); await aboutCourseInfo.CourseInfoOptionSelected(context, false); break;
@@ -184,7 +166,7 @@ namespace AAR_Bot.Dialogs
 
                 default:
                     {
-                        await context.PostAsync("For now the chat bot works only for number inputs. \nWe are working on LUIS Integration. Thank you for your understanding.");
+                        await context.PostAsync("Sorry, i didn't understand your inquiry :( \n For now the chat bot works only for number inputs. \nWe are working on LUIS Integration. Thank you for your understanding.");
                         context.Done(obj.topScoringIntent.ToString()); break;
                     }
             }

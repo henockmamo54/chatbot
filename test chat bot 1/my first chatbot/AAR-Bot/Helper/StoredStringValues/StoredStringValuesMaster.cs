@@ -57,16 +57,22 @@ namespace AAR_Bot.Helper.StoredStringValues
                                     $"▶ 5. 도움말\n" +
 
                                     $" ※ 명지대학교 홈페이지\n" +
-                                    $" ■ https://www.mju.ac.kr \n" +
-                                    $" ※ Github for AAR\n" +
-                                    $" ■ https://github.com/MJUKJE/chatbot/blob/dev/README.md \n" +
+                                    $" ■ https://www.mju.ac.kr \n"; // +
+                                                                    //$" ※ Github for AAR\n" +
+                                                                    //$" ■ https://github.com/MJUKJE/chatbot/blob/dev/README.md \n" +
 
-                                    $"▶ 학점 관리항목은\n      학번입력이 필요합니다.\n" +
-                                    $"▶ [처음으로]나 초기메뉴를 입력시\n      처음으로 돌아가실 수 있습니다.\n" +
-                                    $"▶ Go to the [도움말] -> [English]\n      Language conversion is\n      possible :).\n" +
-                                    $"▶ 버튼메뉴는 빠르고 편리합니다.\n" +
-                                    $"▶ 추후 계속 업데이트 예정.\n";
-
+        //$"▶ 학점 관리항목은\n      학번입력이 필요합니다.\n" +
+        //$"▶ [처음으로]나 초기메뉴를 입력시\n      처음으로 돌아가실 수 있습니다.\n" +
+        //$"▶ Go to the [도움말] -> [English]\n      Language conversion is\n      possible :).\n" +
+        //$"▶ 버튼메뉴는 빠르고 편리합니다.\n" +
+        //$"▶ 추후 계속 업데이트 예정.\n";
+        public string _typePleaseWelcome2 =       $"(you can type or input the numbers for the menus)  \n\n" +
+                                        $"▶ 1. Course Registration Information \n" +
+                                        $"▶ 2. Subject related information \n" +
+                                        $"▶ 3. Credit management \n" +
+                                        $"▶ 4. Other information \n" +
+                                        $"▶ 5. Help \n" +
+                                        $"▶ To change the language,Go to the [Help] -> [한국어] \n";
 
 
         public string _typePleaseCourseRegistration = $"▶ 수강신청 메뉴 입니다.\n" +
