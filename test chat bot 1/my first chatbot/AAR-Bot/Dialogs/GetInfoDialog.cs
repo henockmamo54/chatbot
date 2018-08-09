@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
+using AAR_Bot.Helper.StoredStringValues;
 
 namespace AAR_Bot.Dialogs
 {
@@ -9,8 +10,14 @@ namespace AAR_Bot.Dialogs
     public class GetInfoDialog : IDialog<int>
     {
         private int attempts = 3;
+        static StoredStringValuesMaster _storedvalues;
         public async Task StartAsync(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            var langtype = new StoredStringValuesMaster();
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+
             context.Wait(MessageReceivedAsync);
         }
 
@@ -29,7 +36,7 @@ namespace AAR_Bot.Dialogs
                 --attempts;
                 if (attempts > 0)
                 {
-                    await context.PostAsync(RootDialog._storedvalues._getStudentNumFail);
+                    await context.PostAsync(_storedvalues._getStudentNumFail);
 
                     context.Wait(this.MessageReceivedAsync);
                 }
