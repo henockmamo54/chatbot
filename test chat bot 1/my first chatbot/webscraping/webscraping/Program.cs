@@ -158,7 +158,7 @@ namespace webscraping
                 watermark = ""
             };
 
-            await myDbService.SetInfoAsync(conversationinfo, "FoodMenu");
+            await myDbService.SetInfoAsync(conversationinfo, "FoodMenu2");
 
             Console.WriteLine();
         }
@@ -213,7 +213,7 @@ namespace webscraping
                 watermark = ""
             };
 
-            await myDbService.SetInfoAsync(conversationinfo, "FoodMenu");
+            await myDbService.SetInfoAsync(conversationinfo, "FoodMenu3");
 
             Console.WriteLine();
         }
@@ -298,7 +298,7 @@ namespace webscraping
                 watermark = ""
             };
 
-            await myDbService.SetInfoAsync(conversationinfo, "FoodMenu");
+            await myDbService.SetInfoAsync(conversationinfo, "FoodMenu4");
 
             Console.WriteLine();
         }
