@@ -18,8 +18,16 @@ namespace webscraping
         public static List<FoodMenu> weeklyFoodMenu = new List<FoodMenu>();
         static void Main(string[] args)
         {
-            var x = getRestaurant4Menu();
-            x.Wait();
+            // get restaurant menu
+            var menu1 = getRestaurantMenu();
+            menu1.Wait();
+            var menu2 = getRestaurant2Menu();
+            menu2.Wait();
+            var menu3 = getRestaurant3Menu();
+            menu3.Wait();
+            var menu4 = getRestaurant4Menu();
+            menu4.Wait();
+
 
             var y = getLibraryInfo();
             y.Wait();
