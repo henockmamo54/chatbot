@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webscraping", "webscraping\webscraping.csproj", "{F9CDE9E1-D251-4166-B41F-9BDCBD43CE18}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{B14EE129-52CC-4DAF-A874-3E67C1E5D2E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsService1", "WindowsService1\WindowsService1.csproj", "{293A1E56-4B6F-499C-95DB-E50B0C768577}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,12 @@ Global
 		{F9CDE9E1-D251-4166-B41F-9BDCBD43CE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9CDE9E1-D251-4166-B41F-9BDCBD43CE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9CDE9E1-D251-4166-B41F-9BDCBD43CE18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B14EE129-52CC-4DAF-A874-3E67C1E5D2E2}.Debug|Any CPU.ActiveCfg = Debug
+		{B14EE129-52CC-4DAF-A874-3E67C1E5D2E2}.Release|Any CPU.ActiveCfg = Release
+		{293A1E56-4B6F-499C-95DB-E50B0C768577}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{293A1E56-4B6F-499C-95DB-E50B0C768577}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{293A1E56-4B6F-499C-95DB-E50B0C768577}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{293A1E56-4B6F-499C-95DB-E50B0C768577}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

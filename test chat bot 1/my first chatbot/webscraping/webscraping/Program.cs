@@ -11,12 +11,17 @@ using webscraping.Models;
 
 namespace webscraping
 {
-    class Program
+    public class Program
     {
         public static CosmosDBService myDbService = new CosmosDBService();
 
         public static List<FoodMenu> weeklyFoodMenu = new List<FoodMenu>();
         static void Main(string[] args)
+        {
+            runTheAction();
+        }
+
+        public static void runTheAction()
         {
             // get restaurant menu
             var menu1 = getRestaurantMenu();
@@ -31,8 +36,8 @@ namespace webscraping
 
             var y = getLibraryInfo();
             y.Wait();
-
         }
+
         public static async Task getRestaurantMenu()
         {
             var url = "http://www.mju.ac.kr/mbs/mjukr/jsp/restaurant/restaurant.jsp?configIdx=36337&id=mjukr_051002050000";
