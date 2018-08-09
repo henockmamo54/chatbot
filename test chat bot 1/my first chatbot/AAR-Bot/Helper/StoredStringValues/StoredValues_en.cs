@@ -64,6 +64,10 @@ namespace AAR_Bot.Helper.StoredStringValues
                                         $"▶ 5. Help \n" +
                                         $"▶ To change the language,Go to the [Help] -> [한국어] \n";
 
+            _greetingsReply = "Hi there, i am an acadamic advisor bot. what can i help you? ";
+            _stateReply = "Hi there, i am an acadamic advisor bot. what can i help you? ";
+            _identityReply = "Hi there, i am an acadamic advisor bot. what can i help you? ";
+
             //_typePleaseWelcome = $"Welcome to AAR chat service. \n" +
             //                            //$"▶ Select the number of the inquiry or" +
             //                            $"Please enter your question \n \n" +

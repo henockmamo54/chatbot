@@ -75,6 +75,10 @@ namespace AAR_Bot.Helper.StoredStringValues
                                         $"▶ To change the language,Go to the [Help] -> [한국어] \n";
 
 
+        public string _greetingsReply = "Hi there, i am an acadamic advisor bot. what can i help you? ";
+        public string _stateReply = "Hi there, i am an acadamic advisor bot. what can i help you? ";
+        public string _identityReply = "Hi there, i am an acadamic advisor bot. what can i help you? ";
+
         public string _typePleaseCourseRegistration = $"▶ 수강신청 메뉴 입니다.\n" +
                                     $"▶ 문의 내용의 번호를 선택하시\n      거나 질문을 입력해주세요.\n\n" +
                                     $"▶ 1. 수강신청 방법\n" +

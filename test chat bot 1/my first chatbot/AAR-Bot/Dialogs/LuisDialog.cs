@@ -71,20 +71,17 @@ namespace AAR_Bot.Dialogs
                     }
                 case "Greetings":
                     {
-                        var mymsg = "Hi there, i am an acadamic advisor bot. what can i help you? ";
-                        await RootDialog.ShowWelcomeOptions(context, mymsg);
+                        await RootDialog.ShowWelcomeOptions(context, _storedvalues._greetingsReply);
                         break;
                     }
                 case "State":
                     {
-                        var mymsg = "I am fine. what can i help you? ";
-                        await RootDialog.ShowWelcomeOptions(context, mymsg);
+                        await RootDialog.ShowWelcomeOptions(context, _storedvalues._stateReply);
                         break;
                     }
                 case "Identity":
                     {
-                        var mymsg = "I am an acadamic advisor bot. what can i help you? ";
-                        await RootDialog.ShowWelcomeOptions(context, mymsg);
+                        await RootDialog.ShowWelcomeOptions(context, _storedvalues._identityReply);
                         break;
                     }
                 case "Number":

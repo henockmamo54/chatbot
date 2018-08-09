@@ -19,7 +19,7 @@ namespace AAR_Bot.Dialogs
         public async Task StartAsync(IDialogContext context)
         {
 
-           string lang = "";
+            string lang = "";
             if (context.PrivateConversationData.TryGetValue<string>("_storedvalues", out lang))
             {
                 if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
@@ -47,16 +47,16 @@ namespace AAR_Bot.Dialogs
 
                 if (value.Text.ToString().Equals("English", StringComparison.InvariantCultureIgnoreCase))
                 {
-                   
-                        //context.PrivateConversationData.SetValue("_storedvalues", new StoredValues_en());
-                        context.PrivateConversationData.SetValue("_storedvalues", "StoredValues_en");
-                        _storedvalues = new StoredValues_en();
+
+                    //context.PrivateConversationData.SetValue("_storedvalues", new StoredValues_en());
+                    context.PrivateConversationData.SetValue("_storedvalues", "StoredValues_en");
+                    _storedvalues = new StoredValues_en();
                 } // _storedvalues = new StoredValues_en();      //if user inputs english as text input or keyboard input language should change to english and the same holds for korean too
-                else if (value.Text.ToString().Equals("한국어", StringComparison.InvariantCultureIgnoreCase) || value.Text.ToString().Equals("korean", StringComparison.InvariantCultureIgnoreCase)) 
+                else if (value.Text.ToString().Equals("한국어", StringComparison.InvariantCultureIgnoreCase) || value.Text.ToString().Equals("korean", StringComparison.InvariantCultureIgnoreCase))
                 { //_storedvalues = new StoredValues_kr();      //if user inputs 한국어 as text input or keyboard input language should change to 한국어
 
                     context.PrivateConversationData.SetValue("_storedvalues", "StoredValues_kr");
-                        _storedvalues = new StoredValues_kr();
+                    _storedvalues = new StoredValues_kr();
                 }
 
                 await ShowWelcomeOptions(context);
@@ -103,7 +103,7 @@ namespace AAR_Bot.Dialogs
 
         }
 
-        public static async Task ShowWelcomeOptions(IDialogContext context,string message)
+        public static async Task ShowWelcomeOptions(IDialogContext context, string message)
         {
             var activity = context.MakeMessage();
 
@@ -180,7 +180,7 @@ namespace AAR_Bot.Dialogs
                 var stuNum = await result;
                 context.PrivateConversationData.SetValue("stuNum", stuNum);
 
-                StoredStringValuesMaster _storedvalues= new StoredStringValuesMaster();
+                StoredStringValuesMaster _storedvalues = new StoredStringValuesMaster();
                 string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
                 if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
                 else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
