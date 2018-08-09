@@ -30,9 +30,9 @@ namespace AAR_Bot.MessageReply
                 if (context.Activity.ChannelId == "facebook")
                 {
                     var reply = context.MakeMessage();
-                    reply.Text = RootDialog._storedvalues._reply_CurrentCredits.Replace("Guide to my graduation.", "").Trim() + " = " + RootDialog.studentinfo.totalCredits(RootDialog.stuNum).ToString() +
-                "\n\n" + RootDialog._storedvalues._reply_MajorCredits.Replace("Guide to major credit.", "").Trim() + " = " + RootDialog.studentinfo.totalMajorCredits(RootDialog.stuNum).ToString() +
-                "\n\n" + RootDialog._storedvalues._reply_LiberalArtsCredits.Replace("Guide to major credit.", "").Trim() + " = " + RootDialog.studentinfo.totalElectiveCredits(RootDialog.stuNum).ToString();
+                    reply.Text = _storedvalues._reply_CurrentCredits.Replace("Guide to my graduation.", "").Trim() + " = " + RootDialog.studentinfo.totalCredits(stuNum).ToString() +
+                "\n\n" + _storedvalues._reply_MajorCredits.Replace("Guide to major credit.", "").Trim() + " = " + RootDialog.studentinfo.totalMajorCredits(stuNum).ToString() +
+                "\n\n" + _storedvalues._reply_LiberalArtsCredits.Replace("Guide to major credit.", "").Trim() + " = " + RootDialog.studentinfo.totalElectiveCredits(stuNum).ToString();
 
                     //reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
                     //reply.Attachments.Add(GetReceiptCard());
@@ -60,17 +60,17 @@ namespace AAR_Bot.MessageReply
         public static async Task showbuttonOptions(IDialogContext context)
         {
             var activity = context.MakeMessage();
-            activity.Text = RootDialog._storedvalues._courseInfoSelected.Replace("\n", "\n\n ");
+            activity.Text = _storedvalues._courseInfoSelected.Replace("\n", "\n\n ");
             activity.SuggestedActions = new SuggestedActions()
             {
                 Actions = new List<CardAction>()
                     {
-                        new CardAction(){ Title = RootDialog._storedvalues._currentCredits, Type=ActionTypes.ImBack, Value= RootDialog._storedvalues._currentCredits },
-                        new CardAction(){ Title = RootDialog._storedvalues._majorCredits, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._majorCredits },
-                        new CardAction(){ Title = RootDialog._storedvalues._liberalArtsCredits, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._liberalArtsCredits },
-                        new CardAction(){ Title = RootDialog._storedvalues._changeStuNum, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._changeStuNum},
+                        new CardAction(){ Title = _storedvalues._currentCredits, Type=ActionTypes.ImBack, Value= _storedvalues._currentCredits },
+                        new CardAction(){ Title = _storedvalues._majorCredits, Type=ActionTypes.ImBack, Value=_storedvalues._majorCredits },
+                        new CardAction(){ Title = _storedvalues._liberalArtsCredits, Type=ActionTypes.ImBack, Value=_storedvalues._liberalArtsCredits },
+                        new CardAction(){ Title = _storedvalues._changeStuNum, Type=ActionTypes.ImBack, Value=_storedvalues._changeStuNum},
 
-                        new CardAction(){ Title = RootDialog._storedvalues._gotostart, Type=ActionTypes.ImBack, Value="Go To Start" },
+                        new CardAction(){ Title = _storedvalues._gotostart, Type=ActionTypes.ImBack, Value="Go To Start" },
                         new CardAction(){ Title = "Help", Type=ActionTypes.ImBack, Value="Help" }
                     }
             };
@@ -112,21 +112,21 @@ namespace AAR_Bot.MessageReply
             var myresult = await result;
             string value = myresult.Text;
 
-            if (value.ToString() == RootDialog._storedvalues._gotostart) await RootDialog.ShowWelcomeOptions(context);
+            if (value.ToString() == _storedvalues._gotostart) await RootDialog.ShowWelcomeOptions(context);
 
-            else if (value.ToString() == RootDialog._storedvalues._help) await aboutHelp.HelpOptionSelected(context);
+            else if (value.ToString() == _storedvalues._help) await aboutHelp.HelpOptionSelected(context);
 
             else
             {
-                if (value.ToString() == RootDialog._storedvalues._changeStuNum)
+                if (value.ToString() == _storedvalues._changeStuNum)
                 {               //학번 재설정 요청일시
                     await Reply_changeStuNum(context);                                          //학번 재설정으로 연결
                 }
                 else
                 {
-                    if (value.ToString() == RootDialog._storedvalues._currentCredits) { await Reply_currentCredits(context); await CreditsOptionSelected(context); }
-                    else if (value.ToString() == RootDialog._storedvalues._majorCredits) { await Reply_majorCredits(context); await CreditsOptionSelected(context); }
-                    else if (value.ToString() == RootDialog._storedvalues._liberalArtsCredits) { await Reply_liberalArtsCredits(context); await CreditsOptionSelected(context); }
+                    if (value.ToString() == _storedvalues._currentCredits) { await Reply_currentCredits(context); await CreditsOptionSelected(context); }
+                    else if (value.ToString() == _storedvalues._majorCredits) { await Reply_majorCredits(context); await CreditsOptionSelected(context); }
+                    else if (value.ToString() == _storedvalues._liberalArtsCredits) { await Reply_liberalArtsCredits(context); await CreditsOptionSelected(context); }
                     else await LuisDialog.MessageReceivedAsync(context, result);
                 }
             }

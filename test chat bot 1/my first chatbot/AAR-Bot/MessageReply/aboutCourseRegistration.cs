@@ -14,21 +14,25 @@ namespace AAR_Bot.MessageReply
         static StoredStringValuesMaster _storedvalues;
         public static async Task CourseRegistraionOptionSelected(IDialogContext context)
         {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            var langtype = new StoredStringValuesMaster();
+            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
 
             if (context.Activity.ChannelId == "facebook")
             {
                 var activity = context.MakeMessage();
-                activity.Text = RootDialog._storedvalues._courseRegistrationSelected.Replace("\n", "\n\n ");
+                activity.Text = _storedvalues._courseRegistrationSelected.Replace("\n", "\n\n ");
                 activity.SuggestedActions = new SuggestedActions()
                 {
                     Actions = new List<CardAction>()
                     {
-                        new CardAction(){ Title = RootDialog._storedvalues._howToDoIt, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._howToDoIt },
-                        new CardAction(){ Title = RootDialog._storedvalues._schedule, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._schedule },
-                        new CardAction(){ Title = RootDialog._storedvalues._regulation, Type=ActionTypes.ImBack, Value= RootDialog._storedvalues._regulation },
-                        new CardAction(){ Title = RootDialog._storedvalues._terms, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._terms },
-                        new CardAction(){ Title = RootDialog._storedvalues._gotostart, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._gotostart },
-                        new CardAction(){ Title = RootDialog._storedvalues._help, Type=ActionTypes.ImBack, Value=RootDialog._storedvalues._help }
+                        new CardAction(){ Title = _storedvalues._howToDoIt, Type=ActionTypes.ImBack, Value=_storedvalues._howToDoIt },
+                        new CardAction(){ Title = _storedvalues._schedule, Type=ActionTypes.ImBack, Value=_storedvalues._schedule },
+                        new CardAction(){ Title = _storedvalues._regulation, Type=ActionTypes.ImBack, Value= _storedvalues._regulation },
+                        new CardAction(){ Title = _storedvalues._terms, Type=ActionTypes.ImBack, Value=_storedvalues._terms },
+                        new CardAction(){ Title = _storedvalues._gotostart, Type=ActionTypes.ImBack, Value=_storedvalues._gotostart },
+                        new CardAction(){ Title = _storedvalues._help, Type=ActionTypes.ImBack, Value=_storedvalues._help }
                     }
                 };
 
@@ -37,10 +41,7 @@ namespace AAR_Bot.MessageReply
             }
             else
             {// for other channels
-                string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
-            var langtype = new StoredStringValuesMaster();
-            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
-            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+                
 
             try
             {
@@ -88,14 +89,14 @@ namespace AAR_Bot.MessageReply
             var myresult = await result;
             string value = myresult.Text;
 
-            if (value.ToString() == RootDialog._storedvalues._gotostart) await RootDialog.ShowWelcomeOptions(context);
-            else if (value.ToString() == RootDialog._storedvalues._help) await aboutHelp.HelpOptionSelected(context);
+            if (value.ToString() == _storedvalues._gotostart) await RootDialog.ShowWelcomeOptions(context);
+            else if (value.ToString() == _storedvalues._help) await aboutHelp.HelpOptionSelected(context);
             else
             {
-                if (value.ToString() == RootDialog._storedvalues._howToDoIt) { await Reply_howToDoIt(context); await aboutCourseRegistration.CourseRegistraionOptionSelected(context); }     //각각의 메서드에 연결
-                else if (value.ToString() == RootDialog._storedvalues._schedule) { await Reply_schedule(context); await aboutCourseRegistration.CourseRegistraionOptionSelected(context); }    //각각의 Dialog로 연결하는 것 보다 편한듯
-                else if (value.ToString() == RootDialog._storedvalues._regulation) { await Reply_regulation(context); await aboutCourseRegistration.CourseRegistraionOptionSelected(context); }
-                else if (value.ToString() == RootDialog._storedvalues._terms) { await Reply_terms(context); await aboutCourseRegistration.CourseRegistraionOptionSelected(context); }
+                if (value.ToString() == _storedvalues._howToDoIt) { await Reply_howToDoIt(context); await aboutCourseRegistration.CourseRegistraionOptionSelected(context); }     //각각의 메서드에 연결
+                else if (value.ToString() == _storedvalues._schedule) { await Reply_schedule(context); await aboutCourseRegistration.CourseRegistraionOptionSelected(context); }    //각각의 Dialog로 연결하는 것 보다 편한듯
+                else if (value.ToString() == _storedvalues._regulation) { await Reply_regulation(context); await aboutCourseRegistration.CourseRegistraionOptionSelected(context); }
+                else if (value.ToString() == _storedvalues._terms) { await Reply_terms(context); await aboutCourseRegistration.CourseRegistraionOptionSelected(context); }
                 //else context.Call(new LuisDialog(), LuisDialogResumeAfter);
                 else await LuisDialog.MessageReceivedAsync(context, result);
             }
