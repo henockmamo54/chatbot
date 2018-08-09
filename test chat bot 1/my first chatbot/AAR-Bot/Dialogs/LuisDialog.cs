@@ -15,14 +15,19 @@ namespace AAR_Bot.Dialogs
     public class LuisDialog : IDialog<object>
     {
         static StoredStringValuesMaster _storedvalues;
+        string lang ="";
         public async Task StartAsync(IDialogContext context)
         {
-
-            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
-            var langtype = new StoredStringValuesMaster();
-            if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
-            else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
-            //context.PrivateConversationData.TryGetValue<StoredStringValuesMaster>("_storedvalues", out _storedvalues);
+            if (context.PrivateConversationData.TryGetValue<string>("_storedvalues", out lang))
+            {
+                if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
+                else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+            }
+            else
+            {
+                _storedvalues = new StoredValues_en();          //Default language is korean
+                context.PrivateConversationData.SetValue("_storedvalues", "StoredValues_en");
+            }            
 
             context.Wait(MessageReceivedAsync);
         }
@@ -76,6 +81,27 @@ namespace AAR_Bot.Dialogs
                     }
                 case "Greetings":
                     {
+                        var reply = context.MakeMessage();
+                        reply.Text = "Hi there, i am an acadamic advisor bot. what can i help you?";
+                        await context.PostAsync(reply);
+                        await RootDialog.ShowWelcomeOptions(context);
+                        break;
+                    }
+                case "State":
+                    {
+                        var reply = context.MakeMessage();
+                        reply.Text = "I am fine. what can i help you?";
+                        await context.PostAsync(reply);
+
+                        await RootDialog.ShowWelcomeOptions(context);
+                        break;
+                    }
+                case "Identity":
+                    {
+                        var reply = context.MakeMessage();
+                        reply.Text = "I am an acadamic advisor bot. what can i help you?";
+                        await context.PostAsync(reply);
+
                         await RootDialog.ShowWelcomeOptions(context);
                         break;
                     }
