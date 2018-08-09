@@ -139,7 +139,7 @@ namespace AAR_Bot.Helper.StoredStringValues
 
             //aboutCourseInfo
             //_courseInfoSelected = "You have selected lecture information.\nPlease select details.";
-            _courseInfoSelected = "What do you most want to know about?";
+            _courseInfoSelected = "What do you want to know about?";
 
             _reply_openedLiberalArts = $"This is a guide for this semester opened LiberalArts.\n";
 

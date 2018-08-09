@@ -124,12 +124,12 @@ namespace AAR_Bot.Dialogs
                         {
                             switch (obj.entities[0].type)
                             {
-                                case "openedmajor": await aboutCourseInfo.Reply_openedMajorCourses(context); await aboutCourseInfo.CourseInfoOptionSelected(context); break;
-                                case "openedliberalarts": await aboutCourseInfo.Reply_openedLiberalArts(context); await aboutCourseInfo.CourseInfoOptionSelected(context); break;
-                                case "syllabus": await aboutCourseInfo.Reply_syllabus(context); await aboutCourseInfo.CourseInfoOptionSelected(context); break;
-                                case "lectureinfo": await aboutCourseInfo.Reply_lecturerInfo(context); await aboutCourseInfo.CourseInfoOptionSelected(context); break;
-                                case "mandatorysubject": await aboutCourseInfo.Reply_mandatorySubject(context); await aboutCourseInfo.CourseInfoOptionSelected(context); break;
-                                case "prerequisite": await aboutCourseInfo.Reply_prerequisite(context); await aboutCourseInfo.CourseInfoOptionSelected(context); break;
+                                case "openedmajor": await aboutCourseInfo.Reply_openedMajorCourses(context); await aboutCourseInfo.CourseInfoOptionSelected(context,false); break;
+                                case "openedliberalarts": await aboutCourseInfo.Reply_openedLiberalArts(context); await aboutCourseInfo.CourseInfoOptionSelected(context,false); break;
+                                case "syllabus": await aboutCourseInfo.Reply_syllabus(context); await aboutCourseInfo.CourseInfoOptionSelected(context,false); break;
+                                case "lectureinfo": await aboutCourseInfo.Reply_lecturerInfo(context); await aboutCourseInfo.CourseInfoOptionSelected(context, false); break;
+                                case "mandatorysubject": await aboutCourseInfo.Reply_mandatorySubject(context); await aboutCourseInfo.CourseInfoOptionSelected(context, false); break;
+                                case "prerequisite": await aboutCourseInfo.Reply_prerequisite(context); await aboutCourseInfo.CourseInfoOptionSelected(context, false); break;
                                 default: { await aboutCourseInfo.CourseInfoOptionSelected(context); break; }
                             }
                         }

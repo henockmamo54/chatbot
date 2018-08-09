@@ -11,7 +11,7 @@ namespace AAR_Bot.MessageReply
     public static class aboutCourseInfo
     {
         static StoredStringValuesMaster _storedvalues;
-        public static async Task CourseInfoOptionSelected(IDialogContext context)
+        public static async Task CourseInfoOptionSelected(IDialogContext context, bool isFirstTime=true)
         {
             string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
             var langtype = new StoredStringValuesMaster();
@@ -22,7 +22,7 @@ namespace AAR_Bot.MessageReply
             {
                 var reply = context.MakeMessage();
                 reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                reply.Attachments = GetCardsAttachments();
+                if (isFirstTime)  reply.Attachments = GetCardsAttachments();
                 await context.PostAsync(reply);
 
                 await showOptions(context);
@@ -101,14 +101,14 @@ namespace AAR_Bot.MessageReply
 
             else
             {
-                if (value.ToString() == _storedvalues._openedMajorCourses) { await Reply_openedMajorCourses(context); await CourseInfoOptionSelected(context); }
-                else if (value.ToString() == _storedvalues._openedLiberalArts) { await Reply_openedLiberalArts(context); await CourseInfoOptionSelected(context); }
-                else if (value.ToString() == _storedvalues._syllabus) { await Reply_syllabus(context); await CourseInfoOptionSelected(context); }
-                else if (value.ToString() == _storedvalues._lecturerInfo) { await Reply_lecturerInfo(context); await CourseInfoOptionSelected(context); }
-                else if (value.ToString() == _storedvalues._mandatorySubject) { await Reply_mandatorySubject(context); await CourseInfoOptionSelected(context); }
-                else if (value.ToString() == _storedvalues._prerequisite) { await Reply_prerequisite(context); await CourseInfoOptionSelected(context); }
-                else if (value.ToString() == _storedvalues._help) { await RootDialog.ShowWelcomeOptions(context); await CourseInfoOptionSelected(context); }
-                else if (value.ToString() == _storedvalues._gotostart) { await RootDialog.ShowWelcomeOptions(context); await CourseInfoOptionSelected(context); }
+                if (value.ToString() == _storedvalues._openedMajorCourses) { await Reply_openedMajorCourses(context); await CourseInfoOptionSelected(context,false); }
+                else if (value.ToString() == _storedvalues._openedLiberalArts) { await Reply_openedLiberalArts(context); await CourseInfoOptionSelected(context, false); }
+                else if (value.ToString() == _storedvalues._syllabus) { await Reply_syllabus(context); await CourseInfoOptionSelected(context, false); }
+                else if (value.ToString() == _storedvalues._lecturerInfo) { await Reply_lecturerInfo(context); await CourseInfoOptionSelected(context, false); }
+                else if (value.ToString() == _storedvalues._mandatorySubject) { await Reply_mandatorySubject(context); await CourseInfoOptionSelected(context, false); }
+                else if (value.ToString() == _storedvalues._prerequisite) { await Reply_prerequisite(context); await CourseInfoOptionSelected(context, false); }
+                else if (value.ToString() == _storedvalues._help) { await RootDialog.ShowWelcomeOptions(context); await CourseInfoOptionSelected(context, false); }
+                else if (value.ToString() == _storedvalues._gotostart) { await RootDialog.ShowWelcomeOptions(context); await CourseInfoOptionSelected(context, false); }
                 else await LuisDialog.MessageReceivedAsync(context, result);
             }
         }

@@ -11,7 +11,7 @@ namespace AAR_Bot.MessageReply
     {
         static int stuNum = 0;
         static StoredStringValuesMaster _storedvalues;
-        public static async Task CreditsOptionSelected(IDialogContext context)
+        public static async Task CreditsOptionSelected(IDialogContext context, bool isFirstTime = true)
         {
             context.PrivateConversationData.TryGetValue<int>("stuNum", out stuNum);
             string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
@@ -29,14 +29,14 @@ namespace AAR_Bot.MessageReply
             {
                 if (context.Activity.ChannelId == "facebook")
                 {
-                    var reply = context.MakeMessage();
-                    reply.Text = _storedvalues._reply_CurrentCredits.Replace("Guide to my graduation.", "").Trim() + " = " + RootDialog.studentinfo.totalCredits(stuNum).ToString() +
-                "\n\n" + _storedvalues._reply_MajorCredits.Replace("Guide to major credit.", "").Trim() + " = " + RootDialog.studentinfo.totalMajorCredits(stuNum).ToString() +
-                "\n\n" + _storedvalues._reply_LiberalArtsCredits.Replace("Guide to major credit.", "").Trim() + " = " + RootDialog.studentinfo.totalElectiveCredits(stuNum).ToString();
-
-                    //reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-                    //reply.Attachments.Add(GetReceiptCard());
-                    await context.PostAsync(reply);
+                    if (isFirstTime)
+                    {
+                        var reply = context.MakeMessage();
+                        reply.Text = _storedvalues._reply_CurrentCredits.Replace("Guide to my graduation.", "").Trim() + " = " + RootDialog.studentinfo.totalCredits(stuNum).ToString() +
+                    "\n\n" + _storedvalues._reply_MajorCredits.Replace("Guide to major credit.", "").Trim() + " = " + RootDialog.studentinfo.totalMajorCredits(stuNum).ToString() +
+                    "\n\n" + _storedvalues._reply_LiberalArtsCredits.Replace("Guide to major credit.", "").Trim() + " = " + RootDialog.studentinfo.totalElectiveCredits(stuNum).ToString();
+                        await context.PostAsync(reply);
+                    }
 
                     await showbuttonOptions(context);
 
@@ -101,7 +101,7 @@ namespace AAR_Bot.MessageReply
 
 
                     //await RootDialog.ShowWelcomeOptions(context);           //Return To Start
-                    aboutCredits.CreditsOptionSelected(context);
+                    await CreditsOptionSelected(context,false);
                 }
             }
         }
@@ -124,9 +124,9 @@ namespace AAR_Bot.MessageReply
                 }
                 else
                 {
-                    if (value.ToString() == _storedvalues._currentCredits) { await Reply_currentCredits(context); await CreditsOptionSelected(context); }
-                    else if (value.ToString() == _storedvalues._majorCredits) { await Reply_majorCredits(context); await CreditsOptionSelected(context); }
-                    else if (value.ToString() == _storedvalues._liberalArtsCredits) { await Reply_liberalArtsCredits(context); await CreditsOptionSelected(context); }
+                    if (value.ToString() == _storedvalues._currentCredits) { await Reply_currentCredits(context); await CreditsOptionSelected(context,false); }
+                    else if (value.ToString() == _storedvalues._majorCredits) { await Reply_majorCredits(context); await CreditsOptionSelected(context,false); }
+                    else if (value.ToString() == _storedvalues._liberalArtsCredits) { await Reply_liberalArtsCredits(context); await CreditsOptionSelected(context,false); }
                     else await LuisDialog.MessageReceivedAsync(context, result);
                 }
             }
