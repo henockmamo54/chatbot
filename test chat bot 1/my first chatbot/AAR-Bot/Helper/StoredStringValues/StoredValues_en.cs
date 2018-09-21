@@ -176,7 +176,7 @@ namespace AAR_Bot.Helper.StoredStringValues
 
             //aboutCourseRegistration
             //_courseRegistrationSelected = "You have selected to enroll.\nPlease select the details.";
-            _courseRegistrationSelected = "What do you most want to know about?";
+            _courseRegistrationSelected = "What do you want to know about?";
 
 
             _reply_HowToDoIt = $"Instructions on how to enroll\n" +
@@ -197,7 +197,7 @@ namespace AAR_Bot.Helper.StoredStringValues
 
             //aboutCredits
             //_creditsOptionSelected = "You have selected credit management.\nPlease select the details.";
-            _creditsOptionSelected = "What do you most want to know about?";
+            _creditsOptionSelected = "What do you want to know about?";
 
 
             _reply_CurrentCredits = $"Guide to my graduation.\n" +
@@ -218,7 +218,7 @@ namespace AAR_Bot.Helper.StoredStringValues
 
             //aboutOthers
             //_otherOptionSelected = "You have selected other information.\nPlease select the details.";
-            _otherOptionSelected = "What do you most want to know about?";
+            _otherOptionSelected = "What do you want to know about?";
 
 
             _reply_leaveOrReadmission = $"This is information about the leave and returning information. \n";
