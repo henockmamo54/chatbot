@@ -219,6 +219,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CourseRecomendationData\processedrecommendation2.txt" />
     <Content Include="default.htm" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
@@ -234,6 +235,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\CourseRecomendationModel.cs" />
     <Compile Include="Helper\FrequentlyUsedLuisSteatment.cs" />
     <Compile Include="Helper\webscraping\Conversation.cs" />
     <Compile Include="Helper\webscraping\CosmosDBService.cs" />
@@ -250,6 +252,7 @@
     <Compile Include="MessageReply\aboutCourseInfo.cs" />
     <Compile Include="MessageReply\aboutCourseRegistration.cs" />
     <Compile Include="MessageReply\aboutCredits.cs" />
+    <Compile Include="MessageReply\aboutCourseRecomendation.cs" />
     <Compile Include="MessageReply\aboutHelp.cs" />
     <Compile Include="MessageReply\aboutOthers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

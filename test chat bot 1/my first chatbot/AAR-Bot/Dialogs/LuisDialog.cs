@@ -92,7 +92,8 @@ namespace AAR_Bot.Dialogs
                             case "2": await aboutCourseInfo.CourseInfoOptionSelected(context); break;
                             case "3": await aboutCredits.CreditsOptionSelected(context); break;
                             case "4": await aboutOthers.OtherOptionSelected(context); break;
-                            case "5": await aboutHelp.HelpOptionSelected(context); break;
+                            case "5": await aboutCourseRecomendation.CourseRecomendationOptionSelected(context); break;
+                            case "6": await aboutHelp.HelpOptionSelected(context); break;
                         }
                         break;
                     }
@@ -170,5 +171,7 @@ namespace AAR_Bot.Dialogs
 
             //context.Done(obj.topScoringIntent.ToString());
         }
+
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,10 +9,45 @@ namespace AAR_Bot.Helper
     public class StudentInfoService
     {
         public List<StudentInfo> studentInfoList;                  //학생정보 리스트 생성
+        public List<CourseRecomendationModel> recomendationlist;
 
         public StudentInfoService()
         {
             this.studentInfoList = readTheStudentInfoFile();
+            recomendationlist = readRecommendations();
+        }
+
+        private List<CourseRecomendationModel> readRecommendations()
+        {
+            var mylist = new List<CourseRecomendationModel>();
+            string path = Path.Combine(System.Web.HttpRuntime.AppDomainAppPath, @"CourseRecomendationData\");          //path 설정
+
+            DirectoryInfo di = new DirectoryInfo(path);                                             //Directory 설정
+
+            foreach (FileInfo fi in di.GetFiles())                                                  //해당 디렉토리의 파일 읽기
+            {
+                string mytestpath = path + fi.Name;
+                var rows = File.ReadAllLines(mytestpath).Select(a => a.Split(','));
+                var myrows = rows.ToList();
+
+                var sync = new object();
+                Parallel.ForEach(myrows, row =>
+                {
+                    CourseRecomendationModel rl = new CourseRecomendationModel();
+                    rl.studentNumber = row[0].ToString().Trim().Replace(" ",", ");
+                    rl.courselist = row[1];
+
+                    lock (sync)
+                    {
+                        mylist.Add(rl);// here you can add or remove items from the fileInfo list
+                    }
+
+
+                });
+
+            }
+            this.recomendationlist = mylist;
+            return recomendationlist;
         }
 
         public List<StudentInfo> readTheStudentInfoFile()
@@ -85,6 +121,17 @@ namespace AAR_Bot.Helper
             int count = studentinfo.Count();
             double mycredit = studentinfo.Sum(item => item.Credit);
             return mycredit;
+        }
+
+        public string getrecommendedCourselist(int studentid)
+        {
+            var studentinfo = from b in recomendationlist
+                              where b.studentNumber == studentid.ToString()
+                              select b;
+            var info = studentinfo.ToList().FirstOrDefault();
+            if (info != null) return info.courselist;
+            else return "";
+
         }
     }
 }
