@@ -145,6 +145,7 @@ namespace AAR_Bot.MessageReply
             string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
             if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
             else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+            context.PrivateConversationData.TryGetValue<int>("stuNum", out stuNum);
 
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_CurrentCredits + RootDialog.studentinfo.totalCredits(stuNum);
@@ -156,6 +157,7 @@ namespace AAR_Bot.MessageReply
             string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
             if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
             else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+            context.PrivateConversationData.TryGetValue<int>("stuNum", out stuNum);
 
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_MajorCredits + RootDialog.studentinfo.totalMajorCredits(stuNum);
@@ -166,8 +168,9 @@ namespace AAR_Bot.MessageReply
         {
             string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
             if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
-
             else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+            context.PrivateConversationData.TryGetValue<int>("stuNum", out stuNum);
+
             var activity = context.MakeMessage();
             activity.Text = _storedvalues._reply_LiberalArtsCredits + RootDialog.studentinfo.totalElectiveCredits(stuNum);
 
@@ -179,6 +182,7 @@ namespace AAR_Bot.MessageReply
             string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
             if (lang.Equals("StoredValues_en")) _storedvalues = new StoredValues_en();
             else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
+            context.PrivateConversationData.TryGetValue<int>("stuNum", out stuNum);
 
             await context.PostAsync(_storedvalues._reply_ChangeStuNum + stuNum);            //메시지를 보낸다.
             context.Call(new GetInfoDialog(), RootDialog.GetInfoDialogAfterResettingStudentNumber);     //바로 학번입력으로 간다.
