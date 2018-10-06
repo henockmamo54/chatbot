@@ -219,7 +219,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CourseRecomendationData\processedrecommendation2.txt" />
+    <Content Include="CourseRecomendationData\finalvalue- recomendor2.txt" />
     <Content Include="default.htm" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">

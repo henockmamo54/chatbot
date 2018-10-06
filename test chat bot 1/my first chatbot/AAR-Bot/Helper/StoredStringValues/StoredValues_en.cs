@@ -53,8 +53,8 @@ namespace AAR_Bot.Helper.StoredStringValues
                                         $"▶ 2. Subject related information \n" +
                                         $"▶ 3. Credit management \n" +
                                         $"▶ 4. Other information \n" +
-                                    $"▶ 5. Course Recommendations \n" +
-                                        $"▶ 6. Help \n" +
+                                    //$"▶ 5. Course Recommendations \n" +
+                                        $"▶ 5. Help \n" +
 
                                         $"▶ To change the language,Go to the [Help] -> [한국어] \n";
 
@@ -63,8 +63,8 @@ namespace AAR_Bot.Helper.StoredStringValues
                                         $"▶ 2. Subject related information \n" +
                                         $"▶ 3. Credit management \n" +
                                         $"▶ 4. Other information \n" +
-                                    $"▶ 5. Course Recommendations \n" +
-                                        $"▶ 6. Help \n" +
+                                    //$"▶ 5. Course Recommendations \n" +
+                                        $"▶ 5. Help \n" +
                                         $"▶ To change the language,Go to the [Help] -> [한국어] \n";
 
             _greetingsReply = "Hi there, i am an acadamic advisor bot. what can i help you? ";
@@ -104,10 +104,10 @@ namespace AAR_Bot.Helper.StoredStringValues
             _othersOption.Clear();
             _helpOptionsList.Clear();
 
-            _welcomeOptionsList = new List<string> { _courseRegistration, _courseInformation, _credits, _others, _typeself, _courserecomendations, _help };
+            _welcomeOptionsList = new List<string> { _courseRegistration, _courseInformation, _credits, _others, _typeself, _help };
             _courseRegistrationOptions = new List<string> { _howToDoIt, _schedule, _regulation, _terms, _gotostart, _help };
             _courseInfoOptions = new List<string> { _openedMajorCourses, _openedLiberalArts, _syllabus, _lecturerInfo, _mandatorySubject, _prerequisite, _gotostart, _help };
-            _creditsOptions = new List<string> { _currentCredits, _majorCredits, _liberalArtsCredits, _changeStuNum, _gotostart, _help };
+            _creditsOptions = new List<string> { _currentCredits, _majorCredits, _liberalArtsCredits, _courserecomendations, _changeStuNum, _gotostart, _help };
             _othersOption = new List<string> { _leaveOrReadmission, _scholarship, _restaurantMenu, _libraryInfo, _gotostart, _help };
             _helpOptionsList = new List<string> { _introduction, _requestInformationCorrection, _contactMaster, _convertLanguage, _gotostart };
 

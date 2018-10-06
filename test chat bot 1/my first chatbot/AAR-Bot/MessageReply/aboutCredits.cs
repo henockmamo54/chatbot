@@ -68,6 +68,7 @@ namespace AAR_Bot.MessageReply
                         new CardAction(){ Title = _storedvalues._currentCredits, Type=ActionTypes.ImBack, Value= _storedvalues._currentCredits },
                         new CardAction(){ Title = _storedvalues._majorCredits, Type=ActionTypes.ImBack, Value=_storedvalues._majorCredits },
                         new CardAction(){ Title = _storedvalues._liberalArtsCredits, Type=ActionTypes.ImBack, Value=_storedvalues._liberalArtsCredits },
+                        new CardAction(){ Title = _storedvalues._courserecomendations, Type=ActionTypes.ImBack, Value=_storedvalues._courserecomendations },
                         new CardAction(){ Title = _storedvalues._changeStuNum, Type=ActionTypes.ImBack, Value=_storedvalues._changeStuNum},
 
                         new CardAction(){ Title = _storedvalues._gotostart, Type=ActionTypes.ImBack, Value="Go To Start" },
@@ -98,10 +99,11 @@ namespace AAR_Bot.MessageReply
                     if (value.ToString() == _storedvalues._currentCredits) await Reply_currentCredits(context);
                     else if (value.ToString() == _storedvalues._majorCredits) await Reply_majorCredits(context);
                     else if (value.ToString() == _storedvalues._liberalArtsCredits) await Reply_liberalArtsCredits(context);
+                    else if (value.ToString() == _storedvalues._courserecomendations) await ReplyCourseRecomendationOptionSelected(context);
 
 
                     //await RootDialog.ShowWelcomeOptions(context);           //Return To Start
-                    await CreditsOptionSelected(context,false);
+                    await CreditsOptionSelected(context, false);
                 }
             }
         }
@@ -124,9 +126,10 @@ namespace AAR_Bot.MessageReply
                 }
                 else
                 {
-                    if (value.ToString() == _storedvalues._currentCredits) { await Reply_currentCredits(context); await CreditsOptionSelected(context,false); }
-                    else if (value.ToString() == _storedvalues._majorCredits) { await Reply_majorCredits(context); await CreditsOptionSelected(context,false); }
-                    else if (value.ToString() == _storedvalues._liberalArtsCredits) { await Reply_liberalArtsCredits(context); await CreditsOptionSelected(context,false); }
+                    if (value.ToString() == _storedvalues._currentCredits) { await Reply_currentCredits(context); await CreditsOptionSelected(context, false); }
+                    else if (value.ToString() == _storedvalues._majorCredits) { await Reply_majorCredits(context); await CreditsOptionSelected(context, false); }
+                    else if (value.ToString() == _storedvalues._liberalArtsCredits) { await Reply_liberalArtsCredits(context); await CreditsOptionSelected(context, false); }
+                    else if (value.ToString() == _storedvalues._courserecomendations || value.ToString()== "Course Recommendatio...") { await ReplyCourseRecomendationOptionSelected(context); await CreditsOptionSelected(context, false); }
                     else await LuisDialog.MessageReceivedAsync(context, result);
                 }
             }
@@ -179,6 +182,18 @@ namespace AAR_Bot.MessageReply
 
             await context.PostAsync(_storedvalues._reply_ChangeStuNum + stuNum);            //메시지를 보낸다.
             context.Call(new GetInfoDialog(), RootDialog.GetInfoDialogAfterResettingStudentNumber);     //바로 학번입력으로 간다.
+        }
+        public static async Task ReplyCourseRecomendationOptionSelected(IDialogContext context)
+        {
+            string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+
+            var activity = context.MakeMessage();
+            var reommenderreply = RootDialog.studentinfo.getrecommendedCourselist(stuNum).Trim().Replace("  ", ",");
+            if (reommenderreply.Length == 0) activity.Text = "Sorry, we didn't get the appropriate recommendations for you.";
+            else
+                activity.Text = "The Recommended courses are: " + RootDialog.studentinfo.getrecommendedCourselist(stuNum).Trim().Replace("  ", ",");
+            await context.PostAsync(activity);
+
         }
     }
 }
