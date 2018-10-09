@@ -14,7 +14,7 @@ namespace AAR_Bot.Dialogs
     {
         public int stuNum = 0;
         public StoredStringValuesMaster _storedvalues;                           // to handle language localization StoredValues의 마스터를 만들어 둔다. 디폴트는 한국어로 되어있다.
-        public static StudentInfoService studentinfo = new StudentInfoService();
+        public static StudentInfoService studentinfo;  //= new StudentInfoService();
 
         public async Task StartAsync(IDialogContext context)
         {

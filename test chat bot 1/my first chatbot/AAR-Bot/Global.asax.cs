@@ -1,4 +1,6 @@
-﻿using Autofac;
+﻿using AAR_Bot.Dialogs;
+using AAR_Bot.Helper;
+using Autofac;
 using Microsoft.Bot.Builder.Azure;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Internals;
@@ -48,7 +50,8 @@ namespace AAR_Bot
             //============================================ for optimization ============================================
             //==========================================================================================================
 
-            
+            RootDialog.studentinfo = new StudentInfoService();
+
             var appID = ConfigurationManager.AppSettings["MicrosoftAppId"];
             var appPassword = ConfigurationManager.AppSettings["MicrosoftAppPassword"];
             if (!string.IsNullOrEmpty(appID) && !string.IsNullOrEmpty(appPassword))
