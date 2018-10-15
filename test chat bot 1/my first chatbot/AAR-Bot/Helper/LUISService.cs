@@ -63,7 +63,7 @@ namespace AAR_Bot.Helper
             Rootobject Data = new Rootobject();
             using (HttpClient client = new HttpClient())
             {
-                string RequestURI = "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/c32ed705-90f4-420d-b670-c354c5062829?subscription-key=314d8796d4b64249ae2b940cdbdc46a3&verbose=true&timezoneOffset=0&q=" + Query;
+                string RequestURI = "https://eastasia.api.cognitive.microsoft.com/luis/v2.0/apps/c32ed705-90f4-420d-b670-c354c5062829?subscription-key=2ea8ca4be2b041b9b8b4390f4f3a87f5&timezoneOffset=-360&q=" + Query;
                 HttpResponseMessage msg = await client.GetAsync(RequestURI);
 
                 if (msg.IsSuccessStatusCode)
