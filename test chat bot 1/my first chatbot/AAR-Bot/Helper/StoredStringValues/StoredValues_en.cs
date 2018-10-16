@@ -96,6 +96,7 @@ namespace AAR_Bot.Helper.StoredStringValues
             _gotostart = "Go To Start";
             _help = "Help";
 
+            _recommendedCourse = "The Recommended courses are: ";
 
             _welcomeOptionsList.Clear();
             _courseRegistrationOptions.Clear();

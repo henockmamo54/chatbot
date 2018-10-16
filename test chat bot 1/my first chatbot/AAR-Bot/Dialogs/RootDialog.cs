@@ -27,8 +27,8 @@ namespace AAR_Bot.Dialogs
             }
             else
             {
-                _storedvalues = new StoredValues_en();          //Default language is korean
-                context.PrivateConversationData.SetValue("_storedvalues", "StoredValues_en");
+                _storedvalues = new StoredValues_kr();          //Default language is korean
+                context.PrivateConversationData.SetValue("_storedvalues", "StoredValues_kr");
             }
 
             context.Wait(MessageReceivedAsync);

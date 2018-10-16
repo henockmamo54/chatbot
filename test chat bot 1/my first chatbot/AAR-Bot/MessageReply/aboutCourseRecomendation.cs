@@ -17,7 +17,7 @@ namespace AAR_Bot.MessageReply
             else if (lang.Equals("StoredValues_kr")) _storedvalues = new StoredValues_kr();
 
             var activity = context.MakeMessage();
-            activity.Text = "The Recommended courses are: " + RootDialog.studentinfo.getrecommendedCourselist(60131937).Trim().Replace("  ", ",");
+            activity.Text = _storedvalues._recommendedCourse + RootDialog.studentinfo.getrecommendedCourselist(60131937).Trim().Replace("  ", ",");
             await context.PostAsync(activity);
 
         }
