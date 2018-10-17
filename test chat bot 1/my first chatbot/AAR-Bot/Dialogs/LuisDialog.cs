@@ -153,7 +153,7 @@ namespace AAR_Bot.Dialogs
                         {
                             switch (obj.entities[0].type)
                             {
-                                case "foodmenu": await aboutOthers.Reply_restaurantMenu(context); await RootDialog.ShowWelcomeOptions(context); break;
+                                case "foodmenu": await aboutOthers.Reply_restaurantMenu2(context); await RootDialog.ShowWelcomeOptions(context); break;
                                 case "libinfo": await aboutOthers.Reply_libraryInfo(context); await RootDialog.ShowWelcomeOptions(context); break;
                                 default: { await aboutOthers.OtherOptionSelected(context); break; }
                             }

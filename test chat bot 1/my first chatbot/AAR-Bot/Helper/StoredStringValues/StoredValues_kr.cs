@@ -41,7 +41,8 @@ namespace AAR_Bot.Helper.StoredStringValues
             // 기타 정보 선택시 메뉴     others options
             _leaveOrReadmission = "휴학 및 복학";         //웹 연결
             _scholarship = "장학금 관련";            //웹 연결
-            _restaurantMenu = "Restaurant Menu";
+            _restaurantMenu = "식단 메뉴(명진당)";
+            _restaurantMenu2 = "식단 메뉴(학생회관)";
             _libraryInfo = "Library Info";
 
             // 직접 입력하기 선택시 메뉴     typeself options
@@ -140,7 +141,7 @@ namespace AAR_Bot.Helper.StoredStringValues
             _courseRegistrationOptions = new List<string> { _howToDoIt, _schedule, _regulation, _terms, _gotostart, _help };
             _courseInfoOptions = new List<string> { _openedMajorCourses, _openedLiberalArts, _syllabus, _lecturerInfo, _mandatorySubject, _prerequisite, _gotostart, _help };
             _creditsOptions = new List<string> { _currentCredits, _majorCredits, _liberalArtsCredits, _courserecomendations, _changeStuNum, _gotostart, _help };
-            _othersOption = new List<string> { _leaveOrReadmission, _scholarship, _restaurantMenu, _libraryInfo, _gotostart, _help };
+            _othersOption = new List<string> { _leaveOrReadmission, _scholarship, _restaurantMenu, _restaurantMenu2, _libraryInfo, _gotostart, _help };
             _helpOptionsList = new List<string> { _introduction, _requestInformationCorrection, _contactMaster, _convertLanguage, _gotostart };
 
             _goodByeMessage = "Thank you for Using AAR Service.\n The chat bot is Under development. \nPlease let us know your feedback.";

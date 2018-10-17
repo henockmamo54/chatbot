@@ -32,6 +32,7 @@ namespace AAR_Bot.MessageReply
                         new CardAction(){ Title = _storedvalues._leaveOrReadmission, Type=ActionTypes.ImBack, Value=_storedvalues._leaveOrReadmission },
                         new CardAction(){ Title = _storedvalues._scholarship, Type=ActionTypes.ImBack, Value=_storedvalues._scholarship },
                         new CardAction(){ Title = _storedvalues._restaurantMenu, Type=ActionTypes.ImBack, Value= _storedvalues._restaurantMenu},
+                        new CardAction(){ Title = _storedvalues._restaurantMenu2, Type=ActionTypes.ImBack, Value= _storedvalues._restaurantMenu2},
                         new CardAction(){ Title = _storedvalues._libraryInfo, Type=ActionTypes.ImBack, Value=_storedvalues._libraryInfo },
                         new CardAction(){ Title = _storedvalues._gotostart, Type=ActionTypes.ImBack, Value=_storedvalues._gotostart },
                         new CardAction(){ Title = _storedvalues._help, Type=ActionTypes.ImBack, Value=_storedvalues._help }
@@ -69,6 +70,7 @@ namespace AAR_Bot.MessageReply
                 if (value.ToString() == _storedvalues._leaveOrReadmission) await Reply_leaveOrReadmission(context);
                 else if (value.ToString() == _storedvalues._scholarship) await Reply_scholarship(context);
                 else if (value.ToString() == _storedvalues._restaurantMenu) await Reply_restaurantMenu(context);
+                else if (value.ToString() == _storedvalues._restaurantMenu2) await Reply_restaurantMenu2(context);
                 else if (value.ToString() == _storedvalues._libraryInfo) await Reply_libraryInfo(context);
 
 
@@ -92,6 +94,7 @@ namespace AAR_Bot.MessageReply
                 if (value.ToString() == _storedvalues._leaveOrReadmission) { await Reply_leaveOrReadmission(context); await OtherOptionSelected(context); }
                 else if (value.ToString() == _storedvalues._scholarship) { await Reply_scholarship(context);await OtherOptionSelected(context); }
                 else if (value.ToString() == _storedvalues._restaurantMenu) { await Reply_restaurantMenu(context); await OtherOptionSelected(context); }
+                else if (value.ToString() == _storedvalues._restaurantMenu2) { await Reply_restaurantMenu2(context); await OtherOptionSelected(context); }
                 else if (value.ToString() == _storedvalues._libraryInfo) { await Reply_libraryInfo(context); await OtherOptionSelected(context); }
                 else await LuisDialog.MessageReceivedAsync(context, result);
             }
@@ -129,7 +132,7 @@ namespace AAR_Bot.MessageReply
             {
                 CosmosDBService cd = new CosmosDBService();
                 ConversationInfo convinfo = new ConversationInfo();
-                convinfo.id = "FoodMenu"; //FoodMenu
+                convinfo.id = "FoodMenu1"; //명진당
 
                 var foodmenuinfo = await cd.readDataFromDocument(convinfo);
 
@@ -141,11 +144,110 @@ namespace AAR_Bot.MessageReply
                     activity.Text += day.Date + "\n";
                     foreach (var restaurant in day.Details)
                     {
-                        activity.Text += "\n" + restaurant[0] + "\n";
-                        for (int i = 1; i < restaurant.Length; i++)
+                        int inBraket = 0;
+
+                        
+                        restaurant[1] = restaurant[1].Replace("&amp;<br>", "&");
+                        restaurant[1] = restaurant[1].Replace("<br>&amp;", "&");
+                        restaurant[1] = restaurant[1].Replace("&amp;", "&");
+                        restaurant[1] = restaurant[1].Replace("&nbsp;", "");
+                        restaurant[1] = restaurant[1].Replace("<br>", "\n");
+                        restaurant[1] = restaurant[1].Replace("\r", "\n");
+
+
+                        if (restaurant[0] != "자율한식(석식)" && restaurant[0] != "참미소")
                         {
-                            var food = restaurant[i];
-                            activity.Text += "\n" + food;
+                            activity.Text += "\n식당명 : " + restaurant[0] + "\n\n";
+
+                            activity.Text += restaurant[1] + "\n";
+                        }
+                        
+
+
+                        
+                        
+
+                        //foreach (var text in restaurant[0])
+                        //{
+                        //    if (text == '<' || inBraket == 1)
+                        //    {
+                        //        inBraket = 1;
+                        //        if (text == '>')
+                        //        {
+                        //            inBraket = 0;
+                        //        }
+                        //    }
+                        //    else
+                        //    {
+                        //        activity.Text += text;
+                        //    }
+                        //}
+                        //activity.Text += "\n";
+                    }
+                    activity.Text += "\n";
+                }
+
+
+                await context.PostAsync(activity);
+            }
+            catch (Exception ee)
+            {
+                await context.PostAsync("Error reading cosmos db");
+            }
+        }
+
+        public static async Task Reply_restaurantMenu2(IDialogContext context)
+        {
+            try
+            {
+                CosmosDBService cd = new CosmosDBService();
+                ConversationInfo convinfo = new ConversationInfo();
+                convinfo.id = "FoodMenu22"; //학생식당
+
+                var foodmenuinfo = await cd.readDataFromDocument(convinfo);
+
+                var jsondata = JsonConvert.DeserializeObject<FoodMenuListModel>(foodmenuinfo.FirstOrDefault().myList.ToString());
+                var activity = context.MakeMessage();
+
+                foreach (var day in jsondata.foodMenus)
+                {
+
+                    foreach (var restaurant in day.Details)
+                    {
+                        int inBraket = 0;
+
+
+
+
+                        //activity.Text += restaurant[0];
+                        restaurant[0] = restaurant[0].Replace(" ", "");
+                        restaurant[0] = restaurant[0].Replace("\n", "");
+                        restaurant[0] = restaurant[0].Replace("\t", "");
+                        restaurant[0] = restaurant[0].Replace("\r", "\n");
+                        restaurant[0] = restaurant[0].Replace(")", ")\n");
+                        restaurant[0] = restaurant[0].Replace("&amp;<br>", "&");
+                        restaurant[0] = restaurant[0].Replace("<br>&amp;", "&");
+                        restaurant[0] = restaurant[0].Replace("&amp;", "&");
+                        restaurant[0] = restaurant[0].Replace("&nbsp;", "");
+                        restaurant[0] = restaurant[0].Replace("<br>", "\n");
+                        restaurant[0] = restaurant[0].Replace("백반", "\n백반\n\n");
+                        restaurant[0] = restaurant[0].Replace("일품", "\n\n일품\n\n");
+                        restaurant[0] = restaurant[0].Replace("양식", "\n\n양식\n\n");
+
+                        foreach (var text in restaurant[0])
+                        {
+                            if (text == '<' || inBraket == 1)
+                            {
+                                inBraket = 1;
+                                if (text == '>')
+                                {
+                                    inBraket = 0;
+                                }
+                            }
+                            else
+                            {
+                                activity.Text += text;
+                            }
                         }
                         activity.Text += "\n";
                     }
@@ -160,6 +262,10 @@ namespace AAR_Bot.MessageReply
                 await context.PostAsync("Error reading cosmos db");
             }
         }
+
+
+
+
 
 
         //================================================================================================================================================
