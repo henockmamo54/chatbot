@@ -195,7 +195,7 @@ namespace AAR_Bot.MessageReply
             var reommenderreply = RootDialog.studentinfo.getrecommendedCourselist(stuNum).Trim().Replace("  ", ",");
             if (reommenderreply.Length == 0) activity.Text = "Sorry, we didn't get the appropriate recommendations for you.";
             else
-                activity.Text = "The Recommended courses are: " + RootDialog.studentinfo.getrecommendedCourselist(stuNum).Trim().Replace("  ", ",");
+                activity.Text = stuNum + " " + _storedvalues._recommendedCourse + RootDialog.studentinfo.getrecommendedCourselist(stuNum).Trim().Replace("  ", ",");
             await context.PostAsync(activity);
 
         }

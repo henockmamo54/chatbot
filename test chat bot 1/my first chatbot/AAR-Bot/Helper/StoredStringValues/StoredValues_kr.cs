@@ -13,10 +13,10 @@ namespace AAR_Bot.Helper.StoredStringValues
             // 기본 메뉴    welcome options
             _courseRegistration = "수강 신청";
             _courseInformation = "과목 정보";
-            _credits = "학점 관리";
+            _credits = "학점 관리/과목추천";
             _others = "기타 정보";
             _typeself = "직접 입력하기";
-            _courserecomendations = "Course Recommendations";
+            _courserecomendations = "과목 추천";
 
             // 수강 신청 선택시 메뉴     course registration options
             _howToDoIt = "수강신청 방법";             //웹 연결
@@ -49,7 +49,7 @@ namespace AAR_Bot.Helper.StoredStringValues
                                     $"▶ 문의 내용의 번호를 선택하시\n      거나 질문을 입력해주세요.\n\n" +
                                     $"▶ 1. 수강신청정보\n" +
                                     $"▶ 2. 과목관련정보\n" +
-                                    $"▶ 3. 학점관리\n" +
+                                    $"▶ 3. 학점관리/과목추천\n" +
                                     $"▶ 4. 기타정보\n" +
                                     //$"▶ 5. Course Recommendations \n" +
                                     $"▶ 5. 도움말\n" +
@@ -70,7 +70,7 @@ namespace AAR_Bot.Helper.StoredStringValues
                 $"▶ 2. Subject related information \n" +
                 $"▶ 3. Credit management \n" +
                 $"▶ 4. Other information \n" +
-                                    $"▶ 5. Course Recommendations \n" +
+             // $"▶ 5. Course Recommendations \n" +
                 $"▶ 6. Help \n" +
                 $"▶ To change the language,Go to the [Help] -> [한국어] \n";
 
@@ -145,12 +145,13 @@ namespace AAR_Bot.Helper.StoredStringValues
 
             _goodByeMessage = "Thank you for Using AAR Service.\n The chat bot is Under development. \nPlease let us know your feedback.";
 
-            //================================================================================================================================
-            //For Fake LUIS
+            _recommendedCourse = "님의 추천 과목은 : ";
+        //================================================================================================================================
+        //For Fake LUIS
 
 
-            //welcome option
-            _courseRegistrationVoca = new List<string> { "수강신청", "수강 신청" };
+        //welcome option
+        _courseRegistrationVoca = new List<string> { "수강신청", "수강 신청" };
             _courseInfoVoca = new List<string> { "과목정보", "과목 정보", "강의정보", "강의 정보", "과목관련", "강의관련", "전공과목", "교양과목", "전공개설", "교양개설", "강의계획서", "강사 정보", "교수 정보", "필수과목", "선수과목", "개설전공", "개설교양" };
             _creditVoca = new List<string> { "학점", "나의학점", "내학점" };
             _othersVoca = new List<string> { "기타", "그외" };
@@ -257,7 +258,7 @@ namespace AAR_Bot.Helper.StoredStringValues
 
 
             //aboutCredits
-            _creditsOptionSelected = "학점 관리를 선택하셨습니다.\n세부항목을 선택해주세요.";
+            _creditsOptionSelected = "학점 관리/과목 추천을 선택하셨습니다.\n세부항목을 선택해주세요.";
 
 
             _reply_CurrentCredits = $"나의 이수학점에 대한 안내입니다.\n" +

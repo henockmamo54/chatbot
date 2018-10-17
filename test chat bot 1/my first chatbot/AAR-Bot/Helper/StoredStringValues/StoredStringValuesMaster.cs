@@ -15,7 +15,7 @@ namespace AAR_Bot.Helper.StoredStringValues
         public string _credits = "학점 관리";
         public string _others = "기타 정보";
         public string _typeself = "직접 입력하기";
-        public string _courserecomendations = "Course Recommendations";
+        public string _courserecomendations = "과목 추천";
         public List<string> _welcomeOptionsList = new List<string>();
 
         // 수강 신청 선택시 메뉴     course registration options
@@ -44,8 +44,8 @@ namespace AAR_Bot.Helper.StoredStringValues
         // 기타 정보 선택시 메뉴     others options
         public string _leaveOrReadmission = "휴학 및 복학";         //웹 연결
         public string _scholarship = "장학금 관련";            //웹 연결
-        public string _restaurantMenu = "Restaurant Menu";
-        public string _libraryInfo = "Library Info";
+        public string _restaurantMenu = "식단 메뉴";
+        public string _libraryInfo = "도서관 좌석 정보";
         public List<string> _othersOption = new List<string>();
 
         // 직접 입력 메뉴     typeself options
@@ -53,7 +53,7 @@ namespace AAR_Bot.Helper.StoredStringValues
                                     $"▶ 문의 내용의 번호를 선택하시\n      거나 질문을 입력해주세요.\n\n" +
                                     $"▶ 1. 수강신청정보\n" +
                                     $"▶ 2. 과목관련정보\n" +
-                                    $"▶ 3. 학점관리\n" +
+                                    $"▶ 3. 학점관리/과목추천\n" +
                                     $"▶ 4. 기타정보\n" +
                                     //$"▶ 5. Course Recommendations \n" +
                                     $"▶ 5. 도움말\n" +
@@ -72,7 +72,7 @@ namespace AAR_Bot.Helper.StoredStringValues
                                         $"▶ 1. Course Registration Information \n" +
                                         $"▶ 2. Subject related information \n" +
                                         $"▶ 3. Credit management \n" +
-                                        $"▶ 4. Other information \n" +
+                                        $"▶ 4. Other information/Course Recommendations \n" +
                                         //$"▶ 5. Course Recommendations \n" +
                                         $"▶ 5. Help \n" +
                                         $"▶ To change the language,Go to the [Help] -> [한국어] \n";
@@ -134,7 +134,8 @@ namespace AAR_Bot.Helper.StoredStringValues
 
         public string _goodByeMessage = "Thank you for Using AAR Service.\n The chat bot is Under development. \nPlease let us know your feedback.";
 
-
+        public string _recommendedCourse = "님의 추천 과목은 : ";
+        //public string _recommendedCourse = "The Recommended courses are: ";
 
         //================================================================================================================================
         //For Fake LUIS
@@ -302,7 +303,7 @@ namespace AAR_Bot.Helper.StoredStringValues
 
 
         //aboutCredits
-        public string _creditsOptionSelected = "학점 관리를 선택하셨습니다.\n세부항목을 선택해주세요.";
+        public string _creditsOptionSelected = "학점 관리/과목 추천을 선택하셨습니다.\n세부항목을 선택해주세요.";
 
 
         public string _reply_CurrentCredits = $"나의 이수학점에 대한 안내입니다.\n" +
@@ -351,28 +352,6 @@ namespace AAR_Bot.Helper.StoredStringValues
 
 
         //=======================================================================================================================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
