@@ -157,7 +157,7 @@ namespace AAR_Bot.MessageReply
 
                         if (restaurant[0] != "자율한식(석식)" && restaurant[0] != "참미소")
                         {
-                            activity.Text += "\n식당명 : " + restaurant[0] + "\n\n";
+                            activity.Text += "\n▶" + restaurant[0] + "◀\n\n"; //▶▣◀
 
                             activity.Text += restaurant[1] + "\n";
                         }
@@ -184,7 +184,7 @@ namespace AAR_Bot.MessageReply
                         //}
                         //activity.Text += "\n";
                     }
-                    activity.Text += "\n";
+                    activity.Text += "\n__________\n\n";
                 }
 
 
@@ -230,9 +230,10 @@ namespace AAR_Bot.MessageReply
                         restaurant[0] = restaurant[0].Replace("&amp;", "&");
                         restaurant[0] = restaurant[0].Replace("&nbsp;", "");
                         restaurant[0] = restaurant[0].Replace("<br>", "\n");
-                        restaurant[0] = restaurant[0].Replace("백반", "\n백반\n\n");
-                        restaurant[0] = restaurant[0].Replace("일품", "\n\n일품\n\n");
-                        restaurant[0] = restaurant[0].Replace("양식", "\n\n양식\n\n");
+                        restaurant[0] = restaurant[0].Replace("백반", "\n▶백반◀\n\n"); //▶▣◀
+                        restaurant[0] = restaurant[0].Replace("일품", "\n\n▶일품◀\n\n");
+                        restaurant[0] = restaurant[0].Replace("양식</td>", "\n\n▶양식◀\n\n");
+                        restaurant[0] = restaurant[0].Replace("\n(", "("); 
 
                         foreach (var text in restaurant[0])
                         {
