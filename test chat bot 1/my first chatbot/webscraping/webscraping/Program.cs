@@ -75,10 +75,10 @@ namespace webscraping
                     {
                         var menudetail_subOption = menudetail.Descendants("td").ToList()[0].InnerText;
 
-                        var menudetail_subOptionValue = menudetail.Descendants("td").ToList()[1].Descendants("p").ToList();
+                        var menudetail_subOptionValue = menudetail.Descendants("td").ToList()[1].Descendants("div").ToList();
                         string actual_concatinatedValue = "";
                         foreach (var stringvalue in menudetail_subOptionValue)
-                            actual_concatinatedValue += stringvalue.InnerText.Trim() + "\n";
+                            actual_concatinatedValue += stringvalue.InnerHtml.Trim() + "\n" ;
                         string[] actualvalueswithsubmenu = { menudetail_subOption.Trim(), actual_concatinatedValue.Trim() };
                         todaysMenu.Details.Add(actualvalueswithsubmenu);
                     }
@@ -94,16 +94,16 @@ namespace webscraping
             ConversationInfo conversationinfo = new ConversationInfo
             {
                 myList = JsonConvert.SerializeObject(foodmenuforjsonobj),
-                id = "FoodMenu",
+                id = "FoodMenu1",
                 timestamp = DateTimeOffset.Now,
                 watermark = ""
             };
 
-            await myDbService.SetInfoAsync(conversationinfo, "FoodMenu");
+            await myDbService.SetInfoAsync(conversationinfo, "FoodMenu1");
 
             Console.WriteLine();
         }
-
+        
         public static async Task getRestaurant2Menu()
         {
             var url = "http://www.mju.ac.kr/mbs/mjukr/jsp/restaurant/restaurant.jsp?configIdx=36548&id=mjukr_051002020000";
@@ -140,11 +140,46 @@ namespace webscraping
             {
                 try
                 {
-                    var menudetail_subOption = menudetail.Descendants("td").ToList()[0].InnerText;
+                    var menudetail_subOption = menudetail.Descendants("td").ToList()[0].InnerHtml;
                     var menudetail_headerOption = "http://www.mju.ac.kr/" +menudetail.Descendants("th").ToList()[0].Descendants("img").FirstOrDefault().Attributes["src"].Value;
 
                    string[] actualvalueswithsubmenu = { menudetail_subOption.Trim(), menudetail_headerOption.Trim() };
                     todaysMenu.Details.Add(actualvalueswithsubmenu);
+
+                    //var test = menudetail.Descendants("td").ToList()[0].Descendants("table").ToList()[0].Descendants("tr");
+                    //.Where(node => node.GetAttributeValue("summary", "")
+                    //.Equals("식단내용")).ToList();
+
+                    //if (test.Count > 0) {
+                    //    var t = test[0];
+                    //}
+                    var menuperday = new List<FoodMenuPerdayModel>();
+                    var innerfoodtable = menudetail.Descendants("td").ToList()[0].Descendants("table").ToList();
+                    if (innerfoodtable.Count > 0) {
+                        foreach (var table in innerfoodtable) {
+                            FoodMenuPerdayModel perday = new FoodMenuPerdayModel();
+                            perday.MenuDetail = new List<foodOptionModel>();
+
+                            var rows = table.Descendants("tr").ToList();
+                            foreach (var row in rows)
+                            {
+                                foodOptionModel fo = new foodOptionModel();
+                                var fooddate = rows[0].Descendants("th").ToList()[0].InnerText;
+                                var option = row.Descendants("td").ToList()[0].InnerText;
+                                var foodmenu = row.Descendants("td").ToList()[1].Descendants("div").ToList()[0].InnerHtml;
+
+                                perday.date = fooddate;
+                                fo.optionType = option;
+                                fo.menu = foodmenu;
+                                perday.MenuDetail.Add(fo);
+                            }
+
+                            menuperday.Add(perday);
+
+                        }
+
+                        todaysMenu.MenuPerday = menuperday;
+                    }
                 }
                 catch (Exception ee) { }
             }
@@ -158,12 +193,12 @@ namespace webscraping
             ConversationInfo conversationinfo = new ConversationInfo
             {
                 myList = JsonConvert.SerializeObject(foodmenuforjsonobj),
-                id = "FoodMenu2",
+                id = "FoodMenu22",
                 timestamp = DateTimeOffset.Now,
                 watermark = ""
             };
 
-            await myDbService.SetInfoAsync(conversationinfo, "FoodMenu2");
+            await myDbService.SetInfoAsync(conversationinfo, "FoodMenu22");
 
             Console.WriteLine();
         }
@@ -286,6 +321,37 @@ namespace webscraping
 
                     string[] actualvalueswithsubmenu = { menudetail_subOption.Trim(), menudetail_headerOption.Trim() };
                     todaysMenu.Details.Add(actualvalueswithsubmenu);
+
+
+                    var menuperday = new List<FoodMenuPerdayModel>();
+                    var innerfoodtable = menudetail.Descendants("td").ToList()[0].Descendants("table").ToList();
+                    if (innerfoodtable.Count > 0)
+                    {
+                        foreach (var table in innerfoodtable)
+                        {
+                            FoodMenuPerdayModel perday = new FoodMenuPerdayModel();
+                            perday.MenuDetail = new List<foodOptionModel>();
+
+                            var rows = table.Descendants("tr").ToList();
+                            foreach (var row in rows)
+                            {
+                                foodOptionModel fo = new foodOptionModel();
+                                var fooddate = rows[0].Descendants("th").ToList()[0].InnerText;
+                                var option = row.Descendants("td").ToList()[0].InnerText;
+                                var foodmenu = row.Descendants("td").ToList()[1].Descendants("div").ToList()[0].InnerHtml;
+
+                                perday.date = fooddate;
+                                fo.optionType = option;
+                                fo.menu = foodmenu;
+                                perday.MenuDetail.Add(fo);
+                            }
+
+                            menuperday.Add(perday);
+
+                        }
+
+                        todaysMenu.MenuPerday = menuperday;
+                    }
                 }
                 catch (Exception ee) { }
             }
@@ -298,12 +364,12 @@ namespace webscraping
             ConversationInfo conversationinfo = new ConversationInfo
             {
                 myList = JsonConvert.SerializeObject(foodmenuforjsonobj),
-                id = "FoodMenu4",
+                id = "FoodMenu44",
                 timestamp = DateTimeOffset.Now,
                 watermark = ""
             };
 
-            await myDbService.SetInfoAsync(conversationinfo, "FoodMenu4");
+            await myDbService.SetInfoAsync(conversationinfo, "FoodMenu44");
 
             Console.WriteLine();
         }
