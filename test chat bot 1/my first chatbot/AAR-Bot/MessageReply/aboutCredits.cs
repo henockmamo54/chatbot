@@ -190,6 +190,7 @@ namespace AAR_Bot.MessageReply
         public static async Task ReplyCourseRecomendationOptionSelected(IDialogContext context)
         {
             string lang = context.PrivateConversationData.GetValue<string>("_storedvalues");
+            context.PrivateConversationData.TryGetValue<int>("stuNum", out stuNum);
 
             var activity = context.MakeMessage();
             var reommenderreply = RootDialog.studentinfo.getrecommendedCourselist(stuNum).Trim().Replace("  ", ",");
